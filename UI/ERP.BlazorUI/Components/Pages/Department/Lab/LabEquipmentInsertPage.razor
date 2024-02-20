@@ -1,0 +1,100 @@
+﻿@page "/addLabEquipment"
+@using ERP.Application.DepartmentApp.Labs.Interfaces
+@using ERP.Application.DepartmentApp.Labs.UseCases
+@using ERP.Domain.Core.Entity.DepartmentEntity.LabEntity
+@using FluentValidation
+@* @* @inject IAddLabEquipmentUseCase AddNewLabEquipmentUseCase // we can inject because we create dependancy in  *@
+
+<h3>Lab Equipment Add Page</h3>
+
+<MudCard>
+    <MudForm Model="@labEquipmentModel" @ref="@form" Validation="@(labEquipmentValidator.ValidateValue)" ValidationDelay="0">
+        <MudCardContent>
+            <MudTextField @bind-Value="labEquipmentModel.LabEquipmentID" For="@(() => labEquipmentModel.LabEquipmentID)" Label="Lab Equipment ID" Immediate="true" />
+            <MudTextField @bind-Value="labEquipmentModel.LabEquipmentName" For="@(() => labEquipmentModel.LabEquipmentName)" Label="Lab Equipment Name" Immediate="true" />
+            <MudSelect Label="Select an option" @bind-Value="labEquipmentModel.condition">
+                @foreach (var option in options)
+                {
+                    <MudSelectItem Value="option">@option</MudSelectItem>
+                }
+            </MudSelect>
+            <MudTextField @bind-Value="labEquipmentModel.LabSpaceId" For="@(() => labEquipmentModel.LabSpaceId)" Label="Lab Space Id" Immediate="true" />
+            <MudTextField @bind-Value="labEquipmentModel.Avaialability" For="@(() => labEquipmentModel.Avaialability)" Label="Lab Equipment Availabilty" Immediate="true" />
+           
+         
+
+
+        
+   
+
+        </MudCardContent>
+    </MudForm>
+
+    @if (isAddedSuccessfully)
+    {
+        <div class="alert alert-success" role="alert">
+            Successfully added item!
+        </div>
+    }
+    <MudCardActions>
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto" OnClick="@(async () => await Submit())">Add</MudButton>
+    </MudCardActions>
+
+
+   
+</MudCard>
+
+@code {
+
+
+    [Parameter]
+    public EventCallback onAdded { get; set; }
+
+    private bool isAddedSuccessfully = false;
+
+    private LabEquipment labEquipmentModel = new LabEquipment();
+
+    LabEquipmentModelValidator labEquipmentValidator = new LabEquipmentModelValidator();
+    MudForm form;
+
+    public class LabEquipmentModelValidator : AbstractValidator<LabEquipment>
+    {
+        public LabEquipmentModelValidator()
+        {
+
+            RuleFor(x => x.LabEquipmentName)
+                .NotEmpty()
+                .Length(1, 100);
+
+        }
+
+        public Func<object, string, Task<IEnumerable<string>>> ValidateValue => async (model, propertyName) =>
+        {
+            var result = await ValidateAsync(ValidationContext<LabEquipment>.CreateWithOptions((LabEquipment)model, x => x.IncludeProperties(propertyName)));
+            if (result.IsValid)
+                return Array.Empty<string>();
+            return result.Errors.Select(e => e.ErrorMessage);
+        };
+    }
+
+    private async Task Submit()
+    {
+        await form.Validate();
+
+        if (form.IsValid)
+        {
+            // await AddNewLabEquipmentUseCase.ExecuteAsync(labEquipmentModel);
+            await onAdded.InvokeAsync();
+            form.Reset();
+            isAddedSuccessfully = true;
+            await Task.Delay(1000);
+            isAddedSuccessfully = false;
+           
+        }
+
+    }
+
+    
+    
+    private List<string> options = new List<string> { "Excellent", "Good", "Medium" ,"Bad","Worst"};
+}

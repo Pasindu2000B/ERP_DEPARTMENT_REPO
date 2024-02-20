@@ -1,0 +1,57 @@
+﻿@page "/WorkLoadAdminLandingPage"
+
+<MudContainer MaxWidth="MaxWidth.Medium" Class="my-4">
+    <MudText Typo="Typo.h3">Lecturers</MudText>
+
+    <!-- Filter Input -->
+    <MudTextField Label="Filter by name" Variant="Variant.Outlined" AdornmentIcon="MudIcons.Search"
+                  @bind-Value="filterValue" Class="mb-2" />
+
+    <!-- Sort Button -->
+    <MudButton OnClick="@SortByWorkload" Color="Color.Primary" Class="mb-2">Sort by Workload</MudButton>
+
+    <!-- Lecturers List -->
+    <MudList>
+     @*    @foreach (var lecturer in FilteredLecturers)
+        {
+            <MudListItem Button OnClick="@(() => NavigateToLecturer(lecturer.Id))">
+                @lecturer.Name
+            </MudListItem>
+        } *@
+    </MudList>
+
+    <!-- Rest of your code for buttons -->
+    <!-- ... -->
+</MudContainer>
+
+@code {
+    private List<Lecturer> lecturers = new List<Lecturer>();
+    private string filterValue;
+
+    protected override void OnInitialized()
+    {
+        // Initialization of lecturers list
+        // ...
+    }
+
+    private IEnumerable<Lecturer> FilteredLecturers =>
+        string.IsNullOrWhiteSpace(filterValue)
+        ? lecturers
+        : lecturers.Where(l => l.Name.Contains(filterValue, StringComparison.OrdinalIgnoreCase));
+
+    private void SortByWorkload()
+    {
+        // Sorting logic, assuming Lecturer class has a Workload property
+        lecturers = lecturers.OrderByDescending(l => l.Workload).ToList();
+    }
+
+    // Rest of your code for navigation methods
+    // ...
+
+    public class Lecturer
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int Workload { get; set; } // Assumed property for sorting
+    }
+}

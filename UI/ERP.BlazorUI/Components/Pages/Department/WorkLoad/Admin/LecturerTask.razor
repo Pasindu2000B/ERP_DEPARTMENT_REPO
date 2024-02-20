@@ -1,0 +1,52 @@
+﻿@page "/lecturer/{LecturerId:int}"
+
+@* @inject ITaskService TaskService // Assuming you have a service to fetch tasks
+ *@
+<MudContainer MaxWidth="MaxWidth.Medium" Class="mt-4">
+    <MudText Typo="Typo.h4">Tasks for @lecturer.Name</MudText>
+
+        <!-- Task List -->
+        <MudList>
+            @foreach (var task in tasks)
+        {
+            <MudListItem>
+                <MudText>@task.Title</MudText>
+                    <MudText Class="ml-2" Color="Color.Secondary">@task.TimeSpent</MudText>
+                </MudListItem>
+        }
+    </MudList>
+
+    <!-- Task Time Graph -->
+    <!-- Placeholder for graph. Implementation depends on how you choose to render the graph -->
+    <div id="task-time-graph"></div>
+</MudContainer>
+
+@code {
+    [Parameter]
+    public int LecturerId { get; set; }
+
+    private Lecturer lecturer;
+    private List<TaskModel> tasks = new List<TaskModel>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        // lecturer = await TaskService.GetLecturerById(LecturerId);
+        // tasks = await TaskService.GetTasksForLecturer(LecturerId);
+
+        // Initialize graph here
+    }
+
+    public class TaskModel
+    {
+        public string Title { get; set; }
+        public int TimeSpent { get; set; }
+    }
+
+    // You would also have a Lecturer class similar to this
+    public class Lecturer
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        // Other properties...
+    }
+}

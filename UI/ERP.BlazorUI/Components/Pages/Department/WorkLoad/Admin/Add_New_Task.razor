@@ -1,0 +1,83 @@
+﻿@page "/addtasks"
+@using ERP.Domain.Core.Entity.StudentEntity
+@using ERP.Domain.Core.Entity.DepartmentEntity.WorkLoadEntity.Types_Of_Works
+@* @inject IModuleService ModuleService  // Replace with your actual module service *@
+
+<MudContainer MaxWidth="MaxWidth.Medium" Class="mt-4">
+    <MudText Typo="Typo.h4">Add New Task</MudText>
+
+    <MudForm @ref="form" Model="newTask">
+        <MudSelect T="TaskType" @bind-Value="selectedTaskType" Label="Task Type" FullWidth>
+            @foreach (var taskType in Enum.GetValues<TaskType>())
+            {
+                <MudSelectItem Value="@taskType" Text="@taskType.ToString()" />
+            }
+        </MudSelect>
+
+        @if (selectedTaskType == TaskType.Lecturing)
+        {
+            <MudTextField @bind-Value="newTask.ModuleName" Label="Module Name" Variant="Variant.Filled" FullWidth />
+        }
+
+        <!-- Other task-specific fields and common fields -->
+
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="Submit" Class="mt-2">Submit</MudButton>
+        <MudSelect T="string" @bind-Value="newTask.NominatedLecturerId" Label="Nominate Lecturer" FullWidth>
+            @foreach (var lecturer in lecturers)
+            {
+                //<MudSelectItem Value="@lecturer.Id.ToString()" Text="@lecturer.FirstName" />
+            }
+        </MudSelect>
+
+        <MudDatePicker @bind-Date="newTask.DueDate" Label="Due Date" />
+
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="Submit" Class="mt-2">Submit</MudButton>
+    </MudForm>
+</MudContainer>
+
+@code {
+    private MudForm form;
+    private TaskModel newTask = new TaskModel();
+    private List<Teacher> lecturers = new List<Teacher>();
+    private TaskType selectedTaskType;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // lecturers = await TaskService.GetLecturersAsync(); // Load lecturers
+    }
+
+    private async Task Submit()
+    {
+        if (form.IsValid)
+        {
+            newTask.SelectedTaskType = selectedTaskType; // Update newTask with the selected task type
+                                                         // await TaskService.CreateTaskAsync(newTask); // Save the new task
+            await SendNotificationToLecturer(newTask.NominatedLecturerId); // Mock notification sending
+        }
+    }
+
+    private async Task SendNotificationToLecturer(string lecturerId)
+    {
+        // Placeholder for sending a notification
+        Console.WriteLine($"Notification sent to lecturer with ID: {lecturerId}");
+    }
+
+    public enum TaskType
+    {
+        AdministrativeWork,
+        CommunityEngagement,
+        Lecturing,
+        ResearchProjects
+    }
+
+    public class TaskModel
+    {
+        public TaskType SelectedTaskType { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public double TimeRequiredPerWeek { get; set; }
+        public string NominatedLecturerId { get; set; }
+        public DateTime? DueDate { get; set; }
+        public string ModuleName { get; set; } // Make sure this property exists
+    }
+}

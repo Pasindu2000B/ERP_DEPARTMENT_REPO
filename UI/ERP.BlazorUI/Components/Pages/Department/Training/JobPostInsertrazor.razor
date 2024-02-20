@@ -1,0 +1,90 @@
+﻿@page "/addjobpost"
+@using ERP.Application.DepartmentApp.Training.Interfaces
+@using ERP.Application.DepartmentApp.Training.Usecases
+@using ERP.Domain.Core.Entity.DepartmentEntity.TrainingEntity
+@using FluentValidation
+@inject IAddJobPostingUseCase AddJobPostingUseCase
+
+<h3>INTERNSHIP REGISTER</h3>
+
+<MudCard>
+    <MudForm Model="@jobPostModel" @ref="@form" Validation="@(jobPostValidator.ValidateValue)" ValidationDelay="0">
+        <MudCardContent>
+            <MudTextField @bind-Value="jobPostModel.JobPostName" For="@(() => jobPostModel.JobPostName)" Label="Job Post Name" Immediate="true" />
+            <MudTextField @bind-Value="jobPostModel.CompanyId" For="@(() => jobPostModel.CompanyId)" Label="Company Id" Immediate="true" />
+            <MudTextField @bind-Value="jobPostModel.Description" For="@(() => jobPostModel.Description)" Label="Description" Immediate="true" />
+            <MudTextField @bind-Value="jobPostModel.JobCategory" For="@(() => jobPostModel.JobCategory)" Label="Job Category" Immediate="true" />
+            <MudSelect Label="Select an option" @bind-Value="jobPostModel.JobCategory">
+                @foreach (var option in categories)
+                {
+                    <MudSelectItem Value="option">@option</MudSelectItem>
+                }
+            </MudSelect>
+            
+        </MudCardContent>
+    </MudForm>
+
+    @if (isAddedSuccessfully)
+    {
+        <div class="alert alert-success" role="alert">
+            Successfully added job post!
+        </div>
+    }
+
+    <MudCardActions>
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto" OnClick="@(async () => await SubmitJobPost())">Add</MudButton>
+    </MudCardActions>
+</MudCard>
+
+@code {
+    [Parameter]
+    public EventCallback onAdded { get; set; }
+
+    private bool isAddedSuccessfully = false;
+
+    private JobPost jobPostModel = new JobPost();
+
+    private List<string> categories = new List<string> { "Software Engineering", "Telecommunication Engineering", "Power Engineering", "Electronic Engineering" };
+
+    JobPostModelValidator jobPostValidator = new JobPostModelValidator();
+    MudForm form;
+
+    public class JobPostModelValidator : AbstractValidator<JobPost>
+    {
+        public JobPostModelValidator()
+        {
+            RuleFor(x => x.JobPostName)
+                .NotEmpty()
+                .Length(1, 100);
+
+            RuleFor(x => x.Description)
+            .NotEmpty();
+
+           
+        }
+
+        public Func<object, string, Task<IEnumerable<string>>> ValidateValue => async (model, propertyName) =>
+        {
+            var result = await ValidateAsync(ValidationContext<JobPost>.CreateWithOptions((JobPost)model, x => x.IncludeProperties(propertyName)));
+            if (result.IsValid)
+                return Array.Empty<string>();
+            return result.Errors.Select(e => e.ErrorMessage);
+        };
+    }
+
+    private async Task SubmitJobPost()
+    {
+        await form.Validate();
+
+        if (form.IsValid)
+        {
+            
+            form.Reset();
+            isAddedSuccessfully = true;
+            await onAdded.InvokeAsync();
+            await Task.Delay(1000);
+            isAddedSuccessfully = false;
+        }
+    }
+}
+

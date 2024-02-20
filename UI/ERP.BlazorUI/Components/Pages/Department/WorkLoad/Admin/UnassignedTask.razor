@@ -1,0 +1,45 @@
+﻿@page "/unassignedtasks"
+
+<MudContainer MaxWidth="MaxWidth.Medium" Class="mt-4">
+    <MudText Typo="Typo.h4">Unassigned Tasks</MudText>
+
+    <!-- Displaying the list of unassigned tasks -->
+    <MudList>
+        @if (unassignedTasks.Any())
+        {
+            @foreach (var task in unassignedTasks)
+            {
+                <MudListItem>
+                    <MudText>@task.Title</MudText>
+                        <MudText Class="ml-2" Color="Color.Secondary">@task.DueDate?.ToString("d")</MudText>
+                    </MudListItem>
+            }
+        }
+        else
+        {
+            <MudText>No unassigned tasks.</MudText>
+        }
+    </MudList>
+</MudContainer>
+
+@code {
+    private List<TaskModel> unassignedTasks = new List<TaskModel>();
+
+    protected override void OnInitialized()
+    {
+        // Initialize your list of unassigned tasks here
+        // This is just a mockup, replace it with your actual data fetching logic
+        unassignedTasks = new List<TaskModel>
+        {
+            new TaskModel { Title = "Task 1", DueDate = DateTime.Now.AddDays(7) },
+            new TaskModel { Title = "Task 2", DueDate = DateTime.Now.AddDays(14) },
+            // Add more tasks here...
+        };
+    }
+
+    public class TaskModel
+    {
+        public string Title { get; set; }
+        public DateTime? DueDate { get; set; }
+    }
+}
