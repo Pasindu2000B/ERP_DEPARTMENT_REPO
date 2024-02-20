@@ -1,0 +1,101 @@
+﻿@page "/addGraduate"
+
+@using ERP.Application.DepartmentApp.Graduates.Interfaces
+@using ERP.Domain.Core.Entity.DepartmentEntity.GraduatesEntity
+@using FluentValidation
+@inject IAddGraduateUseCase AddNewGraduateUseCase
+
+
+<h3>Graduate Add Page</h3>
+
+<MudGrid>
+    <MudItem xs="12" sm="7">
+        <MudPaper Class="pa-4">
+            <MudForm Model="@graduateModel" @ref="@form" Validation="@(graduateValidator.ValidateValue)" ValidationDelay="0">
+                <MudCardContent>
+
+                    <MudTextField @bind-Value="graduateModel.GraduateName"
+                                  For="@(()=>graduateModel.GraduateName)"
+                                  Label="Graduate Name"
+                                  Immediate="true" />
+
+                    <MudTextField @bind-Value="graduateModel.GraduateDescription"
+                                  Label="Graduate Discription"
+                                  Immediate="true" />
+
+                    <MudTextField @bind-Value="graduateModel.GraduateCompany"
+                                  Label="Working Address"
+                                  Immediate="true" />
+
+                    <MudTextField @bind-Value="graduateModel.GraduateContactNo"
+                                  Label="Contact Number"
+                                  Immediate="true" />
+
+                </MudCardContent>
+
+            </MudForm>
+            @if (isAddedSuccessfully)
+            {
+                <div class="alert alert-success" role="alert">
+                    Successfully added graduate!
+                </div>
+            }
+
+            <MudCardActions>
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto" OnClick="@(async ()=>await Submit())">Add Graduate</MudButton>
+            </MudCardActions>
+
+
+
+        </MudPaper>
+    </MudItem>
+</MudGrid>
+
+
+
+
+@code {
+    [Parameter]
+    public EventCallback onAdded { get; set; }
+
+    private bool isAddedSuccessfully = false;
+
+    private Graduate graduateModel = new Graduate();
+    MudForm form;
+    GraduateModelValidator graduateValidator = new GraduateModelValidator();
+
+
+    public class GraduateModelValidator : AbstractValidator<Graduate>
+    {
+        public GraduateModelValidator()
+        {
+            RuleFor(x => x.GraduateName).NotEmpty().MinimumLength(3);
+        }
+
+        public Func<object, string, Task<IEnumerable<string>>> ValidateValue => async (model, propertyName) =>
+        {
+            var result = await ValidateAsync(ValidationContext<Graduate>.CreateWithOptions((Graduate)model, x => x.IncludeProperties(propertyName)));
+            if (result.IsValid)
+                return Array.Empty<string>();
+            return result.Errors.Select(e => e.ErrorMessage);
+        };
+    }
+
+
+    private async Task Submit()
+    {
+        await form.Validate();
+        if (form.IsValid)
+        {
+            await AddNewGraduateUseCase.ExecuteAsync(graduateModel);
+            await onAdded.InvokeAsync();
+            form.Reset();
+            isAddedSuccessfully = true;
+            await Task.Delay(1000);
+            isAddedSuccessfully = false;
+
+        }
+
+    }
+
+}

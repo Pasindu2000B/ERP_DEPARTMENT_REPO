@@ -13,6 +13,10 @@ using MudBlazor.Services;
 using ERP.Repository.PgSql.Department.Lab;
 using ERP.Application.DepartmentApp.Labs.UseCases.Inventor_Lab;
 using ERP.Application.DepartmentApp.Labs.Interfaces.Inventory_Lab;
+using ERP.Application.DepartmentApp.Graduates.Repository;
+using ERP.Repository.PgSql.Department.Graduate;
+using ERP.Application.DepartmentApp.Graduates.Interfaces;
+using ERP.Application.DepartmentApp.Graduates.UseCases;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,12 +41,14 @@ builder.Services.AddMudServices();
 
 builder.Services.AddScoped<IStudentRepository, StudentRepositoryPgSql>();
 builder.Services.AddScoped<ILabRepository,LabRepositoryPgSql>();
+builder.Services.AddScoped<IGraduateRepository, GraduateRepositoryPgSql>();
 builder.Services.AddScoped<IGetLabEquipmentListUseCase, GetLabEquipmentlistUseCase>();
 builder.Services.AddScoped<IViewStudentsByNameUseCase, ViewStudentsByNameUseCase>();
 builder.Services.AddScoped<IAddStudentUseCase, AddStudentUseCase>();
 builder.Services.AddScoped<IViewStudentById, ViewStudentById>();
 builder.Services.AddScoped<IEditStudentUseCase, EditStudentUseCase>();
 builder.Services.AddScoped<IAddLabEquipmentUseCase,AddNewLabEquipmentUseCase>();
+builder.Services.AddScoped<IAddGraduateUseCase, AddGraduateUseCase>();
 
 var app = builder.Build();
 

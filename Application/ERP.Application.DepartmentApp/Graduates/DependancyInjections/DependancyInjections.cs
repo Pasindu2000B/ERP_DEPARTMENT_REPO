@@ -16,11 +16,11 @@ namespace ERP.Application.DepartmentApp.Graduates.DependancyInjections
         public static IServiceCollection GraduateServices(
              this IServiceCollection services)
         {
-            services.AddScoped<IGetLabEquipmentListUseCase, GetLabEquipmentlistUseCase>();
-            services.AddScoped<IAddGraduateInterface , AddGraduateUseCase>();
+           //services.AddScoped<IGetLabEquipmentListUseCase, GetLabEquipmentlistUseCase>();
+            services.AddScoped<IAddGraduateUseCase , AddGraduateUseCase>();
 
             return services;
-            //new second cooment
+            
          
         }
     }

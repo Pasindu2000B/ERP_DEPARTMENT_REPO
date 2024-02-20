@@ -10,20 +10,11 @@ namespace ERP.Domain.Core.Entity.DepartmentEntity.GraduatesEntity
     public class Graduate
     {
         [Key]
-        public int RegistrationNumber { get; set; }
-
-        public string FirstName { get; set; } = string.Empty;
-        public string LastName { get; set; } = string.Empty;
-        public string Email { get; set; } = string.Empty;
-        public string Phone { get; set; } = string.Empty;
-        public string Address1 { get; set; } = string.Empty;
-        public string Address2 { get; set; } = string.Empty;
-        public string City { get; set; } = string.Empty;
-        public string District { get; set; } = string.Empty;
-        public DateOnly DoB { get; set; }
-        
-       
-
+        public int GraduateID { get; set; }
+        public string GraduateName { get; set; }
+        public string GraduateDescription { get; set; }
+        public string GraduateContactNo { get; set; }
+        public string GraduateCompany { get; set; }
 
     }
 }

@@ -3,6 +3,7 @@ using System;
 using ERP.Repository.PgSql;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ERP.Repository.PgSql.Migrations
 {
     [DbContext(typeof(PgSqlDbContext))]
-    partial class PgSqlDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240220151731_newMigration02")]
+    partial class newMigration02
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,57 +27,50 @@ namespace ERP.Repository.PgSql.Migrations
 
             modelBuilder.Entity("ERP.Domain.Core.Entity.DepartmentEntity.GraduatesEntity.Graduate", b =>
                 {
-                    b.Property<int>("GraduateID")
+                    b.Property<int>("RegistrationNumber")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("GraduateID"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("RegistrationNumber"));
 
-                    b.Property<string>("GraduateCompany")
+                    b.Property<string>("Address1")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("GraduateContactNo")
+                    b.Property<string>("Address2")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("GraduateDescription")
+                    b.Property<string>("City")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("GraduateName")
+                    b.Property<string>("District")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("GraduateID");
+                    b.Property<DateOnly>("DoB")
+                        .HasColumnType("date");
 
-                    b.ToTable("Graduates");
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("text");
 
-                    b.HasData(
-                        new
-                        {
-                            GraduateID = 1001,
-                            GraduateCompany = "535 Wiza Branch, New Kira, Guyana",
-                            GraduateContactNo = "932.375.1156",
-                            GraduateDescription = "Forward",
-                            GraduateName = "Elliott"
-                        },
-                        new
-                        {
-                            GraduateID = 1002,
-                            GraduateCompany = "43901 Stiedemann Port, Landenbury, Tokelau",
-                            GraduateContactNo = "425.875.9174",
-                            GraduateDescription = "Forward",
-                            GraduateName = "Vita"
-                        },
-                        new
-                        {
-                            GraduateID = 1003,
-                            GraduateCompany = "438 Kertzmann Ramp, Collinsview, Cocos (Keeling) Islands",
-                            GraduateContactNo = "788.440.3672 x2348",
-                            GraduateDescription = "Lead",
-                            GraduateName = "Shanie"
-                        });
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("RegistrationNumber");
+
+                    b.ToTable("graduates");
                 });
 
             modelBuilder.Entity("ERP.Domain.Core.Entity.DepartmentEntity.LabEntity.LabEquipment", b =>
@@ -108,7 +104,7 @@ namespace ERP.Repository.PgSql.Migrations
                         {
                             LabEquipmentID = 1001,
                             Avaialability = false,
-                            LabEquipmentName = "Bernie",
+                            LabEquipmentName = "Daren",
                             LabSpaceId = 0,
                             condition = "bad"
                         },
@@ -116,15 +112,15 @@ namespace ERP.Repository.PgSql.Migrations
                         {
                             LabEquipmentID = 1002,
                             Avaialability = false,
-                            LabEquipmentName = "Lacy",
+                            LabEquipmentName = "Kiarra",
                             LabSpaceId = 0,
-                            condition = "bad"
+                            condition = "medium"
                         },
                         new
                         {
                             LabEquipmentID = 1003,
                             Avaialability = false,
-                            LabEquipmentName = "Johnny",
+                            LabEquipmentName = "Aisha",
                             LabSpaceId = 0,
                             condition = "medium"
                         });
@@ -535,14 +531,14 @@ namespace ERP.Repository.PgSql.Migrations
                             City = "",
                             District = "",
                             DoB = new DateOnly(1, 1, 1),
-                            Email = "Jeremie_Waters82@gmail.com",
-                            FirstName = "Jeremie",
+                            Email = "Zula98@yahoo.com",
+                            FirstName = "Zula",
                             GPA = 0.0,
-                            LastName = "Waters",
+                            LastName = "Nitzsche",
                             NationalID = "",
                             Phone = "",
                             PhoneNumber = "",
-                            RegistrationNum = "EG/2020/4985"
+                            RegistrationNum = "EG/2021/8966"
                         },
                         new
                         {
@@ -552,14 +548,14 @@ namespace ERP.Repository.PgSql.Migrations
                             City = "",
                             District = "",
                             DoB = new DateOnly(1, 1, 1),
-                            Email = "Owen.Prosacco@hotmail.com",
-                            FirstName = "Owen",
+                            Email = "Regan25@hotmail.com",
+                            FirstName = "Regan",
                             GPA = 0.0,
-                            LastName = "Prosacco",
+                            LastName = "Dickens",
                             NationalID = "",
                             Phone = "",
                             PhoneNumber = "",
-                            RegistrationNum = "EG/2023/9845"
+                            RegistrationNum = "EG/2022/3575"
                         },
                         new
                         {
@@ -569,14 +565,14 @@ namespace ERP.Repository.PgSql.Migrations
                             City = "",
                             District = "",
                             DoB = new DateOnly(1, 1, 1),
-                            Email = "Sincere_Anderson9@gmail.com",
-                            FirstName = "Sincere",
+                            Email = "Niko.DAmore@yahoo.com",
+                            FirstName = "Niko",
                             GPA = 0.0,
-                            LastName = "Anderson",
+                            LastName = "D'Amore",
                             NationalID = "",
                             Phone = "",
                             PhoneNumber = "",
-                            RegistrationNum = "EG/2023/2129"
+                            RegistrationNum = "EG/2021/4775"
                         });
                 });
 

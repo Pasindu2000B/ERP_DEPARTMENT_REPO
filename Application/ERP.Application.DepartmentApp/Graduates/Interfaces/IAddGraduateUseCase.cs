@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace ERP.Application.DepartmentApp.Graduates.Interfaces
 {
-    public interface IAddGraduateInterface
+    public interface IAddGraduateUseCase
     {
-        Task ExcuteAsync(Graduate graduate);
-        //new commit 
+        Task ExecuteAsync(Graduate graduate);
+        
     }
 }

@@ -1,0 +1,29 @@
+﻿@page "/graduatelist"
+@using ERP.RazorComponents.Department.Graduate
+
+
+
+<MudTabs Elevation="2" Rounded="true" ApplyEffectsToContainer="true" PanelClass="pa-6">
+    <MudTabPanel @ref="tab2" Text="Graduate List">
+        <!--<GraduateListEdit />-->
+    </MudTabPanel>
+    <MudTabPanel Text="Add Graduates">
+        <AddGraduate/>
+    </MudTabPanel>
+    
+
+</MudTabs>
+
+
+@code {
+
+    bool _editItem = false;
+
+    MudTabPanel tab2;
+    void EditToggle()
+    {
+
+
+    }
+
+}
