@@ -1,174 +1,10 @@
-﻿
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-using ERP.Domain.Core.Entity.DepartmentEntity.GraduatesEntity;
+﻿using ERP.Domain.Core.Entity.DepartmentEntity.GraduatesEntity;
 using ERP.Domain.Core.Entity.DepartmentEntity.LabEntity;
 using ERP.Domain.Core.Entity.DepartmentEntity.TrainingEntity;
 using ERP.Domain.Core.Entity.StudentEntity;
 using ERP.Repository.PgSql.Configurations;
 using ERP.Repository.PgSql.Configurations.DepartmentPortalConfigurations;
+using ERP.Repository.PgSql.Configurations.DepartmentPortalConfigurations.GraduateConfigurations;
 using ERP.Repository.PgSql.Configurations.DepartmentPortalConfigurations.LabConfigurations;
 using ERP.Repository.PgSql.Migrations;
 using Microsoft.EntityFrameworkCore;
@@ -187,9 +23,9 @@ namespace ERP.Repository.PgSql
         {
             modelBuilder.ApplyConfiguration(new StudentConfigurations());
             modelBuilder.ApplyConfiguration(new LabEquipmentConfiguration());
-            
-           
-            
+            modelBuilder.ApplyConfiguration(new GraduateConfiguration());
+
+
             modelBuilder.Entity<ModuleOfferingTeacher>()
             .HasKey(mt => new { mt.ModuleOfferingId, mt.TeacherId });
 
@@ -250,7 +86,7 @@ namespace ERP.Repository.PgSql
         public DbSet<ModuleOfferingFirstExaminer> ModuleFirstExaminers { get; set; }
         public DbSet<ModuleOfferingSecondExaminer> ModuleSecondExaminers { get; set; }
 
-        public DbSet<Graduate> graduates { get; set; }
+        public DbSet<Graduate> Graduates { get; set; }
 
     }
 }

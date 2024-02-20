@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ERP.Application.DepartmentApp.Graduates.UseCases
 {
-    public class AddGraduateUseCase : IAddGraduateInterface
+    public class AddGraduateUseCase : IAddGraduateUseCase
     {
         private readonly IGraduateRepository _GraduateRepository;
 
@@ -20,7 +20,7 @@ namespace ERP.Application.DepartmentApp.Graduates.UseCases
             _GraduateRepository = graduateRepository;
         }
 
-        public async Task ExcuteAsync(Graduate graduate)
+        public async Task ExecuteAsync(Graduate graduate)
         {
             await _GraduateRepository.AddGraduateAsync(graduate);
         }
