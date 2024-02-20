@@ -1,0 +1,41 @@
+﻿@page "/login"
+
+<MudPaper Class="pa-4">
+    <MudTabs>
+        <MudTabPanel Text="Login">
+            <MudForm>
+                <MudTextField Label="Username" Variant="Variant.Outlined" FullWidth @bind-Value="@loginUsername" />
+                 <MudTextField Label="Password" Variant="Variant.Outlined" FullWidth @bind-Value="@loginPassword" InputType="InputType.Password" />
+                 <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="mt-4" OnClick="@Log">Login</MudButton>
+             </MudForm>
+         </MudTabPanel>
+         <MudTabPanel Text="Sign Up">
+             <MudForm>
+                 <MudTextField Label="Studnet Id " Variant="Variant.Outlined" FullWidth @bind-Value="@signupUsername" />
+                 <MudTextField Label="Email" Variant="Variant.Outlined" FullWidth @bind-Value="@signupEmail" />
+                 <MudTextField Label="Password" Variant="Variant.Outlined" FullWidth @bind-Value="@signupPassword" InputType="InputType.Password" />
+                 <MudTextField Label="Confirm Password" Variant="Variant.Outlined" FullWidth @bind-Value="@signupPassword" InputType="InputType.Password" />
+                 <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="mt-4" OnClick="@SignUp">Sign Up</MudButton>
+             </MudForm>
+         </MudTabPanel>
+     </MudTabs>
+ </MudPaper>
+
+ @code {
+    private string loginUsername;
+    private string loginPassword;
+
+    private string signupUsername;
+    private string signupEmail;
+    private string signupPassword;
+
+    private void Log()
+    {
+        // Handle login logic here
+    }
+
+    private void SignUp()
+    {
+        // Handle sign-up logic here
+    }
+}
