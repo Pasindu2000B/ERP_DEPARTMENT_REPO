@@ -10,5 +10,6 @@ namespace ERP.Application.DepartmentApp.Graduates.Interfaces
     public interface IAddGraduateInterface
     {
         Task ExcuteAsync(Graduate graduate);
+        //new commit 
     }
 }
