@@ -20,6 +20,8 @@ namespace ERP.Application.DepartmentApp.Graduates.DependancyInjections
             services.AddScoped<IAddGraduateInterface , AddGraduateUseCase>();
 
             return services;
+            //new second cooment
+         
         }
     }
 }
