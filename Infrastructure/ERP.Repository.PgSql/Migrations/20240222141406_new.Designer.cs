@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ERP.Repository.PgSql.Migrations
 {
     [DbContext(typeof(PgSqlDbContext))]
-    [Migration("20240116044156_newwwwww")]
-    partial class newwwwww
+    [Migration("20240222141406_new")]
+    partial class @new
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,50 +27,57 @@ namespace ERP.Repository.PgSql.Migrations
 
             modelBuilder.Entity("ERP.Domain.Core.Entity.DepartmentEntity.GraduatesEntity.Graduate", b =>
                 {
-                    b.Property<int>("RegistrationNumber")
+                    b.Property<int>("GraduateID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("RegistrationNumber"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("GraduateID"));
 
-                    b.Property<string>("Address1")
+                    b.Property<string>("GraduateCompany")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Address2")
+                    b.Property<string>("GraduateContactNo")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("City")
+                    b.Property<string>("GraduateDescription")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("District")
+                    b.Property<string>("GraduateName")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateOnly>("DoB")
-                        .HasColumnType("date");
+                    b.HasKey("GraduateID");
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.ToTable("Graduates");
 
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Phone")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("RegistrationNumber");
-
-                    b.ToTable("graduates");
+                    b.HasData(
+                        new
+                        {
+                            GraduateID = 1001,
+                            GraduateCompany = "00033 Carissa Crossroad, South Jerrold, Cape Verde",
+                            GraduateContactNo = "245-687-8262",
+                            GraduateDescription = "Direct",
+                            GraduateName = "Theodore"
+                        },
+                        new
+                        {
+                            GraduateID = 1002,
+                            GraduateCompany = "2427 Ziemann Fort, West Laverna, Sweden",
+                            GraduateContactNo = "(210) 544-1078 x72553",
+                            GraduateDescription = "Lead",
+                            GraduateName = "Zaria"
+                        },
+                        new
+                        {
+                            GraduateID = 1003,
+                            GraduateCompany = "2141 VonRueden Coves, East Camron, Congo",
+                            GraduateContactNo = "398.233.9499 x2942",
+                            GraduateDescription = "Internal",
+                            GraduateName = "Nels"
+                        });
                 });
 
             modelBuilder.Entity("ERP.Domain.Core.Entity.DepartmentEntity.LabEntity.LabEquipment", b =>
@@ -97,8 +104,6 @@ namespace ERP.Repository.PgSql.Migrations
 
                     b.HasKey("LabEquipmentID");
 
-                    b.HasIndex("LabSpaceId");
-
                     b.ToTable("LabEquipments");
 
                     b.HasData(
@@ -106,7 +111,7 @@ namespace ERP.Repository.PgSql.Migrations
                         {
                             LabEquipmentID = 1001,
                             Avaialability = false,
-                            LabEquipmentName = "Mylene",
+                            LabEquipmentName = "Etha",
                             LabSpaceId = 0,
                             condition = "bad"
                         },
@@ -114,15 +119,15 @@ namespace ERP.Repository.PgSql.Migrations
                         {
                             LabEquipmentID = 1002,
                             Avaialability = false,
-                            LabEquipmentName = "Roderick",
+                            LabEquipmentName = "Laurence",
                             LabSpaceId = 0,
-                            condition = "medium"
+                            condition = "bad"
                         },
                         new
                         {
                             LabEquipmentID = 1003,
                             Avaialability = false,
-                            LabEquipmentName = "Lorena",
+                            LabEquipmentName = "William",
                             LabSpaceId = 0,
                             condition = "medium"
                         });
@@ -136,15 +141,9 @@ namespace ERP.Repository.PgSql.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("LabSpaceId"));
 
-                    b.Property<bool>("LabSpaceIsFree")
-                        .HasColumnType("boolean");
-
                     b.Property<string>("LabSpaceName")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<int>("maximumCapaciity")
-                        .HasColumnType("integer");
 
                     b.HasKey("LabSpaceId");
 
@@ -539,14 +538,14 @@ namespace ERP.Repository.PgSql.Migrations
                             City = "",
                             District = "",
                             DoB = new DateOnly(1, 1, 1),
-                            Email = "Scot39@gmail.com",
-                            FirstName = "Scot",
+                            Email = "Arnold_Gleason@yahoo.com",
+                            FirstName = "Arnold",
                             GPA = 0.0,
-                            LastName = "Ruecker",
+                            LastName = "Gleason",
                             NationalID = "",
                             Phone = "",
                             PhoneNumber = "",
-                            RegistrationNum = "EG/2022/8808"
+                            RegistrationNum = "EG/2022/6997"
                         },
                         new
                         {
@@ -556,14 +555,14 @@ namespace ERP.Repository.PgSql.Migrations
                             City = "",
                             District = "",
                             DoB = new DateOnly(1, 1, 1),
-                            Email = "Kylee43@yahoo.com",
-                            FirstName = "Kylee",
+                            Email = "Willis_Weimann@hotmail.com",
+                            FirstName = "Willis",
                             GPA = 0.0,
-                            LastName = "Hoppe",
+                            LastName = "Weimann",
                             NationalID = "",
                             Phone = "",
                             PhoneNumber = "",
-                            RegistrationNum = "EG/2021/1374"
+                            RegistrationNum = "EG/2023/3603"
                         },
                         new
                         {
@@ -573,14 +572,14 @@ namespace ERP.Repository.PgSql.Migrations
                             City = "",
                             District = "",
                             DoB = new DateOnly(1, 1, 1),
-                            Email = "Pansy.Heaney1@yahoo.com",
-                            FirstName = "Pansy",
+                            Email = "Johnny_Kihn85@hotmail.com",
+                            FirstName = "Johnny",
                             GPA = 0.0,
-                            LastName = "Heaney",
+                            LastName = "Kihn",
                             NationalID = "",
                             Phone = "",
                             PhoneNumber = "",
-                            RegistrationNum = "EG/2020/7085"
+                            RegistrationNum = "EG/2020/4073"
                         });
                 });
 
@@ -664,15 +663,6 @@ namespace ERP.Repository.PgSql.Migrations
                     b.HasKey("TeacherId");
 
                     b.ToTable("Teachers");
-                });
-
-            modelBuilder.Entity("ERP.Domain.Core.Entity.DepartmentEntity.LabEntity.LabEquipment", b =>
-                {
-                    b.HasOne("ERP.Domain.Core.Entity.DepartmentEntity.LabEntity.LabSpace", null)
-                        .WithMany("LabEquipments")
-                        .HasForeignKey("LabSpaceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("ERP.Domain.Core.Entity.StudentEntity.Curriculum", b =>
@@ -871,11 +861,6 @@ namespace ERP.Repository.PgSql.Migrations
                         .IsRequired();
 
                     b.Navigation("Student");
-                });
-
-            modelBuilder.Entity("ERP.Domain.Core.Entity.DepartmentEntity.LabEntity.LabSpace", b =>
-                {
-                    b.Navigation("LabEquipments");
                 });
 
             modelBuilder.Entity("ERP.Domain.Core.Entity.StudentEntity.Curriculum", b =>

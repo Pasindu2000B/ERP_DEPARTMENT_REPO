@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ERP.Repository.PgSql.Migrations
 {
     /// <inheritdoc />
-    public partial class newMigration03 : Migration
+    public partial class @new : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,6 +16,14 @@ namespace ERP.Repository.PgSql.Migrations
             migrationBuilder.DropPrimaryKey(
                 name: "PK_graduates",
                 table: "graduates");
+
+            migrationBuilder.DropColumn(
+                name: "LabSpaceIsFree",
+                table: "LabSpaces");
+
+            migrationBuilder.DropColumn(
+                name: "maximumCapaciity",
+                table: "LabSpaces");
 
             migrationBuilder.DropColumn(
                 name: "Address1",
@@ -66,6 +74,13 @@ namespace ERP.Repository.PgSql.Migrations
                 table: "Graduates",
                 newName: "GraduateID");
 
+            migrationBuilder.AddColumn<int>(
+                name: "LabSpaceId",
+                table: "LabEquipments",
+                type: "integer",
+                nullable: false,
+                defaultValue: 0);
+
             migrationBuilder.AddPrimaryKey(
                 name: "PK_Graduates",
                 table: "Graduates",
@@ -76,52 +91,52 @@ namespace ERP.Repository.PgSql.Migrations
                 columns: new[] { "GraduateID", "GraduateCompany", "GraduateContactNo", "GraduateDescription", "GraduateName" },
                 values: new object[,]
                 {
-                    { 1001, "535 Wiza Branch, New Kira, Guyana", "932.375.1156", "Forward", "Elliott" },
-                    { 1002, "43901 Stiedemann Port, Landenbury, Tokelau", "425.875.9174", "Forward", "Vita" },
-                    { 1003, "438 Kertzmann Ramp, Collinsview, Cocos (Keeling) Islands", "788.440.3672 x2348", "Lead", "Shanie" }
+                    { 1001, "00033 Carissa Crossroad, South Jerrold, Cape Verde", "245-687-8262", "Direct", "Theodore" },
+                    { 1002, "2427 Ziemann Fort, West Laverna, Sweden", "(210) 544-1078 x72553", "Lead", "Zaria" },
+                    { 1003, "2141 VonRueden Coves, East Camron, Congo", "398.233.9499 x2942", "Internal", "Nels" }
                 });
 
             migrationBuilder.UpdateData(
                 table: "LabEquipments",
                 keyColumn: "LabEquipmentID",
                 keyValue: 1001,
-                column: "LabEquipmentName",
-                value: "Bernie");
+                columns: new[] { "LabEquipmentName", "LabSpaceId", "condition" },
+                values: new object[] { "Etha", 0, "bad" });
 
             migrationBuilder.UpdateData(
                 table: "LabEquipments",
                 keyColumn: "LabEquipmentID",
                 keyValue: 1002,
-                columns: new[] { "LabEquipmentName", "condition" },
-                values: new object[] { "Lacy", "bad" });
+                columns: new[] { "LabEquipmentName", "LabSpaceId", "condition" },
+                values: new object[] { "Laurence", 0, "bad" });
 
             migrationBuilder.UpdateData(
                 table: "LabEquipments",
                 keyColumn: "LabEquipmentID",
                 keyValue: 1003,
-                column: "LabEquipmentName",
-                value: "Johnny");
+                columns: new[] { "LabEquipmentName", "LabSpaceId" },
+                values: new object[] { "William", 0 });
 
             migrationBuilder.UpdateData(
                 table: "Students",
                 keyColumn: "StudentId",
                 keyValue: 1001,
                 columns: new[] { "Email", "FirstName", "LastName", "RegistrationNum" },
-                values: new object[] { "Jeremie_Waters82@gmail.com", "Jeremie", "Waters", "EG/2020/4985" });
+                values: new object[] { "Arnold_Gleason@yahoo.com", "Arnold", "Gleason", "EG/2022/6997" });
 
             migrationBuilder.UpdateData(
                 table: "Students",
                 keyColumn: "StudentId",
                 keyValue: 1002,
                 columns: new[] { "Email", "FirstName", "LastName", "RegistrationNum" },
-                values: new object[] { "Owen.Prosacco@hotmail.com", "Owen", "Prosacco", "EG/2023/9845" });
+                values: new object[] { "Willis_Weimann@hotmail.com", "Willis", "Weimann", "EG/2023/3603" });
 
             migrationBuilder.UpdateData(
                 table: "Students",
                 keyColumn: "StudentId",
                 keyValue: 1003,
                 columns: new[] { "Email", "FirstName", "LastName", "RegistrationNum" },
-                values: new object[] { "Sincere_Anderson9@gmail.com", "Sincere", "Anderson", "EG/2023/2129" });
+                values: new object[] { "Johnny_Kihn85@hotmail.com", "Johnny", "Kihn", "EG/2020/4073" });
         }
 
         /// <inheritdoc />
@@ -145,6 +160,10 @@ namespace ERP.Repository.PgSql.Migrations
                 table: "Graduates",
                 keyColumn: "GraduateID",
                 keyValue: 1003);
+
+            migrationBuilder.DropColumn(
+                name: "LabSpaceId",
+                table: "LabEquipments");
 
             migrationBuilder.RenameTable(
                 name: "Graduates",
@@ -174,6 +193,20 @@ namespace ERP.Repository.PgSql.Migrations
                 name: "GraduateID",
                 table: "graduates",
                 newName: "RegistrationNumber");
+
+            migrationBuilder.AddColumn<bool>(
+                name: "LabSpaceIsFree",
+                table: "LabSpaces",
+                type: "boolean",
+                nullable: false,
+                defaultValue: false);
+
+            migrationBuilder.AddColumn<int>(
+                name: "maximumCapaciity",
+                table: "LabSpaces",
+                type: "integer",
+                nullable: false,
+                defaultValue: 0);
 
             migrationBuilder.AddColumn<string>(
                 name: "Address1",
@@ -219,43 +252,43 @@ namespace ERP.Repository.PgSql.Migrations
                 table: "LabEquipments",
                 keyColumn: "LabEquipmentID",
                 keyValue: 1001,
-                column: "LabEquipmentName",
-                value: "Daren");
+                columns: new[] { "LabEquipmentName", "condition" },
+                values: new object[] { "Amalia", "medium" });
 
             migrationBuilder.UpdateData(
                 table: "LabEquipments",
                 keyColumn: "LabEquipmentID",
                 keyValue: 1002,
                 columns: new[] { "LabEquipmentName", "condition" },
-                values: new object[] { "Kiarra", "medium" });
+                values: new object[] { "Alva", "medium" });
 
             migrationBuilder.UpdateData(
                 table: "LabEquipments",
                 keyColumn: "LabEquipmentID",
                 keyValue: 1003,
                 column: "LabEquipmentName",
-                value: "Aisha");
+                value: "Lester");
 
             migrationBuilder.UpdateData(
                 table: "Students",
                 keyColumn: "StudentId",
                 keyValue: 1001,
                 columns: new[] { "Email", "FirstName", "LastName", "RegistrationNum" },
-                values: new object[] { "Zula98@yahoo.com", "Zula", "Nitzsche", "EG/2021/8966" });
+                values: new object[] { "Talia51@gmail.com", "Talia", "Heller", "EG/2020/5483" });
 
             migrationBuilder.UpdateData(
                 table: "Students",
                 keyColumn: "StudentId",
                 keyValue: 1002,
                 columns: new[] { "Email", "FirstName", "LastName", "RegistrationNum" },
-                values: new object[] { "Regan25@hotmail.com", "Regan", "Dickens", "EG/2022/3575" });
+                values: new object[] { "Carroll73@yahoo.com", "Carroll", "Bailey", "EG/2021/1348" });
 
             migrationBuilder.UpdateData(
                 table: "Students",
                 keyColumn: "StudentId",
                 keyValue: 1003,
                 columns: new[] { "Email", "FirstName", "LastName", "RegistrationNum" },
-                values: new object[] { "Niko.DAmore@yahoo.com", "Niko", "D'Amore", "EG/2021/4775" });
+                values: new object[] { "Emile49@yahoo.com", "Emile", "Anderson", "EG/2020/8278" });
         }
     }
 }
