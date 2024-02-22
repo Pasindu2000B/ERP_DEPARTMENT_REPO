@@ -10,7 +10,7 @@ namespace ERP.Application.DepartmentApp.Training.Interfaces
 {
     public interface IAddJobPostingUseCase
     {
-       
+       // comment on repo
             Task ExecuteAsync(JobPost jobPost);
            
         
