@@ -78,7 +78,7 @@ namespace ERP.Repository.PgSql
 
        
         public DbSet<LabSpace> LabSpaces { get; set; }
-        public DbSet<JobPost> JobPosts { get; set; }
+        
         public DbSet<Student> Students { get; set; }
         public DbSet<Module> Modules { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
@@ -87,6 +87,10 @@ namespace ERP.Repository.PgSql
         public DbSet<ModuleOfferingSecondExaminer> ModuleSecondExaminers { get; set; }
 
         public DbSet<Graduate> Graduates { get; set; }
+
+        // Training 
+        public DbSet<StudentRequest> StudentRequests { get; set; }
+
 
     }
 }

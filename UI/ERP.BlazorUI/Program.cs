@@ -17,6 +17,10 @@ using ERP.Application.DepartmentApp.Graduates.Repository;
 using ERP.Repository.PgSql.Department.Graduate;
 using ERP.Application.DepartmentApp.Graduates.Interfaces;
 using ERP.Application.DepartmentApp.Graduates.UseCases;
+using ERP.Application.DepartmentApp.Training.Interfaces;
+using ERP.Application.DepartmentApp.Training.Usecases;
+using ERP.Application.DepartmentApp.Training;
+using ERP.Repository.PgSql.Department.Training;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -42,6 +46,7 @@ builder.Services.AddMudServices();
 builder.Services.AddScoped<IStudentRepository, StudentRepositoryPgSql>();
 builder.Services.AddScoped<ILabRepository,LabRepositoryPgSql>();
 builder.Services.AddScoped<IGraduateRepository, GraduateRepositoryPgSql>();
+builder.Services.AddScoped<TrainingRepository, TraininiRepositoryPgSQL>();
 builder.Services.AddScoped<IGetLabEquipmentListUseCase, GetLabEquipmentlistUseCase>();
 builder.Services.AddScoped<IViewStudentsByNameUseCase, ViewStudentsByNameUseCase>();
 builder.Services.AddScoped<IAddStudentUseCase, AddStudentUseCase>();
@@ -49,6 +54,7 @@ builder.Services.AddScoped<IViewStudentById, ViewStudentById>();
 builder.Services.AddScoped<IEditStudentUseCase, EditStudentUseCase>();
 builder.Services.AddScoped<IAddLabEquipmentUseCase,AddNewLabEquipmentUseCase>();
 builder.Services.AddScoped<IAddGraduateUseCase, AddGraduateUseCase>();
+builder.Services.AddScoped<IStudentRequestCreateUseCase,StudentRequestUseCase>();
 
 var app = builder.Build();
 

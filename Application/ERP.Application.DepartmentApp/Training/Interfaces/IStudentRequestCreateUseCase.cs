@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace ERP.Application.DepartmentApp.Training.Interfaces
 {
-    public interface IEditJobPostUseCase
+    public interface IStudentRequestCreateUseCase
     {
-        Task ExcuteAsync(JobPost jobPost);
+        Task ExecuteAsync(StudentRequest studentRequest);
     }
 }
