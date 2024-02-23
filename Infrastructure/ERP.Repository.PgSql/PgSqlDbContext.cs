@@ -68,6 +68,12 @@ namespace ERP.Repository.PgSql
                 .WithMany(ms => ms.SecondExaminersModules)
                 .HasForeignKey(ms => ms.TeacherId);
 
+            modelBuilder.Entity<StudentRequest>()
+                 .HasOne(ms => ms.student)
+                 .WithMany(ms => ms.StudentRequests)
+                 .HasForeignKey(ms => ms.StudentId);
+                
+
 
             
 
