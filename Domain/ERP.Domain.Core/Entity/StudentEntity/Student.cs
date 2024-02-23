@@ -1,4 +1,6 @@
-﻿namespace ERP.Domain.Core.Entity.StudentEntity
+﻿using ERP.Domain.Core.Entity.DepartmentEntity.TrainingEntity;
+
+namespace ERP.Domain.Core.Entity.StudentEntity
 {
     public class Student
     {
@@ -21,5 +23,7 @@
 
         public double GPA { get; set; }
         public ICollection<Semester> Semesters { get; set; }
+
+        public ICollection<StudentRequest> StudentRequests { get; set; }
     }
 }
