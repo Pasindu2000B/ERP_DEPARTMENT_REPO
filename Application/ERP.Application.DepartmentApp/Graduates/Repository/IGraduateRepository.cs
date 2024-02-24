@@ -10,5 +10,8 @@ namespace ERP.Application.DepartmentApp.Graduates.Repository
     public interface IGraduateRepository 
     {
         Task AddGraduateAsync(Graduate graduate);
+        Task<IEnumerable<Graduate>> GetAllGraduateAsync(string name);
     }
+
+    
 }

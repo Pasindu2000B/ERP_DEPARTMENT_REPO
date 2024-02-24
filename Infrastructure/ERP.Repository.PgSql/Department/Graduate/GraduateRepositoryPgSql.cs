@@ -25,5 +25,11 @@ namespace ERP.Repository.PgSql.Department.Graduate
             _context.SaveChanges();
             return Task.CompletedTask;
         }
+
+        public async Task<IEnumerable<Domain.Core.Entity.DepartmentEntity.GraduatesEntity.Graduate>> GetAllGraduateAsync(string name)
+        {
+            using var _context = _factory.CreateDbContext();
+            return await _context.Graduates.ToListAsync();
+        }
     }
 }
