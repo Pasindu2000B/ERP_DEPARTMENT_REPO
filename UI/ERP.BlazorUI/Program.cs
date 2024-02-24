@@ -21,6 +21,8 @@ using ERP.Application.DepartmentApp.Training.Interfaces;
 using ERP.Application.DepartmentApp.Training.Usecases;
 using ERP.Application.DepartmentApp.Training;
 using ERP.Repository.PgSql.Department.Training;
+using MudBlazor;
+using NuGet.Protocol.Core.Types;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -57,6 +59,7 @@ builder.Services.AddScoped<IAddGraduateUseCase, AddGraduateUseCase>();
 builder.Services.AddScoped<IStudentRequestCreateUseCase,StudentRequestUseCase>();
 builder.Services.AddScoped<IGetGraduateListUseCase, GetGraduateListUseCase>();
 builder.Services.AddScoped<IEditGraduateUseCase, EditGraduateUseCase>();
+
 
 var app = builder.Build();
 

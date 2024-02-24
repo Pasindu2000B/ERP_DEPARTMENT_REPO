@@ -27,8 +27,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Components\PDF\" />
     <Folder Include="Components\Pages\Academic\" />
-    <Folder Include="Components\Pages\Department\Training\" />
     <Folder Include="Components\Pages\Labs\" />
     <Folder Include="Components\Pages\SiteAdmin\" />
   </ItemGroup>

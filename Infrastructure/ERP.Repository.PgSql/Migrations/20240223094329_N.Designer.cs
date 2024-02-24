@@ -3,6 +3,7 @@ using System;
 using ERP.Repository.PgSql;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ERP.Repository.PgSql.Migrations
 {
     [DbContext(typeof(PgSqlDbContext))]
-    partial class PgSqlDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240223094329_N")]
+    partial class N
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,47 +57,26 @@ namespace ERP.Repository.PgSql.Migrations
                         new
                         {
                             GraduateID = 1001,
-<<<<<<< HEAD
-                            GraduateCompany = "47734 Gabriella Neck, North Thora, Australia",
-                            GraduateContactNo = "1-692-457-2457 x290",
-                            GraduateDescription = "Regional",
-                            GraduateName = "Makayla"
-=======
-                            GraduateCompany = "02411 Tyrell Terrace, Wilhelmbury, Venezuela",
-                            GraduateContactNo = "818.403.1815",
-                            GraduateDescription = "Product",
-                            GraduateName = "Audie"
->>>>>>> d18995554a447be5d01cd66c5eee922cd5fa95af
+                            GraduateCompany = "16123 Nolan Unions, Jacobiview, Bahamas",
+                            GraduateContactNo = "(677) 997-4273 x647",
+                            GraduateDescription = "National",
+                            GraduateName = "Anabelle"
                         },
                         new
                         {
                             GraduateID = 1002,
-<<<<<<< HEAD
-                            GraduateCompany = "26200 Ofelia Courts, Rileyfort, Anguilla",
-                            GraduateContactNo = "(941) 996-7049 x778",
-                            GraduateDescription = "Legacy",
-                            GraduateName = "Heber"
-=======
-                            GraduateCompany = "53707 Lynch Motorway, South Melliefurt, Cocos (Keeling) Islands",
-                            GraduateContactNo = "(862) 352-8569 x044",
-                            GraduateDescription = "Corporate",
-                            GraduateName = "Michele"
->>>>>>> d18995554a447be5d01cd66c5eee922cd5fa95af
+                            GraduateCompany = "620 Hettie Hollow, Benjaminfort, Ghana",
+                            GraduateContactNo = "(910) 794-2507 x992",
+                            GraduateDescription = "International",
+                            GraduateName = "Israel"
                         },
                         new
                         {
                             GraduateID = 1003,
-<<<<<<< HEAD
-                            GraduateCompany = "74443 Towne Valley, Kelliville, Saint Helena",
-                            GraduateContactNo = "1-835-571-2998 x45802",
-                            GraduateDescription = "Customer",
-                            GraduateName = "Elwin"
-=======
-                            GraduateCompany = "7030 Leonard Run, Brittanymouth, Guadeloupe",
-                            GraduateContactNo = "1-275-512-7333",
-                            GraduateDescription = "Investor",
-                            GraduateName = "Gillian"
->>>>>>> d18995554a447be5d01cd66c5eee922cd5fa95af
+                            GraduateCompany = "7127 Cormier Ranch, Port Gaetano, Croatia",
+                            GraduateContactNo = "318.491.0627",
+                            GraduateDescription = "Human",
+                            GraduateName = "Ellen"
                         });
                 });
 
@@ -129,10 +111,7 @@ namespace ERP.Repository.PgSql.Migrations
                         {
                             LabEquipmentID = 1001,
                             Avaialability = false,
-<<<<<<< HEAD
-                            LabEquipmentName = "Eleazar",
-=======
-                            LabEquipmentName = "Will",
+                            LabEquipmentName = "Mike",
                             LabSpaceId = 0,
                             condition = "bad"
                         },
@@ -140,28 +119,15 @@ namespace ERP.Repository.PgSql.Migrations
                         {
                             LabEquipmentID = 1002,
                             Avaialability = false,
-                            LabEquipmentName = "Claudia",
->>>>>>> d18995554a447be5d01cd66c5eee922cd5fa95af
+                            LabEquipmentName = "Obie",
                             LabSpaceId = 0,
                             condition = "bad"
-                        },
-                        new
-                        {
-                            LabEquipmentID = 1002,
-                            Avaialability = false,
-<<<<<<< HEAD
-                            LabEquipmentName = "Nicklaus",
-=======
-                            LabEquipmentName = "Moises",
->>>>>>> d18995554a447be5d01cd66c5eee922cd5fa95af
-                            LabSpaceId = 0,
-                            condition = "medium"
                         },
                         new
                         {
                             LabEquipmentID = 1003,
                             Avaialability = false,
-                            LabEquipmentName = "Tremayne",
+                            LabEquipmentName = "Robb",
                             LabSpaceId = 0,
                             condition = "bad"
                         });
@@ -571,25 +537,14 @@ namespace ERP.Repository.PgSql.Migrations
                             City = "",
                             District = "",
                             DoB = new DateOnly(1, 1, 1),
-<<<<<<< HEAD
-                            Email = "Modesto.Jaskolski@yahoo.com",
-                            FirstName = "Modesto",
+                            Email = "Flossie_Wintheiser18@gmail.com",
+                            FirstName = "Flossie",
                             GPA = 0.0,
-                            LastName = "Jaskolski",
+                            LastName = "Wintheiser",
                             NationalID = "",
                             Phone = "",
                             PhoneNumber = "",
-                            RegistrationNum = "EG/2023/6615"
-=======
-                            Email = "Chance_Kutch86@hotmail.com",
-                            FirstName = "Chance",
-                            GPA = 0.0,
-                            LastName = "Kutch",
-                            NationalID = "",
-                            Phone = "",
-                            PhoneNumber = "",
-                            RegistrationNum = "EG/2020/3528"
->>>>>>> d18995554a447be5d01cd66c5eee922cd5fa95af
+                            RegistrationNum = "EG/2022/2887"
                         },
                         new
                         {
@@ -599,25 +554,14 @@ namespace ERP.Repository.PgSql.Migrations
                             City = "",
                             District = "",
                             DoB = new DateOnly(1, 1, 1),
-<<<<<<< HEAD
-                            Email = "Jett_Morissette@gmail.com",
-                            FirstName = "Jett",
+                            Email = "Easter.Hansen72@hotmail.com",
+                            FirstName = "Easter",
                             GPA = 0.0,
-                            LastName = "Morissette",
+                            LastName = "Hansen",
                             NationalID = "",
                             Phone = "",
                             PhoneNumber = "",
-                            RegistrationNum = "EG/2023/7267"
-=======
-                            Email = "Makenzie_Feil57@yahoo.com",
-                            FirstName = "Makenzie",
-                            GPA = 0.0,
-                            LastName = "Feil",
-                            NationalID = "",
-                            Phone = "",
-                            PhoneNumber = "",
-                            RegistrationNum = "EG/2021/2918"
->>>>>>> d18995554a447be5d01cd66c5eee922cd5fa95af
+                            RegistrationNum = "EG/2021/2047"
                         },
                         new
                         {
@@ -627,25 +571,14 @@ namespace ERP.Repository.PgSql.Migrations
                             City = "",
                             District = "",
                             DoB = new DateOnly(1, 1, 1),
-<<<<<<< HEAD
-                            Email = "Martin.Okuneva@gmail.com",
-                            FirstName = "Martin",
+                            Email = "Kailee.Koepp@hotmail.com",
+                            FirstName = "Kailee",
                             GPA = 0.0,
-                            LastName = "Okuneva",
+                            LastName = "Koepp",
                             NationalID = "",
                             Phone = "",
                             PhoneNumber = "",
-                            RegistrationNum = "EG/2021/1501"
-=======
-                            Email = "Coy_Dach@gmail.com",
-                            FirstName = "Coy",
-                            GPA = 0.0,
-                            LastName = "Dach",
-                            NationalID = "",
-                            Phone = "",
-                            PhoneNumber = "",
-                            RegistrationNum = "EG/2021/7273"
->>>>>>> d18995554a447be5d01cd66c5eee922cd5fa95af
+                            RegistrationNum = "EG/2022/9046"
                         });
                 });
 
