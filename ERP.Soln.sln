@@ -35,8 +35,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ERP.Repository.SQLite", "In
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ERP.BlazorUI.Identity", "UI\ERP.BlazorUI.Identity\ERP.BlazorUI.Identity.csproj", "{483661FA-262E-4FB2-88BC-EF29170C5C8C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ERP.Repository.PgSqlTests", "Infrastructure\ERP.Repository.PgSqlTests\ERP.Repository.PgSqlTests.csproj", "{3DEB7F6C-4400-4A84-BEDB-500A49B56149}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,10 +89,6 @@ Global
 		{483661FA-262E-4FB2-88BC-EF29170C5C8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{483661FA-262E-4FB2-88BC-EF29170C5C8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{483661FA-262E-4FB2-88BC-EF29170C5C8C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3DEB7F6C-4400-4A84-BEDB-500A49B56149}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3DEB7F6C-4400-4A84-BEDB-500A49B56149}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3DEB7F6C-4400-4A84-BEDB-500A49B56149}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3DEB7F6C-4400-4A84-BEDB-500A49B56149}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -15,12 +15,9 @@ namespace ERP.Domain.Core.Entity.DepartmentEntity.TrainingEntity
 
         public Student? student { get; set; }
 
-        //public string? RequestLetterPdfPath { get; set; }
-
-
         public int StudentId { get; set; }
 
-
+        public byte[]? RequestLetter { get; set; }
 
         public string? CompanyName { get; set; }
 
