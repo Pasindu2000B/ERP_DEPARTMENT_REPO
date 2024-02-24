@@ -98,6 +98,7 @@ namespace ERP.Repository.PgSql
         public DbSet<ModuleOfferingFirstExaminer> ModuleFirstExaminers { get; set; }
         public DbSet<ModuleOfferingSecondExaminer> ModuleSecondExaminers { get; set; }
 
+        //Graduate
         public DbSet<Graduate> Graduates { get; set; }
 
         // Training 
