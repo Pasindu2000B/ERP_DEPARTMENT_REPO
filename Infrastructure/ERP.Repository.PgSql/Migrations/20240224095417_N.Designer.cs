@@ -3,6 +3,7 @@ using System;
 using ERP.Repository.PgSql;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ERP.Repository.PgSql.Migrations
 {
     [DbContext(typeof(PgSqlDbContext))]
-    partial class PgSqlDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240224095417_N")]
+    partial class N
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,7 +53,32 @@ namespace ERP.Repository.PgSql.Migrations
 
                     b.ToTable("Graduates");
 
-       
+                    b.HasData(
+                        new
+                        {
+                            GraduateID = 1001,
+                            GraduateCompany = "49457 Rogahn Parkway, North Webster, Georgia",
+                            GraduateContactNo = "1-494-626-0018 x086",
+                            GraduateDescription = "Legacy",
+                            GraduateName = "Laila"
+                        },
+                        new
+                        {
+                            GraduateID = 1002,
+                            GraduateCompany = "288 Bashirian Isle, Halvorsonfort, Ukraine",
+                            GraduateContactNo = "783.292.2286",
+                            GraduateDescription = "District",
+                            GraduateName = "Maria"
+                        },
+                        new
+                        {
+                            GraduateID = 1003,
+                            GraduateCompany = "4213 Giovanna Parkway, Corkerymouth, Monaco",
+                            GraduateContactNo = "(456) 264-7160 x050",
+                            GraduateDescription = "Investor",
+                            GraduateName = "Robert"
+                        });
+                });
 
             modelBuilder.Entity("ERP.Domain.Core.Entity.DepartmentEntity.LabEntity.LabEquipment", b =>
                 {
@@ -78,6 +106,32 @@ namespace ERP.Repository.PgSql.Migrations
 
                     b.ToTable("LabEquipments");
 
+                    b.HasData(
+                        new
+                        {
+                            LabEquipmentID = 1001,
+                            Avaialability = false,
+                            LabEquipmentName = "Freida",
+                            LabSpaceId = 0,
+                            condition = "bad"
+                        },
+                        new
+                        {
+                            LabEquipmentID = 1002,
+                            Avaialability = false,
+                            LabEquipmentName = "Jaqueline",
+                            LabSpaceId = 0,
+                            condition = "bad"
+                        },
+                        new
+                        {
+                            LabEquipmentID = 1003,
+                            Avaialability = false,
+                            LabEquipmentName = "Augusta",
+                            LabSpaceId = 0,
+                            condition = "medium"
+                        });
+                });
 
             modelBuilder.Entity("ERP.Domain.Core.Entity.DepartmentEntity.LabEntity.LabSpace", b =>
                 {
@@ -96,34 +150,33 @@ namespace ERP.Repository.PgSql.Migrations
                     b.ToTable("LabSpaces");
                 });
 
-            modelBuilder.Entity("ERP.Domain.Core.Entity.DepartmentEntity.TrainingEntity.StudentRequest", b =>
+            modelBuilder.Entity("ERP.Domain.Core.Entity.DepartmentEntity.TrainingEntity.JobPost", b =>
                 {
-                    b.Property<int>("RequestId")
+                    b.Property<int>("JobPostId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("RequestId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("JobPostId"));
 
-                    b.Property<string>("CompanyName")
+                    b.Property<string>("CompanyId")
+                        .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("CompanySendersDesignation")
+                    b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("CompanySendersName")
+                    b.Property<string>("JobCategory")
+                        .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<byte[]>("RequestLetter")
-                        .HasColumnType("bytea");
+                    b.Property<string>("JobPostName")
+                        .IsRequired()
+                        .HasColumnType("text");
 
-                    b.Property<int>("StudentId")
-                        .HasColumnType("integer");
+                    b.HasKey("JobPostId");
 
-                    b.HasKey("RequestId");
-
-                    b.HasIndex("StudentId");
-
-                    b.ToTable("StudentRequests");
+                    b.ToTable("JobPosts");
                 });
 
             modelBuilder.Entity("ERP.Domain.Core.Entity.StudentEntity.Batch", b =>
@@ -485,7 +538,31 @@ namespace ERP.Repository.PgSql.Migrations
                             City = "",
                             District = "",
                             DoB = new DateOnly(1, 1, 1),
-<
+                            Email = "Gerda_Little22@gmail.com",
+                            FirstName = "Gerda",
+                            GPA = 0.0,
+                            LastName = "Little",
+                            NationalID = "",
+                            Phone = "",
+                            PhoneNumber = "",
+                            RegistrationNum = "EG/2022/8525"
+                        },
+                        new
+                        {
+                            StudentId = 1002,
+                            Address1 = "",
+                            Address2 = "",
+                            City = "",
+                            District = "",
+                            DoB = new DateOnly(1, 1, 1),
+                            Email = "Kaya_Marks63@gmail.com",
+                            FirstName = "Kaya",
+                            GPA = 0.0,
+                            LastName = "Marks",
+                            NationalID = "",
+                            Phone = "",
+                            PhoneNumber = "",
+                            RegistrationNum = "EG/2021/9767"
                         },
                         new
                         {
@@ -495,8 +572,14 @@ namespace ERP.Repository.PgSql.Migrations
                             City = "",
                             District = "",
                             DoB = new DateOnly(1, 1, 1),
-
-
+                            Email = "Spencer.Halvorson78@hotmail.com",
+                            FirstName = "Spencer",
+                            GPA = 0.0,
+                            LastName = "Halvorson",
+                            NationalID = "",
+                            Phone = "",
+                            PhoneNumber = "",
+                            RegistrationNum = "EG/2023/3142"
                         });
                 });
 
@@ -580,17 +663,6 @@ namespace ERP.Repository.PgSql.Migrations
                     b.HasKey("TeacherId");
 
                     b.ToTable("Teachers");
-                });
-
-            modelBuilder.Entity("ERP.Domain.Core.Entity.DepartmentEntity.TrainingEntity.StudentRequest", b =>
-                {
-                    b.HasOne("ERP.Domain.Core.Entity.StudentEntity.Student", "student")
-                        .WithMany("StudentRequests")
-                        .HasForeignKey("StudentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("student");
                 });
 
             modelBuilder.Entity("ERP.Domain.Core.Entity.StudentEntity.Curriculum", b =>
@@ -827,8 +899,6 @@ namespace ERP.Repository.PgSql.Migrations
             modelBuilder.Entity("ERP.Domain.Core.Entity.StudentEntity.Student", b =>
                 {
                     b.Navigation("Semesters");
-
-                    b.Navigation("StudentRequests");
                 });
 
             modelBuilder.Entity("ERP.Domain.Core.Entity.StudentEntity.Teacher", b =>
