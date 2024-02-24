@@ -1,0 +1,84 @@
+﻿@using ERP.Application.DepartmentApp.Graduates.Interfaces
+@using ERP.Domain.Core.Entity;
+@using ERP.Domain.Core.Entity.DepartmentEntity.GraduatesEntity
+
+
+
+@inject NavigationManager NavigationManager
+@inject IGetGraduateListUseCase GetGraduateList
+@inject IDialogService DialogService
+
+
+
+
+<MudTable Items="@_gradutes">
+    <HeaderContent>
+        <MudTh>Name</MudTh>
+        <MudTh>Contact Number</MudTh>
+        <MudTh>Company Name</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Name">@context.GraduateName</MudTd>
+            <MudTd DataLabel="Contact Number">@context.GraduateContactNo</MudTd>
+            <MudTd DataLabel="Company Name">@context.GraduateCompany</MudTd>
+            <MudTd DataLabel="">
+                <MudFab OnClick="@(()=> EditGraduate(@context))" Color="Color.Primary"
+                        StartIcon="@Icons.Material.Filled.Edit" Size="Size.Small" />
+                <MudFab Color="Color.Warning" StartIcon="@Icons.Material.Filled.Delete" Size="Size.Small" />
+            </MudTd>
+        </RowTemplate>
+        <PagerContent>
+            <MudTablePager />
+        </PagerContent>
+    </MudTable>
+
+
+
+
+    @code {
+    private List<Graduate> _gradutes = new List<Graduate>();
+
+    [Parameter]
+    public string SearchTerm { get; set; } = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _gradutes = (await GetGraduateList.ExecuteAsync("")).ToList();
+
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        _gradutes = (await GetGraduateList.ExecuteAsync(SearchTerm)).ToList();
+    }
+
+
+    async Task EditGraduate(Graduate graduate)
+    {
+        var parameters = new DialogParameters();
+        parameters.Add(nameof(EditGraduateDialog.graduate), graduate);
+
+
+        var options = new DialogOptions
+            {
+                MaxWidth = MaxWidth.Medium,
+                FullWidth = true,
+                Position = DialogPosition.Center,
+                CloseOnEscapeKey = true,
+                CloseButton = true
+            };
+
+
+        var dialog = await DialogService.ShowAsync<EditGraduateDialog>("Save", parameters, options);
+        var result = await dialog.Result;
+
+
+        if (!result.Canceled)
+        {
+            // Handle when the dialog is not canceled
+        }
+    }
+
+  
+
+    }

@@ -21,6 +21,7 @@ namespace ERP.Repository.PgSql
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
             modelBuilder.ApplyConfiguration(new StudentConfigurations());
             modelBuilder.ApplyConfiguration(new LabEquipmentConfiguration());
             modelBuilder.ApplyConfiguration(new GraduateConfiguration());
@@ -68,8 +69,19 @@ namespace ERP.Repository.PgSql
                 .WithMany(ms => ms.SecondExaminersModules)
                 .HasForeignKey(ms => ms.TeacherId);
 
+            modelBuilder.Entity<StudentRequest>()
+       .Property(p => p.RequestId)
+       .ValueGeneratedOnAdd();
 
-            
+            modelBuilder.Entity<StudentRequest>()
+                 .HasOne(ms => ms.student)
+                 .WithOne(ms => ms.studentRequest)
+                 .HasForeignKey<StudentRequest>(ms => ms.StudentId);
+
+
+
+
+
 
 
         }
@@ -78,7 +90,7 @@ namespace ERP.Repository.PgSql
 
        
         public DbSet<LabSpace> LabSpaces { get; set; }
-        public DbSet<JobPost> JobPosts { get; set; }
+        
         public DbSet<Student> Students { get; set; }
         public DbSet<Module> Modules { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
@@ -86,7 +98,12 @@ namespace ERP.Repository.PgSql
         public DbSet<ModuleOfferingFirstExaminer> ModuleFirstExaminers { get; set; }
         public DbSet<ModuleOfferingSecondExaminer> ModuleSecondExaminers { get; set; }
 
+        //Graduate
         public DbSet<Graduate> Graduates { get; set; }
+
+        // Training 
+        public DbSet<StudentRequest> StudentRequests { get; set; }
+
 
     }
 }
