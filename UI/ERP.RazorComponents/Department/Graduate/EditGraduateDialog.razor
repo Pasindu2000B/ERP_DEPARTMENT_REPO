@@ -1,0 +1,73 @@
+﻿@using ERP.Application.DepartmentApp.Graduates.Interfaces
+@using ERP.Domain.Core.Entity.DepartmentEntity.GraduatesEntity
+
+
+@inject ISnackbar Snackbar
+@inject IEditGraduateUseCase EditGraduateUseCase
+@inject IDialogService DialogService
+
+<MudDialog>
+    <TitleContent>
+        <div class="d-flex align-items-center">
+            <MudIcon Icon="@Icons.Material.Filled.ModeEdit"
+                     Class="mr-3 mb-n1 " />
+            <MudText Typo="Typo.h6" Class="mb-0">Edit Graduate</MudText>
+        </div>
+    </TitleContent>
+    <DialogContent>
+        <div class="d-flex flex-column">
+            <MudTextField @bind-Value="graduate.GraduateID" Label="Graduate ID" ReadOnly="true" />
+            <MudTextField @bind-Value="graduate.GraduateName" Label="Graduate Name" />
+            <MudTextField @bind-Value="graduate.GraduateDescription" Label="Graduate Description" />
+            <MudTextField @bind-Value="graduate.GraduateCompany" Label="Working Company" />
+            <MudTextField @bind-Value="graduate.GraduateContactNo" Label="Contact No" />
+        </div>
+    </DialogContent>
+
+    <DialogActions>
+        <div class="d-flex justify-content-end">
+            <MudButton OnClick="Cancel" Variant="Variant.Filled">Cancel</MudButton>
+            <div class="mr-2"></div>
+            <MudButton Color="Color.Primary" OnClick="SaveGraduate" Variant="Variant.Filled">Save</MudButton>
+        </div>
+    </DialogActions>
+</MudDialog>
+
+
+
+
+@code {
+    [CascadingParameter]
+    MudDialogInstance MudDialog { get; set; }
+
+    [Parameter]
+    public Graduate graduate { get; set; } = new();
+    public EventCallback onAdded { get; set; }
+
+    private void Cancel()
+    {
+        MudDialog.Cancel();
+    }
+
+    private async void SaveGraduate()
+    {
+
+        await EditGraduateUseCase.ExecuteAsync(graduate);
+        await onAdded.InvokeAsync();
+        Snackbar.Add("Graduate Edited Successfully", Severity.Success);
+        MudDialog.Close(DialogResult.Ok(graduate.GraduateID));
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+}

@@ -31,5 +31,21 @@ namespace ERP.Repository.PgSql.Department.Graduate
             using var _context = _factory.CreateDbContext();
             return await _context.Graduates.ToListAsync();
         }
+
+        public Task EditGraduateAsync(Domain.Core.Entity.DepartmentEntity.GraduatesEntity.Graduate graduate)
+        {
+            using var _context = _factory.CreateDbContext();
+            var egraduate = _context.Graduates.FirstOrDefault(x => x.GraduateID == graduate.GraduateID);
+
+            if (egraduate != null)
+            {
+                egraduate.GraduateName = graduate.GraduateName;
+                egraduate.GraduateCompany = graduate.GraduateCompany;
+                egraduate.GraduateDescription = graduate.GraduateDescription;
+                egraduate.GraduateContactNo = graduate.GraduateContactNo;
+                _context.SaveChanges();
+            }
+            return Task.CompletedTask;
+        }
     }
 }
