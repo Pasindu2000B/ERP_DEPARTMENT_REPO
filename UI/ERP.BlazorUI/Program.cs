@@ -55,6 +55,7 @@ builder.Services.AddScoped<IEditStudentUseCase, EditStudentUseCase>();
 builder.Services.AddScoped<IAddLabEquipmentUseCase,AddNewLabEquipmentUseCase>();
 builder.Services.AddScoped<IAddGraduateUseCase, AddGraduateUseCase>();
 builder.Services.AddScoped<IStudentRequestCreateUseCase,StudentRequestUseCase>();
+builder.Services.AddScoped<IGetGraduateListUseCase, GetGraduateListUseCase>();
 
 var app = builder.Build();
 

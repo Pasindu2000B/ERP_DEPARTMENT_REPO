@@ -18,6 +18,7 @@ namespace ERP.Application.DepartmentApp.Graduates.DependancyInjections
         {
            //services.AddScoped<IGetLabEquipmentListUseCase, GetLabEquipmentlistUseCase>();
             services.AddScoped<IAddGraduateUseCase , AddGraduateUseCase>();
+            services.AddScoped<IGetGraduateListUseCase, GetGraduateListUseCase>();
 
             return services;
             
