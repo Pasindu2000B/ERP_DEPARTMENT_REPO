@@ -55,7 +55,28 @@
 
     async Task EditGraduate(Graduate graduate)
     {
+        var parameters = new DialogParameters();
+        parameters.Add(nameof(EditGraduateDialog.graduate), graduate);
 
+
+        var options = new DialogOptions
+            {
+                MaxWidth = MaxWidth.Medium,
+                FullWidth = true,
+                Position = DialogPosition.Center,
+                CloseOnEscapeKey = true,
+                CloseButton = true
+            };
+
+
+        var dialog = await DialogService.ShowAsync<EditGraduateDialog>("Save", parameters, options);
+        var result = await dialog.Result;
+
+
+        if (!result.Canceled)
+        {
+            // Handle when the dialog is not canceled
+        }
     }
 
   

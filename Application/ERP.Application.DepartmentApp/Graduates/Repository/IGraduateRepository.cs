@@ -11,6 +11,8 @@ namespace ERP.Application.DepartmentApp.Graduates.Repository
     {
         Task AddGraduateAsync(Graduate graduate);
         Task<IEnumerable<Graduate>> GetAllGraduateAsync(string name);
+
+        Task EditGraduateAsync(Graduate graduate);
     }
 
     
