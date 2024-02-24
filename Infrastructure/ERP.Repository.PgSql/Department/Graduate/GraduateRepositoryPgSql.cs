@@ -47,18 +47,5 @@ namespace ERP.Repository.PgSql.Department.Graduate
             }
             return Task.CompletedTask;
         }
-
-        public Task DeleteGraduateAsync(Domain.Core.Entity.DepartmentEntity.GraduatesEntity.Graduate graduate)
-        {
-            using var _context = _factory.CreateDbContext();
-            var egraduate = _context.Graduates.FirstOrDefault(x => x.GraduateID == graduate.GraduateID);
-
-            if (egraduate != null)
-            {
-                _context.Graduates.Remove(egraduate);
-                _context.SaveChanges();
-            }
-            return Task.CompletedTask;
-        }
     }
 }
