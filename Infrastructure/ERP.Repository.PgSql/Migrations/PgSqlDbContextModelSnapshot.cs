@@ -50,7 +50,32 @@ namespace ERP.Repository.PgSql.Migrations
 
                     b.ToTable("Graduates");
 
-       
+                    b.HasData(
+                        new
+                        {
+                            GraduateID = 1001,
+                            GraduateCompany = "706 Braun Wall, Eusebioberg, Mauritania",
+                            GraduateContactNo = "295-702-4645",
+                            GraduateDescription = "Senior",
+                            GraduateName = "Rylee"
+                        },
+                        new
+                        {
+                            GraduateID = 1002,
+                            GraduateCompany = "64058 Libby Plains, Damarisville, Cocos (Keeling) Islands",
+                            GraduateContactNo = "293.235.9789",
+                            GraduateDescription = "Lead",
+                            GraduateName = "Jacky"
+                        },
+                        new
+                        {
+                            GraduateID = 1003,
+                            GraduateCompany = "7087 Jodie Hills, South Natalia, Trinidad and Tobago",
+                            GraduateContactNo = "716-392-7840",
+                            GraduateDescription = "Direct",
+                            GraduateName = "Taylor"
+                        });
+                });
 
             modelBuilder.Entity("ERP.Domain.Core.Entity.DepartmentEntity.LabEntity.LabEquipment", b =>
                 {
@@ -78,6 +103,32 @@ namespace ERP.Repository.PgSql.Migrations
 
                     b.ToTable("LabEquipments");
 
+                    b.HasData(
+                        new
+                        {
+                            LabEquipmentID = 1001,
+                            Avaialability = false,
+                            LabEquipmentName = "Naomi",
+                            LabSpaceId = 0,
+                            condition = "medium"
+                        },
+                        new
+                        {
+                            LabEquipmentID = 1002,
+                            Avaialability = false,
+                            LabEquipmentName = "Madisyn",
+                            LabSpaceId = 0,
+                            condition = "bad"
+                        },
+                        new
+                        {
+                            LabEquipmentID = 1003,
+                            Avaialability = false,
+                            LabEquipmentName = "Alexzander",
+                            LabSpaceId = 0,
+                            condition = "medium"
+                        });
+                });
 
             modelBuilder.Entity("ERP.Domain.Core.Entity.DepartmentEntity.LabEntity.LabSpace", b =>
                 {
@@ -485,7 +536,31 @@ namespace ERP.Repository.PgSql.Migrations
                             City = "",
                             District = "",
                             DoB = new DateOnly(1, 1, 1),
-<
+                            Email = "Lois.Streich14@hotmail.com",
+                            FirstName = "Lois",
+                            GPA = 0.0,
+                            LastName = "Streich",
+                            NationalID = "",
+                            Phone = "",
+                            PhoneNumber = "",
+                            RegistrationNum = "EG/2022/8729"
+                        },
+                        new
+                        {
+                            StudentId = 1002,
+                            Address1 = "",
+                            Address2 = "",
+                            City = "",
+                            District = "",
+                            DoB = new DateOnly(1, 1, 1),
+                            Email = "Fidel0@gmail.com",
+                            FirstName = "Fidel",
+                            GPA = 0.0,
+                            LastName = "Boyle",
+                            NationalID = "",
+                            Phone = "",
+                            PhoneNumber = "",
+                            RegistrationNum = "EG/2022/4600"
                         },
                         new
                         {
@@ -495,8 +570,14 @@ namespace ERP.Repository.PgSql.Migrations
                             City = "",
                             District = "",
                             DoB = new DateOnly(1, 1, 1),
-
-
+                            Email = "Darryl.Wisoky@yahoo.com",
+                            FirstName = "Darryl",
+                            GPA = 0.0,
+                            LastName = "Wisoky",
+                            NationalID = "",
+                            Phone = "",
+                            PhoneNumber = "",
+                            RegistrationNum = "EG/2023/8909"
                         });
                 });
 
