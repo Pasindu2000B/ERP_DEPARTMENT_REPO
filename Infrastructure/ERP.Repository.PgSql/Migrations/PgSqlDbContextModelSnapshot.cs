@@ -54,26 +54,26 @@ namespace ERP.Repository.PgSql.Migrations
                         new
                         {
                             GraduateID = 1001,
-                            GraduateCompany = "706 Braun Wall, Eusebioberg, Mauritania",
-                            GraduateContactNo = "295-702-4645",
-                            GraduateDescription = "Senior",
-                            GraduateName = "Rylee"
+                            GraduateCompany = "02411 Tyrell Terrace, Wilhelmbury, Venezuela",
+                            GraduateContactNo = "818.403.1815",
+                            GraduateDescription = "Product",
+                            GraduateName = "Audie"
                         },
                         new
                         {
                             GraduateID = 1002,
-                            GraduateCompany = "64058 Libby Plains, Damarisville, Cocos (Keeling) Islands",
-                            GraduateContactNo = "293.235.9789",
-                            GraduateDescription = "Lead",
-                            GraduateName = "Jacky"
+                            GraduateCompany = "53707 Lynch Motorway, South Melliefurt, Cocos (Keeling) Islands",
+                            GraduateContactNo = "(862) 352-8569 x044",
+                            GraduateDescription = "Corporate",
+                            GraduateName = "Michele"
                         },
                         new
                         {
                             GraduateID = 1003,
-                            GraduateCompany = "7087 Jodie Hills, South Natalia, Trinidad and Tobago",
-                            GraduateContactNo = "716-392-7840",
-                            GraduateDescription = "Direct",
-                            GraduateName = "Taylor"
+                            GraduateCompany = "7030 Leonard Run, Brittanymouth, Guadeloupe",
+                            GraduateContactNo = "1-275-512-7333",
+                            GraduateDescription = "Investor",
+                            GraduateName = "Gillian"
                         });
                 });
 
@@ -108,15 +108,15 @@ namespace ERP.Repository.PgSql.Migrations
                         {
                             LabEquipmentID = 1001,
                             Avaialability = false,
-                            LabEquipmentName = "Naomi",
+                            LabEquipmentName = "Will",
                             LabSpaceId = 0,
-                            condition = "medium"
+                            condition = "bad"
                         },
                         new
                         {
                             LabEquipmentID = 1002,
                             Avaialability = false,
-                            LabEquipmentName = "Madisyn",
+                            LabEquipmentName = "Claudia",
                             LabSpaceId = 0,
                             condition = "bad"
                         },
@@ -124,7 +124,7 @@ namespace ERP.Repository.PgSql.Migrations
                         {
                             LabEquipmentID = 1003,
                             Avaialability = false,
-                            LabEquipmentName = "Alexzander",
+                            LabEquipmentName = "Moises",
                             LabSpaceId = 0,
                             condition = "medium"
                         });
@@ -536,14 +536,14 @@ namespace ERP.Repository.PgSql.Migrations
                             City = "",
                             District = "",
                             DoB = new DateOnly(1, 1, 1),
-                            Email = "Lois.Streich14@hotmail.com",
-                            FirstName = "Lois",
+                            Email = "Chance_Kutch86@hotmail.com",
+                            FirstName = "Chance",
                             GPA = 0.0,
-                            LastName = "Streich",
+                            LastName = "Kutch",
                             NationalID = "",
                             Phone = "",
                             PhoneNumber = "",
-                            RegistrationNum = "EG/2022/8729"
+                            RegistrationNum = "EG/2020/3528"
                         },
                         new
                         {
@@ -553,14 +553,14 @@ namespace ERP.Repository.PgSql.Migrations
                             City = "",
                             District = "",
                             DoB = new DateOnly(1, 1, 1),
-                            Email = "Fidel0@gmail.com",
-                            FirstName = "Fidel",
+                            Email = "Makenzie_Feil57@yahoo.com",
+                            FirstName = "Makenzie",
                             GPA = 0.0,
-                            LastName = "Boyle",
+                            LastName = "Feil",
                             NationalID = "",
                             Phone = "",
                             PhoneNumber = "",
-                            RegistrationNum = "EG/2022/4600"
+                            RegistrationNum = "EG/2021/2918"
                         },
                         new
                         {
@@ -570,14 +570,14 @@ namespace ERP.Repository.PgSql.Migrations
                             City = "",
                             District = "",
                             DoB = new DateOnly(1, 1, 1),
-                            Email = "Darryl.Wisoky@yahoo.com",
-                            FirstName = "Darryl",
+                            Email = "Coy_Dach@gmail.com",
+                            FirstName = "Coy",
                             GPA = 0.0,
-                            LastName = "Wisoky",
+                            LastName = "Dach",
                             NationalID = "",
                             Phone = "",
                             PhoneNumber = "",
-                            RegistrationNum = "EG/2023/8909"
+                            RegistrationNum = "EG/2021/7273"
                         });
                 });
 

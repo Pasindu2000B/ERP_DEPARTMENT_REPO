@@ -13,7 +13,6 @@ namespace ERP.Application.DepartmentApp.Graduates.Repository
         Task<IEnumerable<Graduate>> GetAllGraduateAsync(string name);
 
         Task EditGraduateAsync(Graduate graduate);
-        Task DeleteGraduateAsync(Graduate graduate);
     }
 
     
