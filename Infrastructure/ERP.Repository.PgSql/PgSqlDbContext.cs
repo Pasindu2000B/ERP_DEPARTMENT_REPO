@@ -21,6 +21,7 @@ namespace ERP.Repository.PgSql
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
             modelBuilder.ApplyConfiguration(new StudentConfigurations());
             modelBuilder.ApplyConfiguration(new LabEquipmentConfiguration());
             modelBuilder.ApplyConfiguration(new GraduateConfiguration());
@@ -69,13 +70,18 @@ namespace ERP.Repository.PgSql
                 .HasForeignKey(ms => ms.TeacherId);
 
             modelBuilder.Entity<StudentRequest>()
+       .Property(p => p.RequestId)
+       .ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<StudentRequest>()
                  .HasOne(ms => ms.student)
-                 .WithMany(ms => ms.StudentRequests)
-                 .HasForeignKey(ms => ms.StudentId);
-                
+                 .WithOne(ms => ms.studentRequest)
+                 .HasForeignKey<StudentRequest>(ms => ms.StudentId);
 
 
-            
+
+
+
 
 
         }

@@ -20,7 +20,7 @@ namespace ERP.Application.DepartmentApp.Training.Usecases
 
         public async Task ExecuteAsync(StudentRequest studentRequest)
         {
-            await _trainingRepository.SendStudentRequestAsync(studentRequest);
+            await _trainingRepository.SendStudentRequestAsync(studentRequest);//WD
 
         }
     }
