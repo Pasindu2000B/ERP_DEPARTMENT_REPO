@@ -3,6 +3,7 @@ using System;
 using ERP.Repository.PgSql;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ERP.Repository.PgSql.Migrations
 {
     [DbContext(typeof(PgSqlDbContext))]
-    partial class PgSqlDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240225014850_cccccc")]
+    partial class cccccc
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,97 +57,27 @@ namespace ERP.Repository.PgSql.Migrations
                         new
                         {
                             GraduateID = 1001,
-                            GraduateCompany = "0477 Lorenz Springs, South Daphne, Wallis and Futuna",
-                            GraduateContactNo = "(649) 564-2938 x8136",
-                            GraduateDescription = "Internal",
-                            GraduateName = "Lilla"
+                            GraduateCompany = "462 Abernathy Cliff, Delphinemouth, Nigeria",
+                            GraduateContactNo = "813-451-5384 x88377",
+                            GraduateDescription = "International",
+                            GraduateName = "Armand"
                         },
                         new
                         {
                             GraduateID = 1002,
-                            GraduateCompany = "889 Green Rest, Satterfieldchester, Tokelau",
-                            GraduateContactNo = "1-722-202-2162 x797",
-                            GraduateDescription = "Global",
-                            GraduateName = "Jessyca"
+                            GraduateCompany = "8879 Cletus Branch, Botsfordton, Georgia",
+                            GraduateContactNo = "821-886-2348",
+                            GraduateDescription = "Forward",
+                            GraduateName = "Florian"
                         },
                         new
                         {
                             GraduateID = 1003,
-                            GraduateCompany = "92823 Iliana Ramp, New Brianville, Niue",
-                            GraduateContactNo = "486.276.8037",
-                            GraduateDescription = "Future",
-                            GraduateName = "Ericka"
+                            GraduateCompany = "016 O'Connell Port, West Ben, Timor-Leste",
+                            GraduateContactNo = "1-643-726-2811 x67552",
+                            GraduateDescription = "District",
+                            GraduateName = "Ron"
                         });
-                });
-
-            modelBuilder.Entity("ERP.Domain.Core.Entity.DepartmentEntity.LabEntity.LabEquipment", b =>
-                {
-                    b.Property<int>("LabEquipmentID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("LabEquipmentID"));
-
-                    b.Property<bool>("Avaialability")
-                        .HasColumnType("boolean");
-
-                    b.Property<string>("LabEquipmentName")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<int>("LabSpaceId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("condition")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("LabEquipmentID");
-
-                    b.ToTable("LabEquipments");
-
-                    b.HasData(
-                        new
-                        {
-                            LabEquipmentID = 3001,
-                            Avaialability = false,
-                            LabEquipmentName = "Santino",
-                            LabSpaceId = 0,
-                            condition = "medium"
-                        },
-                        new
-                        {
-                            LabEquipmentID = 3002,
-                            Avaialability = false,
-                            LabEquipmentName = "Marion",
-                            LabSpaceId = 0,
-                            condition = "medium"
-                        },
-                        new
-                        {
-                            LabEquipmentID = 3003,
-                            Avaialability = false,
-                            LabEquipmentName = "Alexandre",
-                            LabSpaceId = 0,
-                            condition = "medium"
-                        });
-                });
-
-            modelBuilder.Entity("ERP.Domain.Core.Entity.DepartmentEntity.LabEntity.LabSpace", b =>
-                {
-                    b.Property<int>("LabSpaceId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("LabSpaceId"));
-
-                    b.Property<string>("LabSpaceName")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("LabSpaceId");
-
-                    b.ToTable("LabSpaces");
                 });
 
             modelBuilder.Entity("ERP.Domain.Core.Entity.DepartmentEntity.TrainingEntity.StudentRequest", b =>
@@ -536,14 +469,14 @@ namespace ERP.Repository.PgSql.Migrations
                             City = "",
                             District = "",
                             DoB = new DateOnly(1, 1, 1),
-                            Email = "Randi8@hotmail.com",
-                            FirstName = "Randi",
+                            Email = "Beverly39@gmail.com",
+                            FirstName = "Beverly",
                             GPA = 0.0,
-                            LastName = "Metz",
+                            LastName = "White",
                             NationalID = "",
                             Phone = "",
                             PhoneNumber = "",
-                            RegistrationNum = "EG/2023/4022"
+                            RegistrationNum = "EG/2020/2485"
                         },
                         new
                         {
@@ -553,14 +486,14 @@ namespace ERP.Repository.PgSql.Migrations
                             City = "",
                             District = "",
                             DoB = new DateOnly(1, 1, 1),
-                            Email = "Tyshawn_Hyatt50@gmail.com",
-                            FirstName = "Tyshawn",
+                            Email = "Aida_Hickle55@gmail.com",
+                            FirstName = "Aida",
                             GPA = 0.0,
-                            LastName = "Hyatt",
+                            LastName = "Hickle",
                             NationalID = "",
                             Phone = "",
                             PhoneNumber = "",
-                            RegistrationNum = "EG/2021/5767"
+                            RegistrationNum = "EG/2022/1685"
                         },
                         new
                         {
@@ -570,14 +503,14 @@ namespace ERP.Repository.PgSql.Migrations
                             City = "",
                             District = "",
                             DoB = new DateOnly(1, 1, 1),
-                            Email = "Astrid_Langosh@yahoo.com",
-                            FirstName = "Astrid",
+                            Email = "Ashly18@gmail.com",
+                            FirstName = "Ashly",
                             GPA = 0.0,
-                            LastName = "Langosh",
+                            LastName = "Jacobi",
                             NationalID = "",
                             Phone = "",
                             PhoneNumber = "",
-                            RegistrationNum = "EG/2023/5684"
+                            RegistrationNum = "EG/2021/6090"
                         });
                 });
 
