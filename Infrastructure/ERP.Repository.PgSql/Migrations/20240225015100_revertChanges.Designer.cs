@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ERP.Repository.PgSql.Migrations
 {
     [DbContext(typeof(PgSqlDbContext))]
-    [Migration("20240224040717_dev2New1")]
-    partial class dev2New1
+    [Migration("20240225015100_revertChanges")]
+    partial class revertChanges
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -57,26 +57,26 @@ namespace ERP.Repository.PgSql.Migrations
                         new
                         {
                             GraduateID = 1001,
-                            GraduateCompany = "02411 Tyrell Terrace, Wilhelmbury, Venezuela",
-                            GraduateContactNo = "818.403.1815",
-                            GraduateDescription = "Product",
-                            GraduateName = "Audie"
+                            GraduateCompany = "0477 Lorenz Springs, South Daphne, Wallis and Futuna",
+                            GraduateContactNo = "(649) 564-2938 x8136",
+                            GraduateDescription = "Internal",
+                            GraduateName = "Lilla"
                         },
                         new
                         {
                             GraduateID = 1002,
-                            GraduateCompany = "53707 Lynch Motorway, South Melliefurt, Cocos (Keeling) Islands",
-                            GraduateContactNo = "(862) 352-8569 x044",
-                            GraduateDescription = "Corporate",
-                            GraduateName = "Michele"
+                            GraduateCompany = "889 Green Rest, Satterfieldchester, Tokelau",
+                            GraduateContactNo = "1-722-202-2162 x797",
+                            GraduateDescription = "Global",
+                            GraduateName = "Jessyca"
                         },
                         new
                         {
                             GraduateID = 1003,
-                            GraduateCompany = "7030 Leonard Run, Brittanymouth, Guadeloupe",
-                            GraduateContactNo = "1-275-512-7333",
-                            GraduateDescription = "Investor",
-                            GraduateName = "Gillian"
+                            GraduateCompany = "92823 Iliana Ramp, New Brianville, Niue",
+                            GraduateContactNo = "486.276.8037",
+                            GraduateDescription = "Future",
+                            GraduateName = "Ericka"
                         });
                 });
 
@@ -109,25 +109,25 @@ namespace ERP.Repository.PgSql.Migrations
                     b.HasData(
                         new
                         {
-                            LabEquipmentID = 1001,
+                            LabEquipmentID = 3001,
                             Avaialability = false,
-                            LabEquipmentName = "Will",
+                            LabEquipmentName = "Santino",
                             LabSpaceId = 0,
-                            condition = "bad"
+                            condition = "medium"
                         },
                         new
                         {
-                            LabEquipmentID = 1002,
+                            LabEquipmentID = 3002,
                             Avaialability = false,
-                            LabEquipmentName = "Claudia",
+                            LabEquipmentName = "Marion",
                             LabSpaceId = 0,
-                            condition = "bad"
+                            condition = "medium"
                         },
                         new
                         {
-                            LabEquipmentID = 1003,
+                            LabEquipmentID = 3003,
                             Avaialability = false,
-                            LabEquipmentName = "Moises",
+                            LabEquipmentName = "Alexandre",
                             LabSpaceId = 0,
                             condition = "medium"
                         });
@@ -539,14 +539,14 @@ namespace ERP.Repository.PgSql.Migrations
                             City = "",
                             District = "",
                             DoB = new DateOnly(1, 1, 1),
-                            Email = "Chance_Kutch86@hotmail.com",
-                            FirstName = "Chance",
+                            Email = "Randi8@hotmail.com",
+                            FirstName = "Randi",
                             GPA = 0.0,
-                            LastName = "Kutch",
+                            LastName = "Metz",
                             NationalID = "",
                             Phone = "",
                             PhoneNumber = "",
-                            RegistrationNum = "EG/2020/3528"
+                            RegistrationNum = "EG/2023/4022"
                         },
                         new
                         {
@@ -556,14 +556,14 @@ namespace ERP.Repository.PgSql.Migrations
                             City = "",
                             District = "",
                             DoB = new DateOnly(1, 1, 1),
-                            Email = "Makenzie_Feil57@yahoo.com",
-                            FirstName = "Makenzie",
+                            Email = "Tyshawn_Hyatt50@gmail.com",
+                            FirstName = "Tyshawn",
                             GPA = 0.0,
-                            LastName = "Feil",
+                            LastName = "Hyatt",
                             NationalID = "",
                             Phone = "",
                             PhoneNumber = "",
-                            RegistrationNum = "EG/2021/2918"
+                            RegistrationNum = "EG/2021/5767"
                         },
                         new
                         {
@@ -573,14 +573,14 @@ namespace ERP.Repository.PgSql.Migrations
                             City = "",
                             District = "",
                             DoB = new DateOnly(1, 1, 1),
-                            Email = "Coy_Dach@gmail.com",
-                            FirstName = "Coy",
+                            Email = "Astrid_Langosh@yahoo.com",
+                            FirstName = "Astrid",
                             GPA = 0.0,
-                            LastName = "Dach",
+                            LastName = "Langosh",
                             NationalID = "",
                             Phone = "",
                             PhoneNumber = "",
-                            RegistrationNum = "EG/2021/7273"
+                            RegistrationNum = "EG/2023/5684"
                         });
                 });
 

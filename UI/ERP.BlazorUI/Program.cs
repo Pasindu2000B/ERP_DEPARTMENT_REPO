@@ -32,11 +32,18 @@ ConfigurationManager configuration = builder.Configuration;
 //builder.Services.AddDbContext<BaseDbContext>(opt => opt.UseSqlite(configuration.GetConnectionString("StudentDatabase"),
 //     b => b.MigrationsAssembly("ERP.Repository.SQLite")));
 
-//builder.Services.AddDbContext<PgSqlDbContext>(opt => opt.UseNpgsql(configuration.GetConnectionString("PgSqlConnection"),
-//     b => b.MigrationsAssembly("ERP.Repository.PgSql")));
+builder.Services.AddDbContextFactory<PgSqlDbContext>(opt =>
+{
+    opt.UseNpgsql(configuration.GetConnectionString("PgSqlConnection"),
+        b => b.MigrationsAssembly("ERP.Repository.PgSql"));
 
-builder.Services.AddDbContextFactory<PgSqlDbContext>(opt => opt.UseNpgsql(configuration.GetConnectionString("PgSqlConnection"),
-     b => b.MigrationsAssembly("ERP.Repository.PgSql")));
+    if (builder.Environment.IsDevelopment())
+    {
+        // Enable sensitive data logging only in development environment
+        opt.EnableSensitiveDataLogging();
+    }
+});
+
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
@@ -69,6 +76,7 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Error", createScopeForErrors: true);
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
+   
 }
 
 app.UseHttpsRedirection();
