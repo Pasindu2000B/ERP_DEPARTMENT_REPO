@@ -6,7 +6,9 @@
 
 @inject NavigationManager NavigationManager
 @inject IGetGraduateListUseCase GetGraduateList
+@inject IDeleteGraduateUseCase DeleteGraduateUseCase
 @inject IDialogService DialogService
+@inject ISnackbar Snackbar
 
 
 
@@ -24,7 +26,8 @@
             <MudTd DataLabel="">
                 <MudFab OnClick="@(()=> EditGraduate(@context))" Color="Color.Primary"
                         StartIcon="@Icons.Material.Filled.Edit" Size="Size.Small" />
-                <MudFab Color="Color.Warning" StartIcon="@Icons.Material.Filled.Delete" Size="Size.Small" />
+                <MudFab OnClick="@(()=> DeleteGraduate(@context))" Color="Color.Warning"
+                        StartIcon="@Icons.Material.Filled.Delete" Size="Size.Small" />
             </MudTd>
         </RowTemplate>
         <PagerContent>
@@ -32,11 +35,24 @@
         </PagerContent>
     </MudTable>
 
+    <MudMessageBox @ref="mbox" Title="Warning" CancelText="Cancel">
+        <MessageContent>
+            Are You Sure to Delete This Graduate!
+        </MessageContent>
+        <YesButton>
+            <MudButton Variant="Variant.Filled" Color="Color.Error" StartIcon="@Icons.Material.Filled.DeleteForever">Delete!</MudButton>
+        </YesButton>
+    </MudMessageBox>
+
 
 
 
     @code {
     private List<Graduate> _gradutes = new List<Graduate>();
+
+    MudMessageBox mbox { get; set; }
+
+    public EventCallback onDelete { get; set; }
 
     [Parameter]
     public string SearchTerm { get; set; } = string.Empty;
@@ -79,6 +95,24 @@
         }
     }
 
-  
+    async Task DeleteGraduate(Graduate graduate)
+    {
+        bool? result = await mbox.Show();
+        if (result == true)
+        {
+            _gradutes.Remove(graduate);
+            StateHasChanged();
+            await DeleteGraduateUseCase.ExecuteAsync(graduate);
+            await onDelete.InvokeAsync();
+            Snackbar.Add("Graduate Deleted Successfully", Severity.Success);
+        }
+        else
+        {
+            Snackbar.Add("Graduate is Not Deleted", Severity.Info);
+        }
+
+    }
+
+
 
     }

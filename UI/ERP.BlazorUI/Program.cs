@@ -32,6 +32,21 @@ ConfigurationManager configuration = builder.Configuration;
 //builder.Services.AddDbContext<BaseDbContext>(opt => opt.UseSqlite(configuration.GetConnectionString("StudentDatabase"),
 //     b => b.MigrationsAssembly("ERP.Repository.SQLite")));
 
+builder.Services.AddMudServices(config =>
+{
+    config.SnackbarConfiguration.PositionClass = Defaults.Classes.Position.BottomRight;
+
+    config.SnackbarConfiguration.PreventDuplicates = false;
+    config.SnackbarConfiguration.NewestOnTop = false;
+    config.SnackbarConfiguration.ShowCloseIcon = true;
+    config.SnackbarConfiguration.VisibleStateDuration = 2500;
+    config.SnackbarConfiguration.HideTransitionDuration = 500;
+    config.SnackbarConfiguration.ShowTransitionDuration = 500;
+    config.SnackbarConfiguration.SnackbarVariant = Variant.Filled;
+});
+
+
+
 builder.Services.AddDbContextFactory<PgSqlDbContext>(opt =>
 {
     opt.UseNpgsql(configuration.GetConnectionString("PgSqlConnection"),
@@ -66,7 +81,7 @@ builder.Services.AddScoped<IAddGraduateUseCase, AddGraduateUseCase>();
 builder.Services.AddScoped<IStudentRequestCreateUseCase,StudentRequestUseCase>();
 builder.Services.AddScoped<IGetGraduateListUseCase, GetGraduateListUseCase>();
 builder.Services.AddScoped<IEditGraduateUseCase, EditGraduateUseCase>();
-
+builder.Services.AddScoped<IDeleteGraduateUseCase, DeleteGraduateUseCase>();
 
 var app = builder.Build();
 
