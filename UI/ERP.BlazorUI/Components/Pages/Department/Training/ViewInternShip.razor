@@ -1,0 +1,61 @@
+﻿@page "/ViewInternship"
+@using ERP.BlazorUI.Components.Layout
+@layout EEC_Main
+
+@code {
+    private bool isEditMode = false;
+    private JobPost jobPost = new JobPost(); // JobPost model instance with default values
+
+    private void ToggleEditMode()
+    {
+        isEditMode = !isEditMode;
+    }
+
+    private void SaveJobPost()
+    {
+        // Add logic to save the job post
+        isEditMode = false;
+    }
+
+    public class JobPost
+    {
+        public string JobName { get; set; } = "Default Job Name";
+        public string JobCompany { get; set; } = "Default Company";
+        public string CompanyEmail { get; set; } = "email@example.com";
+        public string JobDescriptionLink { get; set; } = "Default Job Description";
+        // Other properties if needed
+    }
+}
+
+<MudStack>
+    <MudTextField @bind-Value="jobPost.JobName"
+                  @bind-Value:event="oninput"
+                  ReadOnly="@(!isEditMode)" />
+    <MudTextField @bind-Value="jobPost.JobCompany"
+                  @bind-Value:event="oninput"
+                  ReadOnly="@(!isEditMode)" />
+    <MudTextField @bind-Value="jobPost.CompanyEmail"
+                  @bind-Value:event="oninput"
+                  ReadOnly="@(!isEditMode)" />
+    <MudTextField @bind-Value="jobPost.JobDescriptionLink"
+                  @bind-Value:event="oninput"
+                  ReadOnly="@(!isEditMode)" />
+    <button @onclick="ToggleEditMode">@(!isEditMode ? "Edit" : "Cancel")</button>
+    @if (isEditMode)
+    {
+        <button @onclick="SaveJobPost">Save</button>
+    }
+
+
+
+
+
+
+
+</MudStack>
+
+
+
+
+
+

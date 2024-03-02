@@ -1,0 +1,32 @@
+﻿@layout EEC_Main
+@page "/Students_Requests"
+@using ERP.BlazorUI.Components.Layout
+
+
+
+
+
+
+<MudCard>
+
+    <MudCardContent>
+        <MudText Typo="Typo.h5">Kane Williomson</MudText>
+        <MudText Typo="Typo.body2">Batch 22</MudText>
+
+    </MudCardContent>
+    <MudCardActions>
+        <MudButton MudNavLink Href="/SpecificRequest" Variant="Variant.Text" Color="Color.Primary">View</MudButton>
+
+
+    </MudCardActions>
+</MudCard>
+
+<MudPagination Color="Color.Primary" Count="4" @bind-Selected="@_selected" />
+
+<MudText Align="Align.Center">Selected page: @_selected</MudText>
+
+    @code {
+    private int _selected = 1;
+}
+
+
