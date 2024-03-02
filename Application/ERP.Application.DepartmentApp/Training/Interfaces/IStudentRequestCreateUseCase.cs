@@ -10,5 +10,6 @@ namespace ERP.Application.DepartmentApp.Training.Interfaces
     public interface IStudentRequestCreateUseCase
     {
         Task ExecuteAsync(StudentRequest studentRequest);
+
     }
 }

@@ -1,0 +1,27 @@
+﻿ @layout EEC_Main
+ @page "/Internships"
+@using ERP.BlazorUI.Components.Layout
+
+<MudCard>
+    
+    <MudCardContent>
+        <MudText Typo="Typo.h5">Electronic Engineer</MudText>
+        <MudText Typo="Typo.body2">Fonterra PVT Ltd</MudText>
+        <MudText Typo="Typo.body2">Biyagama</MudText>
+    </MudCardContent>
+    <MudCardActions>
+        <MudNavLink Href="/ViewInternship" MudButton Variant="Variant.Text" Color="Color.Primary">View</MudNavLink>
+        <MudButton Variant="Variant.Text" Color="Color.Primary">Delete</MudButton>
+        
+    </MudCardActions>
+</MudCard>
+
+<MudPagination Color="Color.Primary" Count="4" @bind-Selected="@_selected" />
+
+<MudText Align="Align.Center">Selected page: @_selected</MudText>
+
+    @code {
+    private int _selected = 1;
+}
+
+

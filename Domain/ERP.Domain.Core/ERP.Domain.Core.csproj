@@ -7,7 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Entity\DepartmentEntity\RecruimentsEntity\" />
+    <Compile Remove="Entity\DepartmentEntity\RecruimentsEntity\**" />
+    <EmbeddedResource Remove="Entity\DepartmentEntity\RecruimentsEntity\**" />
+    <None Remove="Entity\DepartmentEntity\RecruimentsEntity\**" />
   </ItemGroup>
 
 </Project>

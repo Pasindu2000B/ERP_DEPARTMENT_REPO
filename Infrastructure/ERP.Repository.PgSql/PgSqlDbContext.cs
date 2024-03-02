@@ -1,6 +1,7 @@
 ﻿using ERP.Domain.Core.Entity.DepartmentEntity.GraduatesEntity;
 using ERP.Domain.Core.Entity.DepartmentEntity.LabEntity;
 using ERP.Domain.Core.Entity.DepartmentEntity.TrainingEntity;
+using ERP.Domain.Core.Entity.DepartmentEntity.TrainingEntity.InternShips;
 using ERP.Domain.Core.Entity.StudentEntity;
 using ERP.Repository.PgSql.Configurations;
 using ERP.Repository.PgSql.Configurations.DepartmentPortalConfigurations;
@@ -29,6 +30,7 @@ namespace ERP.Repository.PgSql
             modelBuilder.Entity<ModuleOfferingTeacher>()
             .HasKey(mt => new { mt.ModuleOfferingId, mt.TeacherId });
 
+         
             modelBuilder.Entity<ModuleOfferingTeacher>()
                 .HasOne(mt => mt.ModuleOffering)
                 .WithMany(mt => mt.Teachers)
@@ -72,10 +74,14 @@ namespace ERP.Repository.PgSql
                  .HasOne(ms => ms.student)
                  .WithMany(ms => ms.StudentRequests)
                  .HasForeignKey(ms => ms.StudentId);
-                
+
+            // job post
+            modelBuilder.Entity<JobPost>()
+             .HasKey(mt => new { mt.Id });
 
 
-            
+
+
 
 
         }
@@ -97,6 +103,8 @@ namespace ERP.Repository.PgSql
 
         // Training 
         public DbSet<StudentRequest> StudentRequests { get; set; }
+
+        public DbSet<JobPost> JobPosts { get; set; }
 
 
     }

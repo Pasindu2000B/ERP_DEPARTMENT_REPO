@@ -20,6 +20,8 @@ namespace ERP.Application.DepartmentApp.Training.DependancyInjections
            this IServiceCollection services)
         {
             services.AddScoped<IStudentRequestCreateUseCase, StudentRequestUseCase>();
+            services.AddScoped<IInternPostUseCase, InternPostUseCasecs>();
+            services.AddScoped<IInternPostViewUseCase, InternViewUseCase>();
         
             return services;
         }
