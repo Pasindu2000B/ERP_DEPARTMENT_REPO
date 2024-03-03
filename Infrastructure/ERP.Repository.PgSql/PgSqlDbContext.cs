@@ -1,5 +1,6 @@
 ﻿using ERP.Domain.Core.Entity.DepartmentEntity.GraduatesEntity;
 using ERP.Domain.Core.Entity.DepartmentEntity.LabEntity;
+using ERP.Domain.Core.Entity.DepartmentEntity.RecruimentEntity;
 using ERP.Domain.Core.Entity.DepartmentEntity.TrainingEntity;
 using ERP.Domain.Core.Entity.DepartmentEntity.TrainingEntity.InternShips;
 using ERP.Domain.Core.Entity.StudentEntity;
@@ -78,6 +79,29 @@ namespace ERP.Repository.PgSql
             // job post
             modelBuilder.Entity<JobPost>()
              .HasKey(mt => new { mt.Id });
+
+            // Recruiment
+            modelBuilder.Entity<Person>()
+                .HasKey(mt => mt.PersonId);
+
+            modelBuilder.Entity<RecruimentJobPost>()
+                .HasKey(mt => new { mt.JobId });
+
+            modelBuilder.Entity<RecruimentApplication>()
+                .HasKey(mt=> new {mt.RecruimentJobPostId});
+            modelBuilder.Entity<Notification>()
+                .HasKey(mt=>mt.NotificationId);
+
+            modelBuilder.Entity<RecruimentApplication>()
+                .HasOne(mt=>mt.Person)
+                .WithMany(mt=>mt.RecruimentsApplications)
+                .HasForeignKey(ms=>ms.PersonId);
+
+            modelBuilder.Entity<RecruimentApplication>()
+                .HasOne(mt => mt.RecruimentJobPost)
+                .WithMany(mt => mt.recruimentApplications)
+                .HasForeignKey(ms => ms.RecruimentJobPostId);
+
 
 
 
