@@ -26,8 +26,6 @@
     <Folder Include="OBE CQI\Interfaces\" />
     <Folder Include="OBE CQI\UseCases\" />
     <Folder Include="Workload\" />
-    <Folder Include="Recruiments\" />
-    <Folder Include="Recruiments\" />
   </ItemGroup>
 
 </Project>
