@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using ERP.Domain.Core.Entity.DepartmentEntity.WorkLoadEntity;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ERP.Domain.Core.Entity.StudentEntity
 {
@@ -18,12 +19,14 @@ namespace ERP.Domain.Core.Entity.StudentEntity
         public string PhoneNumber { get; set; } = string.Empty;
 
         [InverseProperty("Coordinator")]
-        public ICollection<ModuleOffering> CordinatingModules { get; set; }
+        public ICollection<ModuleOffering>? CordinatingModules { get; set; }
 
-        public ICollection<ModuleOfferingTeacher> TeachingModules { get; set; }
+        public ICollection<ModuleOfferingTeacher>? TeachingModules { get; set; }
 
-        public ICollection<ModuleOfferingFirstExaminer> FirstExaminersModules { get; set; }
-        public ICollection<ModuleOfferingSecondExaminer> SecondExaminersModules { get; set; }
+        public ICollection<ModuleOfferingFirstExaminer>? FirstExaminersModules { get; set; }
+        public ICollection<ModuleOfferingSecondExaminer>? SecondExaminersModules { get; set; }
+
+        public ICollection<WorkingTask> ? WorkingTasks { get; set; }
 
 
     }

@@ -131,5 +131,10 @@ namespace ERP.Repository.PgSql
         public DbSet<JobPost> JobPosts { get; set; }
 
 
+        // Recruiments
+
+        public DbSet<RecruimentJobPost> RecruimentJobs { get; set; }
+
+
     }
 }
