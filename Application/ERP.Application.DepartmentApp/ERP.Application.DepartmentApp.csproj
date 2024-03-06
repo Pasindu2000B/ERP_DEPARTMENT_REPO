@@ -25,7 +25,6 @@
     <Folder Include="OBE CQI\DependancyInjections\" />
     <Folder Include="OBE CQI\Interfaces\" />
     <Folder Include="OBE CQI\UseCases\" />
-    <Folder Include="Workload\" />
   </ItemGroup>
 
 </Project>

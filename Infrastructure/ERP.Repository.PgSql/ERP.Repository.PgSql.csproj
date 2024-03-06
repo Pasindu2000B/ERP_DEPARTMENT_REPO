@@ -24,7 +24,6 @@
 
   <ItemGroup>
     <Folder Include="Department\Accreditation\" />
-    <Folder Include="Department\WorkLoad\" />
   </ItemGroup>
 
 </Project>
