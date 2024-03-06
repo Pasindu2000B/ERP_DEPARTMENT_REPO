@@ -3,6 +3,7 @@ using ERP.Domain.Core.Entity.DepartmentEntity.LabEntity;
 using ERP.Domain.Core.Entity.DepartmentEntity.RecruimentEntity;
 using ERP.Domain.Core.Entity.DepartmentEntity.TrainingEntity;
 using ERP.Domain.Core.Entity.DepartmentEntity.TrainingEntity.InternShips;
+using ERP.Domain.Core.Entity.DepartmentEntity.WorkLoadEntity;
 using ERP.Domain.Core.Entity.StudentEntity;
 using ERP.Repository.PgSql.Configurations;
 using ERP.Repository.PgSql.Configurations.DepartmentPortalConfigurations;
@@ -80,6 +81,15 @@ namespace ERP.Repository.PgSql
             modelBuilder.Entity<JobPost>()
              .HasKey(mt => new { mt.Id });
 
+            //WorkTask
+            modelBuilder.Entity<WorkingTask>()
+                .HasKey(mt => new { mt.WorkingTaskId });
+
+            modelBuilder.Entity<WorkingTask>()
+                .HasOne(mt=>mt.Teacher)
+                .WithMany(mt => mt.WorkingTasks)
+                .HasForeignKey(mt => mt.TeacherId);
+
             // Recruiment
             modelBuilder.Entity<Person>()
                 .HasKey(mt => mt.PersonId);
@@ -134,6 +144,10 @@ namespace ERP.Repository.PgSql
         // Recruiments
 
         public DbSet<RecruimentJobPost> RecruimentJobs { get; set; }
+
+        //working Task
+
+        public DbSet <WorkingTask> WorkingTasks { get; set; }
 
 
     }
