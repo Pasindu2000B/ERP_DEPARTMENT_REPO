@@ -18,7 +18,7 @@ namespace ERP.Repository.PgSql.Department.Lab
         {
             _factory = factory;
         }
-
+        //comment
         public Task AddLabEquipmentAsync(LabEquipment labEquipment)
         {
             using var _context = _factory.CreateDbContext();
