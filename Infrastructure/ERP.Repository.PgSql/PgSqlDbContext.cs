@@ -123,7 +123,7 @@ namespace ERP.Repository.PgSql
         public DbSet<LabEquipment> LabEquipments { get; set; }
 
        
-       public DbSet<LabSpace> LabSpaces { get; set; }
+        public DbSet<LabSpace> LabSpaces { get; set; }
         
         public DbSet<Student> Students { get; set; }
         public DbSet<Module> Modules { get; set; }
