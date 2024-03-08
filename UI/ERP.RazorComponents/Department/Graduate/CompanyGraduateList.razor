@@ -1,0 +1,50 @@
+﻿@using ERP.Application.DepartmentApp.Graduates.Interfaces
+@using ERP.Domain.Core.Entity;
+@using ERP.Domain.Core.Entity.DepartmentEntity.GraduatesEntity
+@typeparam T
+
+
+
+@inject IGetGraduateListByCompanyUseCase GetGraduateListByCompanyUseCase
+
+
+
+
+
+
+
+<p>Selected Company : @SelectedCompany</p>
+<MudTable Items="@_gradutes">
+    <HeaderContent>
+        <MudTh>Name</MudTh>
+        <MudTh>Contact Number</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Name">@context.GraduateName</MudTd>
+        <MudTd DataLabel="Contact Number">@context.GraduateContactNo</MudTd>            
+    </RowTemplate>
+    <PagerContent>
+        <MudTablePager />
+    </PagerContent>
+</MudTable>
+
+ 
+
+
+
+
+    @code {
+    private List<Graduate> _gradutes = new List<Graduate>();
+
+    [Parameter]
+    public string SelectedCompany { get; set; }
+
+
+
+    protected override async Task OnParametersSetAsync()
+    {
+        _gradutes = (await GetGraduateListByCompanyUseCase.ExecuteAsync(SelectedCompany)).ToList();
+    }
+
+
+    }

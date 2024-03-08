@@ -82,6 +82,8 @@ builder.Services.AddScoped<IStudentRequestCreateUseCase,StudentRequestUseCase>()
 builder.Services.AddScoped<IGetGraduateListUseCase, GetGraduateListUseCase>();
 builder.Services.AddScoped<IEditGraduateUseCase, EditGraduateUseCase>();
 builder.Services.AddScoped<IDeleteGraduateUseCase, DeleteGraduateUseCase>();
+builder.Services.AddScoped<IGetGraduateListByCompanyUseCase, GetGraduateListByCompanyUseCase>();
+builder.Services.AddScoped<IGetAllCompanyNamesUseCase, GetAllCompanyNamesUseCase>();    
 
 var app = builder.Build();
 
