@@ -11,9 +11,9 @@ namespace ERP.Application.DepartmentApp.Training.Usecases
 {
     public class InternPostUseCasecs : IInternPostUseCase
     {
-        private TrainingRepository _trainingRepository;
+        private ITrainingRepository _trainingRepository;
 
-        public InternPostUseCasecs(TrainingRepository trainingRepository)
+        public InternPostUseCasecs(ITrainingRepository trainingRepository)
         {
             _trainingRepository = trainingRepository;
             

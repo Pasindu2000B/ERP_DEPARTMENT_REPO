@@ -3,6 +3,7 @@ using System;
 using ERP.Repository.PgSql;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ERP.Repository.PgSql.Migrations
 {
     [DbContext(typeof(PgSqlDbContext))]
-    partial class PgSqlDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240308153636_newdevmigration0308")]
+    partial class newdevmigration0308
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,26 +57,26 @@ namespace ERP.Repository.PgSql.Migrations
                         new
                         {
                             GraduateID = 1001,
-                            GraduateCompany = "293 Kathleen Neck, Idaburgh, Uruguay",
-                            GraduateContactNo = "1-971-889-4340 x8969",
-                            GraduateDescription = "Dynamic",
-                            GraduateName = "Audreanne"
+                            GraduateCompany = "64554 Rhoda Trace, Lake Nehaville, Palestinian Territory",
+                            GraduateContactNo = "(353) 232-0525 x84394",
+                            GraduateDescription = "Product",
+                            GraduateName = "Fleta"
                         },
                         new
                         {
                             GraduateID = 1002,
-                            GraduateCompany = "2117 Minerva Flat, New Jarrettside, Finland",
-                            GraduateContactNo = "(610) 337-4600",
+                            GraduateCompany = "10928 O'Kon Cove, North Jessika, Burkina Faso",
+                            GraduateContactNo = "912-519-4153 x382",
                             GraduateDescription = "District",
-                            GraduateName = "Dayne"
+                            GraduateName = "Edwardo"
                         },
                         new
                         {
                             GraduateID = 1003,
-                            GraduateCompany = "07474 Jace Pass, Port Ludwigstad, Thailand",
-                            GraduateContactNo = "263-437-1617 x2206",
-                            GraduateDescription = "Forward",
-                            GraduateName = "Brent"
+                            GraduateCompany = "8811 Myah Lock, Lake Sasha, Belarus",
+                            GraduateContactNo = "1-232-662-9318 x5920",
+                            GraduateDescription = "District",
+                            GraduateName = "Steve"
                         });
                 });
 
@@ -108,15 +111,15 @@ namespace ERP.Repository.PgSql.Migrations
                         {
                             LabEquipmentID = 3001,
                             Avaialability = false,
-                            LabEquipmentName = "Ralph",
+                            LabEquipmentName = "Zechariah",
                             LabSpaceId = 0,
-                            condition = "bad"
+                            condition = "medium"
                         },
                         new
                         {
                             LabEquipmentID = 3002,
                             Avaialability = false,
-                            LabEquipmentName = "Carlos",
+                            LabEquipmentName = "Mariano",
                             LabSpaceId = 0,
                             condition = "bad"
                         },
@@ -124,7 +127,7 @@ namespace ERP.Repository.PgSql.Migrations
                         {
                             LabEquipmentID = 3003,
                             Avaialability = false,
-                            LabEquipmentName = "Ursula",
+                            LabEquipmentName = "Josue",
                             LabSpaceId = 0,
                             condition = "bad"
                         });
@@ -288,12 +291,6 @@ namespace ERP.Repository.PgSql.Migrations
 
                     b.Property<string>("CompanySendersName")
                         .HasColumnType("text");
-
-                    b.Property<bool>("IsResponsed")
-                        .HasColumnType("boolean");
-
-                    b.Property<DateTime>("RequestedDate")
-                        .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("StudentId")
                         .HasColumnType("integer");
@@ -747,14 +744,14 @@ namespace ERP.Repository.PgSql.Migrations
                             City = "",
                             District = "",
                             DoB = new DateOnly(1, 1, 1),
-                            Email = "Yoshiko.Weimann@gmail.com",
-                            FirstName = "Yoshiko",
+                            Email = "Gerda85@hotmail.com",
+                            FirstName = "Gerda",
                             GPA = 0.0,
-                            LastName = "Weimann",
+                            LastName = "Mayer",
                             NationalID = "",
                             Phone = "",
                             PhoneNumber = "",
-                            RegistrationNum = "EG/2022/4649"
+                            RegistrationNum = "EG/2021/5579"
                         },
                         new
                         {
@@ -764,14 +761,14 @@ namespace ERP.Repository.PgSql.Migrations
                             City = "",
                             District = "",
                             DoB = new DateOnly(1, 1, 1),
-                            Email = "Ezekiel_Littel@gmail.com",
-                            FirstName = "Ezekiel",
+                            Email = "Laverne_Schiller@yahoo.com",
+                            FirstName = "Laverne",
                             GPA = 0.0,
-                            LastName = "Littel",
+                            LastName = "Schiller",
                             NationalID = "",
                             Phone = "",
                             PhoneNumber = "",
-                            RegistrationNum = "EG/2023/1836"
+                            RegistrationNum = "EG/2020/4921"
                         },
                         new
                         {
@@ -781,14 +778,14 @@ namespace ERP.Repository.PgSql.Migrations
                             City = "",
                             District = "",
                             DoB = new DateOnly(1, 1, 1),
-                            Email = "Aimee_Stark41@gmail.com",
-                            FirstName = "Aimee",
+                            Email = "Mireya_Reichert36@hotmail.com",
+                            FirstName = "Mireya",
                             GPA = 0.0,
-                            LastName = "Stark",
+                            LastName = "Reichert",
                             NationalID = "",
                             Phone = "",
                             PhoneNumber = "",
-                            RegistrationNum = "EG/2020/1651"
+                            RegistrationNum = "EG/2023/7191"
                         });
                 });
 
@@ -906,13 +903,13 @@ namespace ERP.Repository.PgSql.Migrations
 
             modelBuilder.Entity("ERP.Domain.Core.Entity.DepartmentEntity.TrainingEntity.StudentRequest", b =>
                 {
-                    b.HasOne("ERP.Domain.Core.Entity.StudentEntity.Student", "Student")
+                    b.HasOne("ERP.Domain.Core.Entity.StudentEntity.Student", "student")
                         .WithMany("StudentRequests")
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Student");
+                    b.Navigation("student");
                 });
 
             modelBuilder.Entity("ERP.Domain.Core.Entity.DepartmentEntity.WorkLoadEntity.WorkingTask", b =>
