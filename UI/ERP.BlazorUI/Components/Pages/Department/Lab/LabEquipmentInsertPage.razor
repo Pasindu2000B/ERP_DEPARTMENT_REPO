@@ -1,9 +1,10 @@
 ﻿@page "/addLabEquipment"
 @using ERP.Application.DepartmentApp.Labs.Interfaces
+@using ERP.Application.DepartmentApp.Labs.Interfaces.Inventory_Lab
 @using ERP.Application.DepartmentApp.Labs.UseCases
 @using ERP.Domain.Core.Entity.DepartmentEntity.LabEntity
 @using FluentValidation
-@* @* @inject IAddLabEquipmentUseCase AddNewLabEquipmentUseCase // we can inject because we create dependancy in  *@
+@inject IAddLabEquipmentUseCase AddNewLabEquipmentUseCase
 
 <h3>Lab Equipment Add Page</h3>
 
@@ -83,7 +84,7 @@
 
         if (form.IsValid)
         {
-            // await AddNewLabEquipmentUseCase.ExecuteAsync(labEquipmentModel);
+            await AddNewLabEquipmentUseCase.ExecuteAsync(labEquipmentModel);
             await onAdded.InvokeAsync();
             form.Reset();
             isAddedSuccessfully = true;
