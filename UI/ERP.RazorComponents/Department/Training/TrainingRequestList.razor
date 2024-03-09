@@ -1,0 +1,60 @@
+﻿@using System.Globalization
+@using ERP.Application.DepartmentApp.Training.Interfaces
+@using ERP.Application.StudentApp.Students.Interfaces
+@using ERP.Domain.Core.Entity.DepartmentEntity.TrainingEntity
+@using ERP.Domain.Core.Entity.StudentEntity
+@using MudBlazor
+@using System.Collections.Generic
+
+@inject IGetTrainingRequests GetTrainingRequests
+@inject IViewStudentById ViewStudentById
+
+@if (_combinedList.Count > 0)
+{
+    <MudDataGrid Items="_combinedList" Filterable="true" Bordered="true" Dense="true">
+        <Columns>
+            <PropertyColumn Property="x => x.StudentName" Title="Student Name" />
+            <PropertyColumn Property="x => x.Request.CompanyName" Title="Company Name" />
+            <PropertyColumn Property="x => x.Request.IsResponsed" Title="Responsed" />
+        </Columns>
+        <PagerContent>
+            <MudDataGridPager />
+        </PagerContent>
+    </MudDataGrid>
+}
+else
+{
+    <p>No Training Requests form Students</p>
+}
+
+@code {
+
+    private List<StudentRequest> _studentRequests = new List<StudentRequest>();
+    private List<string> _studentsNames = new List<string>();
+    private List<CombinedStudentInfo> _combinedList = new List<CombinedStudentInfo>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        _studentRequests = (await GetTrainingRequests.ExecuteAsync("")).ToList();
+        foreach (var student in _studentRequests)
+        {
+            _studentsNames.Add((await ViewStudentById.ExecuteAsync(student.StudentId)).FirstName);
+        }
+
+      
+        for (int i = 0; i < _studentRequests.Count; i++)
+        {
+            _combinedList.Add(new CombinedStudentInfo
+                {
+                    Request = _studentRequests[i],
+                    StudentName = _studentsNames[i]
+                });
+        }
+    }
+
+    public class CombinedStudentInfo
+    {
+        public StudentRequest Request { get; set; }
+        public string StudentName { get; set; }
+    }
+}

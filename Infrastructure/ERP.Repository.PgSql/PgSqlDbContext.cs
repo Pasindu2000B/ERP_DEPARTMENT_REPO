@@ -73,7 +73,7 @@ namespace ERP.Repository.PgSql
                 .HasForeignKey(ms => ms.TeacherId);
 
             modelBuilder.Entity<StudentRequest>()
-                 .HasOne(ms => ms.student)
+                 .HasOne(ms => ms.Student)
                  .WithMany(ms => ms.StudentRequests)
                  .HasForeignKey(ms => ms.StudentId);
 

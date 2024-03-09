@@ -8,20 +8,16 @@ using System.Threading.Tasks;
 
 namespace ERP.Application.DepartmentApp.Training.Usecases
 {
-    public class StudentRequestUseCase : IStudentRequestCreateUseCase
+    public class GetTrainingRequests : IGetTrainingRequests
     {
-        private ITrainingRepository _trainingRepository;
-
-        public StudentRequestUseCase(ITrainingRepository trainingRepository)
+        private readonly ITrainingRepository _trainingRepository;
+        public GetTrainingRequests(ITrainingRepository trainingRepository)
         {
             _trainingRepository = trainingRepository;
-            
         }
-
-        public async Task ExecuteAsync(StudentRequest studentRequest)
+        public async Task<IEnumerable<StudentRequest>>ExecuteAsync(string name="")
         {
-            await _trainingRepository.SendStudentRequestAsync(studentRequest);
-
+            return await _trainingRepository.GetAllTrainingRequestsAsync(name);
         }
     }
 }

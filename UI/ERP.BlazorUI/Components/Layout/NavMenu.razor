@@ -33,7 +33,13 @@
             <MudNavLink Href="/graduatelist" Icon="@Icons.Material.Filled.Engineering" IconColor="Color.Inherit">Graduates</MudNavLink>
             <MudNavLink Href="/LabEquipmentList" Icon="@Icons.Material.Filled.Inventory" IconColor="Color.Inherit">Inventory</MudNavLink>
             <MudNavLink Href="/addLabEquipment" Icon="@Icons.Material.Filled.Science" IconColor="Color.Inherit">Laboratories</MudNavLink>
-            <MudNavLink Href="/Students_Requests" Icon="@Icons.Material.Filled.Science" IconColor="Color.Inherit">EEC_Coordinator</MudNavLink>
+            <MudNavGroup Title="EEC_Coordinator" Icon="@Icons.Material.Filled.PersonPin" Expanded="false">
+                <MudNavLink Href="/Students_Requests" Icon="@Icons.Material.Filled.Mail" IconColor="Color.Inherit">Requests</MudNavLink>
+                <MudNavLink Href="/Internships" Icon="@Icons.Material.Filled.Business" IconColor="Color.Inherit">Internships</MudNavLink>
+                <MudNavLink Href="/SpecificRequest" Icon="@Icons.Material.Filled.Man" IconColor="Color.Inherit">UserProfile</MudNavLink>
+            
+            </MudNavGroup>
+            
         </MudNavGroup>
 
         <MudNavGroup Title="Site Admin" Icon="@Icons.Material.Filled.Settings" Expanded="false">

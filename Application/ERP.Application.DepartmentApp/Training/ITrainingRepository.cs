@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ERP.Application.DepartmentApp.Training
 {
-    public interface TrainingRepository
+    public interface ITrainingRepository
     {
        Task SendStudentRequestAsync (StudentRequest studentRequest);
         Task AddJobPostAsync(JobPost jobPost);
@@ -21,6 +21,8 @@ namespace ERP.Application.DepartmentApp.Training
         Task<IEnumerable<JobPost>> GetAllJobPostAsync();
 
         Task<IEnumerable<JobPost>> GetobListOfSpecificCategoryAsync(string category);
+
+        Task<IEnumerable<StudentRequest>> GetAllTrainingRequestsAsync(string name);
 
     }
 }

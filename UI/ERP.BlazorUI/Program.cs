@@ -70,7 +70,7 @@ builder.Services.AddMudServices();
 builder.Services.AddScoped<IStudentRepository, StudentRepositoryPgSql>();
 builder.Services.AddScoped<ILabRepository,LabRepositoryPgSql>();
 builder.Services.AddScoped<IGraduateRepository, GraduateRepositoryPgSql>();
-builder.Services.AddScoped<TrainingRepository, TraininiRepositoryPgSQL>();
+builder.Services.AddScoped<ITrainingRepository, TraininiRepositoryPgSQL>();
 builder.Services.AddScoped<IGetLabEquipmentListUseCase, GetLabEquipmentlistUseCase>();
 builder.Services.AddScoped<IViewStudentsByNameUseCase, ViewStudentsByNameUseCase>();
 builder.Services.AddScoped<IAddStudentUseCase, AddStudentUseCase>();
@@ -83,7 +83,8 @@ builder.Services.AddScoped<IGetGraduateListUseCase, GetGraduateListUseCase>();
 builder.Services.AddScoped<IEditGraduateUseCase, EditGraduateUseCase>();
 builder.Services.AddScoped<IDeleteGraduateUseCase, DeleteGraduateUseCase>();
 builder.Services.AddScoped<IGetGraduateListByCompanyUseCase, GetGraduateListByCompanyUseCase>();
-builder.Services.AddScoped<IGetAllCompanyNamesUseCase, GetAllCompanyNamesUseCase>();    
+builder.Services.AddScoped<IGetAllCompanyNamesUseCase, GetAllCompanyNamesUseCase>();   
+builder.Services.AddScoped<IGetTrainingRequests,GetTrainingRequests>();
 
 var app = builder.Build();
 
