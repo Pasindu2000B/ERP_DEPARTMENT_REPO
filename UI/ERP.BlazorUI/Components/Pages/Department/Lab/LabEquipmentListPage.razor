@@ -1,0 +1,33 @@
+﻿@page "/labEquipmentList"
+@using ERP.RazorComponents.Department.Lab
+
+
+<MudTabs Elevation="2" Rounded="true" ApplyEffectsToContainer="true" PanelClass="pa-6">
+    <MudTabPanel @ref="tab2" Text="Lab Equipment List">
+        <LabEquipmentList/>
+    </MudTabPanel>
+    <MudTabPanel Text="Add Lab Equipment">
+        <AddLabEquipment/>
+    </MudTabPanel>
+    <MudTabPanel Text="Generate Reports">
+        <CompanyList/>
+    </MudTabPanel>
+    
+
+</MudTabs>
+
+
+@code {
+
+    bool _editItem = false;
+
+    MudTabPanel tab2;
+    void EditToggle()
+    {
+
+
+    }
+
+}
+
+

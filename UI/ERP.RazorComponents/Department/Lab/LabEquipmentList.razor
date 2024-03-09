@@ -1,17 +1,22 @@
-﻿@* @page "/LabEquipmentList"
-@    using ERP.Domain.Core.Entity.DepartmentEntity.LabEntity
-@    using ERP.Application.DepartmentApp.Labs.Interfaces;
-@    using ERP.Application.DepartmentApp.Labs.UseCases;
-    using ERP.Application.DepartmentApp.Labs.Interfaces.Inventory_Lab;
-    using ERP.Domain.Core.Entity.DepartmentEntity.LabEntity;
+﻿
+@using ERP.Application.DepartmentApp.Labs.UseCases.Inventor_Lab
+@using ERP.Domain.Core.Entity.DepartmentEntity.LabEntity
+@using ERP.Application.DepartmentApp.Labs.Interfaces;
+@using ERP.Application.DepartmentApp.Labs.UseCases;
+@using ERP.Application.DepartmentApp.Labs.Interfaces.Inventory_Lab;
 
 @inject NavigationManager NavigationManager
-@inject IGetLabEquipmentListUseCase GetLabEquipmentlist;
+@inject IGetLabEquipmentListUseCase GetLabEquipmentlist
 @inject IDialogService DialogService
-<h3>LabEquipmentList</h3>
 
+@if (_labEquipments == null || _labEquipments.Count == 0)
+{
+    <p>No graduates to show.</p>
+}
+else
+{   
 
-<MudTable Items="@_labEquipments">
+    <MudTable Items="@_labEquipments">
     <HeaderContent>
         <MudTh>Id</MudTh>
         <MudTh>Name</MudTh>
@@ -28,29 +33,19 @@
             <MudTablePager />
         </PagerContent>
     </MudTable>
-
-    <MudCardActions>
-        <MudButton Variant="Variant.Filled"
-                   Color="Color.Primary"
-                   Class="ml-auto"
-                   OnClick="@(async () => await NavigateToNewPage())">Add</MudButton>
-    </MudCardActions>
-
-
-    @code {
-
-    private List<LabEquipment> _labEquipments = new List<LabEquipment>();
-
     
+}
 
+@code {
+
+    private List<string> LabEquipmentName { get; set; } = new List<string>();
+    private List<LabEquipment> _labEquipments = new List<LabEquipment>();
 
     protected override async Task OnInitializedAsync()
     {
         try
         {
             var labEquipmentList = await GetLabEquipmentlist.ExecuteAsync("");
-
-            
             if (labEquipmentList != null)
             {
                 _labEquipments = labEquipmentList.ToList();
@@ -58,22 +53,19 @@
         }
         catch (Exception ex)
         {
-           
+
             Console.WriteLine($"Error: {ex.Message}");
         }
     }
-    private async Task NavigateToNewPage()
-    {
-        // Perform navigation to the new page (replace "/new-page" with your actual page route)
-        NavigationManager.NavigateTo("/addLabEquipment");
-    }
+  
 
-    
+
 
 
             
-}
+
 }
 
 
- *@
+
+ 
