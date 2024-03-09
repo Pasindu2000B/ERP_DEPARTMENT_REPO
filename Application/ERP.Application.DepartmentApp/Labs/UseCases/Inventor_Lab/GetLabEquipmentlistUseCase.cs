@@ -19,8 +19,7 @@ namespace ERP.Application.DepartmentApp.Labs.UseCases.Inventor_Lab
             _labRepository = labRepository;
         }
 
-        public async Task<IEnumerable<LabEquipment>>
-            ExecuteAsync(string name = "")
+        public async Task<IEnumerable<LabEquipment>>ExecuteAsync(string name = "")
         {
             return await _labRepository.GetAllLabEquipmentAsync(name);
         }

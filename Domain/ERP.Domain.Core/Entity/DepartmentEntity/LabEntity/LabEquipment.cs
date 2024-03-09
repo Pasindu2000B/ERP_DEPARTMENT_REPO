@@ -14,8 +14,6 @@ namespace ERP.Domain.Core.Entity.DepartmentEntity.LabEntity
         [Key]
         public int LabEquipmentID { get; set; }
 
-        
-       
         public string LabEquipmentName { get; set; }
 
         public string condition { get; set; }

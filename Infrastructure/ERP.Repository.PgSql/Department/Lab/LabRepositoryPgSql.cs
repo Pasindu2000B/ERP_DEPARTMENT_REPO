@@ -58,9 +58,10 @@ namespace ERP.Repository.PgSql.Department.Lab
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<LabEquipment>> GetAllLabEquipmentAsync(string name)
+        public async Task<IEnumerable<LabEquipment>> GetAllLabEquipmentAsync(string name)
         {
-            throw new NotImplementedException();
+            using var _context = _factory.CreateDbContext();
+            return await _context.LabEquipments.ToListAsync();
         }
 
         public Task<LabEquipment> GetLabEquipmentById(int id)
