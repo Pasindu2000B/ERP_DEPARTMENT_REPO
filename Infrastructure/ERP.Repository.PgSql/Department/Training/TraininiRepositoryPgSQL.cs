@@ -65,7 +65,7 @@ namespace ERP.Repository.PgSql.Department.Training
             _context.Remove(job);
             _context.SaveChanges();
             return Task.CompletedTask;
-             
+
 
         }
 

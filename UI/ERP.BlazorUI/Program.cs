@@ -23,6 +23,10 @@ using ERP.Application.DepartmentApp.Training;
 using ERP.Repository.PgSql.Department.Training;
 using MudBlazor;
 using NuGet.Protocol.Core.Types;
+using ERP.Application.DepartmentApp.Recruiments.Interfaces;
+using ERP.Application.DepartmentApp.Recruiments.UseCases;
+using ERP.Application.DepartmentApp.Recruiments;
+using ERP.Repository.PgSql.Department.Recruiment;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -70,7 +74,14 @@ builder.Services.AddMudServices();
 builder.Services.AddScoped<IStudentRepository, StudentRepositoryPgSql>();
 builder.Services.AddScoped<ILabRepository,LabRepositoryPgSql>();
 builder.Services.AddScoped<IGraduateRepository, GraduateRepositoryPgSql>();
+
+builder.Services.AddScoped<TrainingRepository, TraininiRepositoryPgSQL>();
+
 builder.Services.AddScoped<ITrainingRepository, TraininiRepositoryPgSQL>();
+builder.Services.AddScoped<IRecrumentRepository,RecruimentRepositoryPgSQL>();
+
+builder.Services.AddScoped<ITrainingRepository, TraininiRepositoryPgSQL>();
+
 builder.Services.AddScoped<IGetLabEquipmentListUseCase, GetLabEquipmentlistUseCase>();
 builder.Services.AddScoped<IViewStudentsByNameUseCase, ViewStudentsByNameUseCase>();
 builder.Services.AddScoped<IAddStudentUseCase, AddStudentUseCase>();
@@ -82,9 +93,16 @@ builder.Services.AddScoped<IStudentRequestCreateUseCase,StudentRequestUseCase>()
 builder.Services.AddScoped<IGetGraduateListUseCase, GetGraduateListUseCase>();
 builder.Services.AddScoped<IEditGraduateUseCase, EditGraduateUseCase>();
 builder.Services.AddScoped<IDeleteGraduateUseCase, DeleteGraduateUseCase>();
+
 builder.Services.AddScoped<IGetGraduateListByCompanyUseCase, GetGraduateListByCompanyUseCase>();
 builder.Services.AddScoped<IGetAllCompanyNamesUseCase, GetAllCompanyNamesUseCase>();   
 builder.Services.AddScoped<IGetTrainingRequests,GetTrainingRequests>();
+builder.Services.AddScoped<IRecruimentCrudUseCase,CRUDRecrumentUseCase>();
+
+builder.Services.AddScoped<IGetGraduateListByCompanyUseCase, GetGraduateListByCompanyUseCase>();
+builder.Services.AddScoped<IGetAllCompanyNamesUseCase, GetAllCompanyNamesUseCase>();   
+builder.Services.AddScoped<IGetTrainingRequests,GetTrainingRequests>();
+
 
 var app = builder.Build();
 
