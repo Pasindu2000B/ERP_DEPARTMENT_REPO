@@ -3,6 +3,7 @@ using System;
 using ERP.Repository.PgSql;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ERP.Repository.PgSql.Migrations
 {
     [DbContext(typeof(PgSqlDbContext))]
-    partial class PgSqlDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240310082834_TrainingConfigurations")]
+    partial class TrainingConfigurations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,47 +57,26 @@ namespace ERP.Repository.PgSql.Migrations
                         new
                         {
                             GraduateID = 1001,
-<<<<<<< Updated upstream
-                            GraduateCompany = "0643 Gleichner Light, Cynthialand, Singapore",
-                            GraduateContactNo = "1-495-221-0874 x03075",
-                            GraduateDescription = "Customer",
-                            GraduateName = "Georgiana"
-=======
                             GraduateCompany = "4344 Louie Village, New Destiney, Iran",
                             GraduateContactNo = "753-953-5383",
                             GraduateDescription = "Chief",
                             GraduateName = "Verla"
->>>>>>> Stashed changes
                         },
                         new
                         {
                             GraduateID = 1002,
-<<<<<<< Updated upstream
-                            GraduateCompany = "307 Ryder Terrace, Towneland, Tuvalu",
-                            GraduateContactNo = "(270) 442-7806",
-                            GraduateDescription = "Dynamic",
-                            GraduateName = "Shanelle"
-=======
                             GraduateCompany = "317 Colton Lake, Lake Isom, Zimbabwe",
                             GraduateContactNo = "722-519-0542",
                             GraduateDescription = "Legacy",
                             GraduateName = "Timmy"
->>>>>>> Stashed changes
                         },
                         new
                         {
                             GraduateID = 1003,
-<<<<<<< Updated upstream
-                            GraduateCompany = "000 Kihn Orchard, East Othaport, Anguilla",
-                            GraduateContactNo = "544.352.0044",
-                            GraduateDescription = "Corporate",
-                            GraduateName = "Imani"
-=======
                             GraduateCompany = "2513 Marilie Wells, West Brandt, Philippines",
                             GraduateContactNo = "1-617-276-6267 x31854",
                             GraduateDescription = "Direct",
                             GraduateName = "German"
->>>>>>> Stashed changes
                         });
                 });
 
@@ -129,11 +111,7 @@ namespace ERP.Repository.PgSql.Migrations
                         {
                             LabEquipmentID = 3001,
                             Avaialability = false,
-<<<<<<< Updated upstream
-                            LabEquipmentName = "Nikolas",
-=======
                             LabEquipmentName = "Bernice",
->>>>>>> Stashed changes
                             LabSpaceId = 0,
                             condition = "medium"
                         },
@@ -141,11 +119,7 @@ namespace ERP.Repository.PgSql.Migrations
                         {
                             LabEquipmentID = 3002,
                             Avaialability = false,
-<<<<<<< Updated upstream
-                            LabEquipmentName = "Else",
-=======
                             LabEquipmentName = "Joannie",
->>>>>>> Stashed changes
                             LabSpaceId = 0,
                             condition = "medium"
                         },
@@ -153,11 +127,7 @@ namespace ERP.Repository.PgSql.Migrations
                         {
                             LabEquipmentID = 3003,
                             Avaialability = false,
-<<<<<<< Updated upstream
-                            LabEquipmentName = "Curt",
-=======
                             LabEquipmentName = "Hudson",
->>>>>>> Stashed changes
                             LabSpaceId = 0,
                             condition = "bad"
                         });
@@ -350,6 +320,12 @@ namespace ERP.Repository.PgSql.Migrations
 
                     b.Property<string>("CompanySendersName")
                         .HasColumnType("text");
+
+                    b.Property<bool>("IsResponsed")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime>("RequestedDate")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("StudentId")
                         .HasColumnType("integer");
@@ -803,16 +779,6 @@ namespace ERP.Repository.PgSql.Migrations
                             City = "",
                             District = "",
                             DoB = new DateOnly(1, 1, 1),
-<<<<<<< Updated upstream
-                            Email = "Amy.Cole8@hotmail.com",
-                            FirstName = "Amy",
-                            GPA = 0.0,
-                            LastName = "Cole",
-                            NationalID = "",
-                            Phone = "",
-                            PhoneNumber = "",
-                            RegistrationNum = "EG/2020/7328"
-=======
                             Email = "Jordy72@gmail.com",
                             FirstName = "Jordy",
                             GPA = 0.0,
@@ -821,7 +787,6 @@ namespace ERP.Repository.PgSql.Migrations
                             Phone = "",
                             PhoneNumber = "",
                             RegistrationNum = "EG/2023/1990"
->>>>>>> Stashed changes
                         },
                         new
                         {
@@ -831,16 +796,6 @@ namespace ERP.Repository.PgSql.Migrations
                             City = "",
                             District = "",
                             DoB = new DateOnly(1, 1, 1),
-<<<<<<< Updated upstream
-                            Email = "Preston_Gaylord@yahoo.com",
-                            FirstName = "Preston",
-                            GPA = 0.0,
-                            LastName = "Gaylord",
-                            NationalID = "",
-                            Phone = "",
-                            PhoneNumber = "",
-                            RegistrationNum = "EG/2020/1508"
-=======
                             Email = "Idella.Runolfsson42@hotmail.com",
                             FirstName = "Idella",
                             GPA = 0.0,
@@ -849,7 +804,6 @@ namespace ERP.Repository.PgSql.Migrations
                             Phone = "",
                             PhoneNumber = "",
                             RegistrationNum = "EG/2020/7605"
->>>>>>> Stashed changes
                         },
                         new
                         {
@@ -859,16 +813,6 @@ namespace ERP.Repository.PgSql.Migrations
                             City = "",
                             District = "",
                             DoB = new DateOnly(1, 1, 1),
-<<<<<<< Updated upstream
-                            Email = "Julia_Robel@yahoo.com",
-                            FirstName = "Julia",
-                            GPA = 0.0,
-                            LastName = "Robel",
-                            NationalID = "",
-                            Phone = "",
-                            PhoneNumber = "",
-                            RegistrationNum = "EG/2021/3654"
-=======
                             Email = "Ivah.Schinner62@gmail.com",
                             FirstName = "Ivah",
                             GPA = 0.0,
@@ -877,7 +821,6 @@ namespace ERP.Repository.PgSql.Migrations
                             Phone = "",
                             PhoneNumber = "",
                             RegistrationNum = "EG/2022/6853"
->>>>>>> Stashed changes
                         });
                 });
 
@@ -995,13 +938,13 @@ namespace ERP.Repository.PgSql.Migrations
 
             modelBuilder.Entity("ERP.Domain.Core.Entity.DepartmentEntity.TrainingEntity.StudentRequest", b =>
                 {
-                    b.HasOne("ERP.Domain.Core.Entity.StudentEntity.Student", "student")
+                    b.HasOne("ERP.Domain.Core.Entity.StudentEntity.Student", "Student")
                         .WithMany("StudentRequests")
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("student");
+                    b.Navigation("Student");
                 });
 
             modelBuilder.Entity("ERP.Domain.Core.Entity.DepartmentEntity.WorkLoadEntity.WorkingTask", b =>
