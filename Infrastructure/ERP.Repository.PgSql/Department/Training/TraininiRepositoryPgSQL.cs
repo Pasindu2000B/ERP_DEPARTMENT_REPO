@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ERP.Repository.PgSql.Department.Training
 {
-    public class TraininiRepositoryPgSQL : TrainingRepository
+    public class TraininiRepositoryPgSQL : ITrainingRepository
     {
         private readonly IDbContextFactory<PgSqlDbContext> _factory;
 
@@ -77,5 +77,12 @@ namespace ERP.Repository.PgSql.Department.Training
             return Task.CompletedTask;
 
         }
+
+        public async Task<IEnumerable<StudentRequest>> GetAllTrainingRequestsAsync(string name)
+        {
+            using var _context = _factory.CreateDbContext();
+            return await _context.StudentRequests.ToListAsync();
+        }
+
     }
 }

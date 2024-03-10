@@ -1,0 +1,38 @@
+﻿@using ERP.Application.DepartmentApp.Training.Interfaces
+@using ERP.Application.StudentApp.Students.Interfaces
+@using ERP.Domain.Core.Entity.DepartmentEntity.TrainingEntity
+@using ERP.Domain.Core.Entity.StudentEntity
+@using MudBlazor
+@using System.Collections.Generic
+
+@inject IGetTrainingRequests GetTrainingRequests
+@inject IViewStudentById ViewStudentById
+
+
+<MudCard>
+    <MudCardContent>
+        @foreach (var student in _studentsNames)
+        {
+            <MudText Typo="Typo.h6">@student.ToString()</MudText>
+        }
+    </MudCardContent>
+    <MudCardActions>
+        <MudButton MudNavLink Href="/SpecificRequest" Variant="Variant.Text" Color="Color.Primary">View</MudButton>
+    </MudCardActions>
+</MudCard>
+
+
+@code {
+    private List<StudentRequest> _studentRequests = new List<StudentRequest>();
+    private List<string> _studentsNames = new List<string>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        _studentRequests = (await GetTrainingRequests.ExecuteAsync("")).ToList();
+        foreach (var student in _studentRequests)
+        {
+            _studentsNames.Add((await ViewStudentById.ExecuteAsync(student.StudentId)).FirstName);
+        }
+    }
+
+}

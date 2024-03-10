@@ -74,12 +74,14 @@ builder.Services.AddMudServices();
 builder.Services.AddScoped<IStudentRepository, StudentRepositoryPgSql>();
 builder.Services.AddScoped<ILabRepository,LabRepositoryPgSql>();
 builder.Services.AddScoped<IGraduateRepository, GraduateRepositoryPgSql>();
-<<<<<<< Updated upstream
+
 builder.Services.AddScoped<TrainingRepository, TraininiRepositoryPgSQL>();
-=======
+
 builder.Services.AddScoped<ITrainingRepository, TraininiRepositoryPgSQL>();
 builder.Services.AddScoped<IRecrumentRepository,RecruimentRepositoryPgSQL>();
->>>>>>> Stashed changes
+
+builder.Services.AddScoped<ITrainingRepository, TraininiRepositoryPgSQL>();
+
 builder.Services.AddScoped<IGetLabEquipmentListUseCase, GetLabEquipmentlistUseCase>();
 builder.Services.AddScoped<IViewStudentsByNameUseCase, ViewStudentsByNameUseCase>();
 builder.Services.AddScoped<IAddStudentUseCase, AddStudentUseCase>();
@@ -91,13 +93,16 @@ builder.Services.AddScoped<IStudentRequestCreateUseCase,StudentRequestUseCase>()
 builder.Services.AddScoped<IGetGraduateListUseCase, GetGraduateListUseCase>();
 builder.Services.AddScoped<IEditGraduateUseCase, EditGraduateUseCase>();
 builder.Services.AddScoped<IDeleteGraduateUseCase, DeleteGraduateUseCase>();
-<<<<<<< Updated upstream
-=======
+
 builder.Services.AddScoped<IGetGraduateListByCompanyUseCase, GetGraduateListByCompanyUseCase>();
 builder.Services.AddScoped<IGetAllCompanyNamesUseCase, GetAllCompanyNamesUseCase>();   
 builder.Services.AddScoped<IGetTrainingRequests,GetTrainingRequests>();
 builder.Services.AddScoped<IRecruimentCrudUseCase,CRUDRecrumentUseCase>();
->>>>>>> Stashed changes
+
+builder.Services.AddScoped<IGetGraduateListByCompanyUseCase, GetGraduateListByCompanyUseCase>();
+builder.Services.AddScoped<IGetAllCompanyNamesUseCase, GetAllCompanyNamesUseCase>();   
+builder.Services.AddScoped<IGetTrainingRequests,GetTrainingRequests>();
+
 
 var app = builder.Build();
 

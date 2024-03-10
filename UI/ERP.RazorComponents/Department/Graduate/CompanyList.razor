@@ -1,0 +1,63 @@
+﻿@using System.Collections.Generic
+@using System.Threading.Tasks
+@using ERP.Application.DepartmentApp.Graduates.Interfaces
+@using ERP.Domain.Core.Entity.DepartmentEntity.GraduatesEntity
+
+@inject IGetAllCompanyNamesUseCase GetAllCompanyNamesUseCase
+@inject IGetGraduateListByCompanyUseCase GetGraduateListByCompanyUseCase
+
+<MudSelect T="string" Label="Select a Company" AnchorOrigin="Origin.BottomCenter" @bind-Value="SelectedCompany" OnValueChanged="HandleCompanySelection">
+    
+    @foreach (var companyName in CompanyNames)
+    {
+        <MudSelectItem Value="@companyName">@companyName</MudSelectItem>
+    }
+</MudSelect>
+
+<MudCardActions>
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto" OnClick="@(async ()=>await LoadGraduatesAsync(SelectedCompany))">Search Graduates</MudButton>
+</MudCardActions>
+
+@if (_graduates == null || _graduates.Count == 0)
+{
+    <p>No graduates to show.</p>
+}
+else
+{
+    <MudTable Items="@_graduates">
+        <HeaderContent>
+            <MudTh>Name</MudTh>
+            <MudTh>Contact Number</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="Name">@context.GraduateName</MudTd>
+            <MudTd DataLabel="Contact Number">@context.GraduateContactNo</MudTd>
+        </RowTemplate>
+        <PagerContent>
+            <MudTablePager />
+        </PagerContent>
+    </MudTable>
+}
+
+@code {
+    private List<string> CompanyNames { get; set; } = new List<string>();
+    private string SelectedCompany { get; set; }
+    private List<Graduate> _graduates = new List<Graduate>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        CompanyNames = await GetAllCompanyNamesUseCase.ExecuteAsync();
+    }
+
+    private async Task HandleCompanySelection(string selectedValue)
+    {
+        SelectedCompany = selectedValue;
+        await LoadGraduatesAsync(selectedValue);
+        StateHasChanged(); 
+    }
+
+    private async Task LoadGraduatesAsync(string company)
+    {
+        _graduates = (await GetGraduateListByCompanyUseCase.ExecuteAsync(company)).ToList();
+    }
+}

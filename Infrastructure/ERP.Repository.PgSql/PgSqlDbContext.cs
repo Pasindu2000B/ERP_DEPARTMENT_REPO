@@ -75,7 +75,7 @@ namespace ERP.Repository.PgSql
                 .HasForeignKey(ms => ms.TeacherId);
 
             modelBuilder.Entity<StudentRequest>()
-                 .HasOne(ms => ms.student)
+                 .HasOne(ms => ms.Student)
                  .WithMany(ms => ms.StudentRequests)
                  .HasForeignKey(ms => ms.StudentId);
 
@@ -125,7 +125,7 @@ namespace ERP.Repository.PgSql
         public DbSet<LabEquipment> LabEquipments { get; set; }
 
        
-       public DbSet<LabSpace> LabSpaces { get; set; }
+        public DbSet<LabSpace> LabSpaces { get; set; }
         
         public DbSet<Student> Students { get; set; }
         public DbSet<Module> Modules { get; set; }

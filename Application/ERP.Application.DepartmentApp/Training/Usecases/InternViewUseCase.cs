@@ -10,9 +10,9 @@ namespace ERP.Application.DepartmentApp.Training.Usecases
 {
     public class InternViewUseCase : IInternPostViewUseCase
     {
-        private TrainingRepository _trainingRepository;
+        private ITrainingRepository _trainingRepository;
 
-        public InternViewUseCase(TrainingRepository trainingRepository)
+        public InternViewUseCase(ITrainingRepository trainingRepository)
         {
             _trainingRepository = trainingRepository;
            

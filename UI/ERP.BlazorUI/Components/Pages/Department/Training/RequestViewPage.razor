@@ -1,32 +1,30 @@
-﻿@layout EEC_Main
-@page "/Students_Requests"
+﻿@page "/Students_Requests"
 @using ERP.BlazorUI.Components.Layout
+@using ERP.RazorComponents.Department.Training
 
+<div class="page-container">
+    <h4 class="page-header">Students Training Requests</h4>
 
+    <div class="students-container">
+        <TrainingRequestList />
+    </div>
+</div>
 
+<style>
+    .page-container {
+        padding: 20px; 
+    }
 
+    .page-header {
+        padding: 10px; 
+        background-color: #f0f0f0; 
+        border-radius: 5px;
+    }
 
-
-<MudCard>
-
-    <MudCardContent>
-        <MudText Typo="Typo.h5">Kane Williomson</MudText>
-        <MudText Typo="Typo.body2">Batch 22</MudText>
-
-    </MudCardContent>
-    <MudCardActions>
-        <MudButton MudNavLink Href="/SpecificRequest" Variant="Variant.Text" Color="Color.Primary">View</MudButton>
-
-
-    </MudCardActions>
-</MudCard>
-
-<MudPagination Color="Color.Primary" Count="4" @bind-Selected="@_selected" />
-
-<MudText Align="Align.Center">Selected page: @_selected</MudText>
-
-    @code {
-    private int _selected = 1;
-}
-
-
+    .students-container {
+        padding: 20px; 
+        background-color: #ffffff; 
+        border-radius: 5px; 
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    }
+</style>

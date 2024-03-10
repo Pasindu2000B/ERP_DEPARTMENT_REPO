@@ -21,6 +21,8 @@ namespace ERP.Application.DepartmentApp.Graduates.DependancyInjections
             services.AddScoped<IGetGraduateListUseCase, GetGraduateListUseCase>();
             services.AddScoped<IEditGraduateUseCase, EditGraduateUseCase>();
             services.AddScoped<IDeleteGraduateUseCase, DeleteGraduateUseCase>();
+            services.AddScoped<IGetGraduateListByCompanyUseCase, GetGraduateListByCompanyUseCase>();
+            services.AddScoped<IGetAllCompanyNamesUseCase, GetAllCompanyNamesUseCase>();
             return services;
             
          

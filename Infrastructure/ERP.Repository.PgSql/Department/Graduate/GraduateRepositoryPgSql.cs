@@ -1,4 +1,5 @@
 ﻿using ERP.Application.DepartmentApp.Graduates.Repository;
+using ERP.Domain.Core.Entity.DepartmentEntity.GraduatesEntity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,19 @@ namespace ERP.Repository.PgSql.Department.Graduate
             using var _context = _factory.CreateDbContext();
             return await _context.Graduates.ToListAsync();
         }
+
+        public async Task<IEnumerable<Domain.Core.Entity.DepartmentEntity.GraduatesEntity.Graduate>> GetGraduateByCompanyAsync(string company)
+        {
+            using var _context = _factory.CreateDbContext();
+            return await _context.Graduates.Where(s => s.GraduateCompany == company).ToListAsync();
+        }
+
+        public async Task<List<string>>GetAllCompaniesAsync()
+        {
+            using var _context = _factory.CreateDbContext();
+            return await _context.Graduates.Select(s => s.GraduateCompany).Distinct().ToListAsync();
+        }
+
 
         public Task EditGraduateAsync(Domain.Core.Entity.DepartmentEntity.GraduatesEntity.Graduate graduate)
         {
