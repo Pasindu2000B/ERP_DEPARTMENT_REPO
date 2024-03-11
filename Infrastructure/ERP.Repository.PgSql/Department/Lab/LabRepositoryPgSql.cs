@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using ERP.Domain.Core.Entity;
 using ERP.Domain.Core.Entity.DepartmentEntity.LabEntity;
 using ERP.Repository.PgSql.Migrations;
+using ERP.Domain.Core.Entity.DepartmentEntity.LabEntity.Scedulling;
 
 namespace ERP.Repository.PgSql.Department.Lab
 {
@@ -68,6 +69,13 @@ namespace ERP.Repository.PgSql.Department.Lab
         {
             using var _context = _factory.CreateDbContext();
             return await _context.LabEquipments.ToListAsync();
+        }
+
+        public async Task<IEnumerable<Booking_Lab>> GetAppointmentsAsync()
+        {
+            using var _context = _factory.CreateDbContext();
+            return await _context.Booking_Labs.ToListAsync();
+
         }
 
         public Task<LabEquipment> GetLabEquipmentById(int id)

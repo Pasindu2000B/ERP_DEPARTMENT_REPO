@@ -1,5 +1,6 @@
 ﻿using ERP.Domain.Core.Entity;
 using ERP.Domain.Core.Entity.DepartmentEntity.LabEntity;
+using ERP.Domain.Core.Entity.DepartmentEntity.LabEntity.Scedulling;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,5 +23,6 @@ namespace ERP.Application.DepartmentApp.Labs.Repository
         Task<LabEquipment> GetLabEquipmentById(int id);
         Task AddLabEquipmentAsync(LabEquipment labEquipment);
         Task EditLabEquipmentAsync(LabEquipment labEquipment);
+        Task<IEnumerable<Booking_Lab>> GetAppointmentsAsync();
     }
 }

@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using ERP.Application.DepartmentApp.Labs.Repository;
 using ERP.Application.DepartmentApp.Labs.UseCases.Inventor_Lab;
 using ERP.Application.DepartmentApp.Labs.Interfaces.Inventory_Lab;
+using ERP.Application.DepartmentApp.Labs.Interfaces.Scheduling_Lab;
+using ERP.Application.DepartmentApp.Labs.UseCases.Scheduling_Lab;
 
 namespace ERP.Application.DepartmentApp.Labs.DependancyInjection
 {
@@ -23,6 +25,7 @@ namespace ERP.Application.DepartmentApp.Labs.DependancyInjection
             services.AddScoped<IDeleteLabEquipmentUseCase, DeleteLabEquipmentUseCase>();
             services.AddScoped<IEditLabEquimentUsecase, EditLabEquipmentUseCase>();
             services.AddScoped<IGetLabEquipmentByIdUseCase, GetLabEquipmentByIdUseCase>();
+            services.AddScoped<IGetScheduleLabUseCase, GetScheduledLab>();
 
 
 
