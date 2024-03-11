@@ -1,0 +1,60 @@
+﻿@using ERP.Application.DepartmentApp.Training.Interfaces
+@using ERP.Domain.Core.Entity.DepartmentEntity.TrainingEntity.InternShips
+
+
+@inject ISnackbar Snackbar
+@inject IInternPostUseCase InternPostUseCase
+@inject IDialogService DialogService
+
+<MudDialog>
+    <TitleContent>
+        <div class="d-flex align-items-center">
+            <MudIcon Icon="@Icons.Material.Filled.ModeEdit"
+                     Class="mr-3 mb-n1 " />
+            <MudText Typo="Typo.h6" Class="mb-0">Add Internships</MudText>
+        </div>
+    </TitleContent>
+    <DialogContent>
+        <div class="d-flex flex-column">
+            <MudTextField @bind-Value="jobPost.Category" Label="Specilization"  />
+            <MudTextField @bind-Value="jobPost.CompanyName" Label="Company Name" />
+            <MudTextField @bind-Value="jobPost.CompanyEmail" Label="Company Email" />
+            <MudTextField @bind-Value="jobPost.InternPosition" Label="Intern Position" />
+            <MudTextField @bind-Value="jobPost.JobDescriptionLink" Label="" />
+        </div>
+    </DialogContent>
+
+    <DialogActions>
+        <div class="d-flex justify-content-end">
+            <MudButton OnClick="Cancel" Variant="Variant.Filled">Cancel</MudButton>
+            <div class="mr-2"></div>
+            <MudButton Color="Color.Primary" OnClick="SaveIntern" Variant="Variant.Filled">Save</MudButton>
+        </div>
+    </DialogActions>
+</MudDialog>
+
+
+
+
+@code {
+    [CascadingParameter]
+    MudDialogInstance MudDialog { get; set; }
+
+    public EventCallback onAdded { get; set; }
+
+    private JobPost jobPost = new JobPost();
+
+    private void Cancel()
+    {
+        MudDialog.Cancel();
+    }
+
+    private async void SaveIntern()
+    {
+        await InternPostUseCase.AddExecuteAsync(jobPost);
+        await onAdded.InvokeAsync();
+        Snackbar.Add("Graduate Added Successfully", MudBlazor.Severity.Success);
+        MudDialog.Close(DialogResult.Ok(jobPost.Id));
+    }
+
+}
