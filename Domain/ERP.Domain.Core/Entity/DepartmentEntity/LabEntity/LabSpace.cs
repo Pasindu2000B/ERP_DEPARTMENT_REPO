@@ -12,8 +12,9 @@ namespace ERP.Domain.Core.Entity.DepartmentEntity.LabEntity
         [Key]
         public int LabSpaceId { get; set; }
         public string LabSpaceName { get; set; }
-        
 
+        public ICollection<LabEquipment> labEquipments { get; set; }
+       
 
     }
 }

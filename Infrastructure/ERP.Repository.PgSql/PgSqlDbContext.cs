@@ -26,7 +26,9 @@ namespace ERP.Repository.PgSql
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new StudentConfigurations());
+            modelBuilder.ApplyConfiguration(new LabSpaceConfiguration());
             modelBuilder.ApplyConfiguration(new LabEquipmentConfiguration());
+            
             modelBuilder.ApplyConfiguration(new GraduateConfiguration());
             modelBuilder.ApplyConfiguration(new Configurations.DepartmentPortalConfigurations.TrainingConfigurations.TrainingConfigurations());
 
@@ -114,7 +116,10 @@ namespace ERP.Repository.PgSql
                 .WithMany(mt => mt.recruimentApplications)
                 .HasForeignKey(ms => ms.RecruimentJobPostId);
 
-
+            modelBuilder.Entity<LabEquipment>()
+                .HasOne(mt => mt.LabSpace)
+                .WithMany(mt => mt.labEquipments)
+                .HasForeignKey(mt => mt.LabSpaceId);
 
 
 

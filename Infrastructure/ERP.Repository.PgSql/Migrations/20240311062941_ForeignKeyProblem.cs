@@ -1,583 +1,591 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
+
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
 namespace ERP.Repository.PgSql.Migrations
 {
     /// <inheritdoc />
-    public partial class fileUpoad : Migration
+    public partial class ForeignKeyProblem : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "Files",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    FileName = table.Column<string>(type: "text", nullable: false),
-                    Data = table.Column<byte[]>(type: "bytea", nullable: false),
-                    ContentType = table.Column<string>(type: "text", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Files", x => x.Id);
-                });
-
             migrationBuilder.UpdateData(
                 table: "Graduates",
                 keyColumn: "GraduateID",
                 keyValue: 1001,
                 columns: new[] { "GraduateCompany", "GraduateContactNo", "GraduateDescription", "GraduateName" },
-                values: new object[] { "6815 Abernathy Walk, New Bertram, Madagascar", "854-487-6220", "Regional", "Boris" });
+                values: new object[] { "737 Schinner Islands, Angelport, Thailand", "301-365-7145 x974", "Direct", "Dustin" });
 
             migrationBuilder.UpdateData(
                 table: "Graduates",
                 keyColumn: "GraduateID",
                 keyValue: 1002,
                 columns: new[] { "GraduateCompany", "GraduateContactNo", "GraduateDescription", "GraduateName" },
-                values: new object[] { "894 Lera Park, Blazechester, Iran", "299-575-7856 x131", "Central", "Nikolas" });
+                values: new object[] { "10893 Osborne Fort, Tremblaymouth, Lao People's Democratic Republic", "(475) 210-2510", "Principal", "Pearl" });
 
             migrationBuilder.UpdateData(
                 table: "Graduates",
                 keyColumn: "GraduateID",
                 keyValue: 1003,
-                columns: new[] { "GraduateCompany", "GraduateContactNo", "GraduateDescription", "GraduateName" },
-                values: new object[] { "47275 Hipolito Path, Smithammouth, Congo", "(951) 206-5833", "National", "Lisa" });
+                columns: new[] { "GraduateCompany", "GraduateContactNo", "GraduateName" },
+                values: new object[] { "81390 Kailey Ports, Port Joshuahmouth, Tunisia", "1-229-693-9221", "Buster" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 101,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "HowellOkunevaandKihn_Kertzmann@gmail.com", "Howell, Okuneva and Kihn", "cyber security engineer", "http://efrain.biz" });
+                values: new object[] { "FritschandSons.Kilback@yahoo.com", "Fritsch and Sons", "software engineer", "http://eldridge.name" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 102,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "CruickshankSchummandMcGlynn.Blick@hotmail.com", "Cruickshank, Schumm and McGlynn", "software engineer", "http://deja.name" });
+                values: new object[] { "LabadieWeissnatandPadberg71@yahoo.com", "Labadie, Weissnat and Padberg", "quality assurance Enginner", "https://brendan.org" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 103,
-                columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "UllrichLLC_Reilly@gmail.com", "Ullrich LLC", "computer networks engineer", "http://nat.org" });
+                columns: new[] { "CompanyEmail", "CompanyName", "JobDescriptionLink" },
+                values: new object[] { "AnkundingWardandBuckridge.Cummerata@yahoo.com", "Ankunding, Ward and Buckridge", "https://ole.name" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 104,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "VandervortandSons_Kirlin@yahoo.com", "Vandervort and Sons", "data engineer", "http://german.biz" });
+                values: new object[] { "SmithamVeumandHoeger90@yahoo.com", "Smitham, Veum and Hoeger", "computer networks engineer", "http://virgie.info" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 105,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "DAmoreandSons_Reichel72@gmail.com", "D'Amore and Sons", "quality assurance Enginner", "https://jennyfer.net" });
+                values: new object[] { "ConnellyParkerandFay.Thompson22@gmail.com", "Connelly, Parker and Fay", "software engineer", "https://erling.biz" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 106,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "Block-Stracke.Goodwin@hotmail.com", "Block - Stracke", "computer networks engineer", "http://elfrieda.org" });
+                values: new object[] { "LynchGroup_Kiehn37@yahoo.com", "Lynch Group", "cyber security engineer", "https://tony.biz" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 107,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "ChamplinGroup68@hotmail.com", "Champlin Group", "cyber security engineer", "http://annabel.info" });
+                values: new object[] { "LangGroup_Altenwerth@yahoo.com", "Lang Group", "cyber security engineer", "http://khalid.name" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 108,
-                columns: new[] { "CompanyEmail", "CompanyName", "JobDescriptionLink" },
-                values: new object[] { "BruenGleasonandUpton75@yahoo.com", "Bruen, Gleason and Upton", "http://gretchen.name" });
+                columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
+                values: new object[] { "Howe-Rempel95@gmail.com", "Howe - Rempel", "quality assurance Enginner", "https://nicklaus.com" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 109,
-                columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "Willms-Lesch14@gmail.com", "Willms - Lesch", "quality assurance Enginner", "http://stan.net" });
+                columns: new[] { "CompanyEmail", "CompanyName", "JobDescriptionLink" },
+                values: new object[] { "Herzog-Keeling.Collins@yahoo.com", "Herzog - Keeling", "https://victor.info" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 110,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "JerdeInc.Zieme23@gmail.com", "Jerde Inc", "quality assurance Enginner", "https://jakob.name" });
+                values: new object[] { "SpencerGreenholtandTurcotte14@yahoo.com", "Spencer, Greenholt and Turcotte", "computer networks engineer", "http://pearlie.org" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 111,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "MacGyver-Maggio.Harvey44@yahoo.com", "MacGyver - Maggio", "cyber security engineer", "https://lavada.info" });
+                values: new object[] { "BlickHaleyandBeer_Upton3@gmail.com", "Blick, Haley and Beer", "software engineer", "http://jazmyne.info" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 112,
                 columns: new[] { "CompanyEmail", "CompanyName", "JobDescriptionLink" },
-                values: new object[] { "Gusikowski-Hickle_Torp68@yahoo.com", "Gusikowski - Hickle", "https://loyal.biz" });
+                values: new object[] { "Schamberger-Collins75@yahoo.com", "Schamberger - Collins", "https://akeem.org" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 113,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "RitchieSporerandSatterfield.Zieme@hotmail.com", "Ritchie, Sporer and Satterfield", "data engineer", "http://carmella.info" });
+                values: new object[] { "Bode-Prosacco_Rempel@gmail.com", "Bode - Prosacco", "data engineer", "https://freeman.org" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 114,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "MooreRatkeandJerde.Kirlin@gmail.com", "Moore, Ratke and Jerde", "cyber security engineer", "http://fletcher.net" });
+                values: new object[] { "Runte-Schultz94@yahoo.com", "Runte - Schultz", "computer networks engineer", "https://luis.net" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 115,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "ProhaskaBinsandPurdy_Lang@hotmail.com", "Prohaska, Bins and Purdy", "cyber security engineer", "http://armando.com" });
+                values: new object[] { "Kilback-Parker4@yahoo.com", "Kilback - Parker", "computer networks engineer", "https://brielle.info" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 116,
                 columns: new[] { "CompanyEmail", "CompanyName", "JobDescriptionLink" },
-                values: new object[] { "Effertz-Konopelski.Borer85@yahoo.com", "Effertz - Konopelski", "http://bobbie.info" });
+                values: new object[] { "HettingerCollinsandProsacco_Sauer8@gmail.com", "Hettinger, Collins and Prosacco", "http://verlie.name" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 117,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "KrisMoenandReichert91@hotmail.com", "Kris, Moen and Reichert", "cyber security engineer", "https://emily.com" });
+                values: new object[] { "Hammes-Cummings78@yahoo.com", "Hammes - Cummings", "data engineer", "https://noemie.name" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 118,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "Dickens-Konopelski91@gmail.com", "Dickens - Konopelski", "cyber security engineer", "https://magnolia.info" });
+                values: new object[] { "BoyleKautzerandDoyle_Lind@hotmail.com", "Boyle, Kautzer and Doyle", "data engineer", "https://malcolm.name" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 119,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "DeckowInc.Schaefer@gmail.com", "Deckow Inc", "software engineer", "http://jarred.net" });
+                values: new object[] { "BergstromDeckowandJaskolski94@gmail.com", "Bergstrom, Deckow and Jaskolski", "data engineer", "https://sibyl.biz" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 120,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "Borer-Lemke51@yahoo.com", "Borer - Lemke", "data engineer", "http://brenna.org" });
+                values: new object[] { "ProhaskaSchusterandOrn_Tillman@hotmail.com", "Prohaska, Schuster and Orn", "quality assurance Enginner", "https://tremaine.net" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 121,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "Rippin-Hodkiewicz_Pacocha40@yahoo.com", "Rippin - Hodkiewicz", "computer networks engineer", "https://katlyn.com" });
+                values: new object[] { "Bernhard-Wunsch.Nolan@hotmail.com", "Bernhard - Wunsch", "software engineer", "https://camryn.name" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 122,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "AndersonandSons_McLaughlin15@hotmail.com", "Anderson and Sons", "computer networks engineer", "http://miles.net" });
+                values: new object[] { "HoppeSchmidtandMurphy_Osinski@yahoo.com", "Hoppe, Schmidt and Murphy", "computer networks engineer", "http://jamie.info" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 123,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "Becker-Cruickshank92@hotmail.com", "Becker - Cruickshank", "cyber security engineer", "http://drew.com" });
+                values: new object[] { "Denesik-Kling11@yahoo.com", "Denesik - Kling", "software engineer", "http://mitchell.net" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 124,
-                columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "Schimmel-Von.Breitenberg@yahoo.com", "Schimmel - Von", "quality assurance Enginner", "https://morris.net" });
+                columns: new[] { "CompanyEmail", "CompanyName", "JobDescriptionLink" },
+                values: new object[] { "AbernathyGroup.Baumbach@gmail.com", "Abernathy Group", "http://estel.net" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 125,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "SimonisGroup.Mertz45@gmail.com", "Simonis Group", "quality assurance Enginner", "https://emmalee.info" });
+                values: new object[] { "BartolettiInc.Champlin@gmail.com", "Bartoletti Inc", "software engineer", "http://jadon.org" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 126,
-                columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "Bechtelar-Romaguera_Friesen@yahoo.com", "Bechtelar - Romaguera", "cyber security engineer", "http://royce.name" });
+                columns: new[] { "CompanyEmail", "CompanyName", "JobDescriptionLink" },
+                values: new object[] { "BraunKautzerandMaggio_Gerhold@hotmail.com", "Braun, Kautzer and Maggio", "http://rylee.biz" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 127,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "Prohaska-Douglas.Welch@yahoo.com", "Prohaska - Douglas", "computer networks engineer", "https://jordane.info" });
+                values: new object[] { "RempelRippinandRosenbaum.Kuhic@yahoo.com", "Rempel, Rippin and Rosenbaum", "cyber security engineer", "http://torrance.net" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 128,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "WindlerBinsandStracke.Dickens55@hotmail.com", "Windler, Bins and Stracke", "software engineer", "https://jarvis.info" });
+                values: new object[] { "Bednar-Trantow_Quitzon@gmail.com", "Bednar - Trantow", "computer networks engineer", "http://janessa.com" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 129,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "Abernathy-Reynolds.Feil44@gmail.com", "Abernathy - Reynolds", "data engineer", "http://hobart.net" });
+                values: new object[] { "RauLLC.Swaniawski@yahoo.com", "Rau LLC", "software engineer", "https://bryce.net" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 130,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "WeberandSons8@hotmail.com", "Weber and Sons", "software engineer", "http://maximillian.org" });
+                values: new object[] { "WolffInc28@gmail.com", "Wolff Inc", "cyber security engineer", "https://verner.info" });
+
+            migrationBuilder.InsertData(
+                table: "LabEquipments",
+                columns: new[] { "LabEquipmentID", "Avaialability", "LabEquipmentName", "LabSpaceId", "condition" },
+                values: new object[,]
+                {
+                    { 3001, false, "Xander", 21, "bad" },
+                    { 3002, false, "Guido", 21, "medium" },
+                    { 3003, false, "Carole", 21, "medium" }
+                });
 
             migrationBuilder.UpdateData(
-                table: "LabEquipments",
-                keyColumn: "LabEquipmentID",
-                keyValue: 3001,
-                column: "LabEquipmentName",
-                value: "Rico");
+                table: "LabSpaces",
+                keyColumn: "LabSpaceId",
+                keyValue: 21,
+                column: "LabSpaceName",
+                value: "Douglas");
 
             migrationBuilder.UpdateData(
-                table: "LabEquipments",
-                keyColumn: "LabEquipmentID",
-                keyValue: 3002,
-                columns: new[] { "LabEquipmentName", "condition" },
-                values: new object[] { "Lester", "bad" });
+                table: "LabSpaces",
+                keyColumn: "LabSpaceId",
+                keyValue: 22,
+                column: "LabSpaceName",
+                value: "Gage");
 
             migrationBuilder.UpdateData(
-                table: "LabEquipments",
-                keyColumn: "LabEquipmentID",
-                keyValue: 3003,
-                columns: new[] { "LabEquipmentName", "condition" },
-                values: new object[] { "Chandler", "bad" });
+                table: "LabSpaces",
+                keyColumn: "LabSpaceId",
+                keyValue: 23,
+                column: "LabSpaceName",
+                value: "Rodolfo");
 
             migrationBuilder.UpdateData(
                 table: "Students",
                 keyColumn: "StudentId",
                 keyValue: 1001,
                 columns: new[] { "Email", "FirstName", "LastName", "RegistrationNum" },
-                values: new object[] { "Shea_Hoppe87@gmail.com", "Shea", "Hoppe", "EG/2020/6640" });
+                values: new object[] { "Isabella_Hammes@hotmail.com", "Isabella", "Hammes", "EG/2023/7779" });
 
             migrationBuilder.UpdateData(
                 table: "Students",
                 keyColumn: "StudentId",
                 keyValue: 1002,
                 columns: new[] { "Email", "FirstName", "LastName", "RegistrationNum" },
-                values: new object[] { "Jess_Mante65@gmail.com", "Jess", "Mante", "EG/2021/3296" });
+                values: new object[] { "Janiya98@gmail.com", "Janiya", "Auer", "EG/2021/4303" });
 
             migrationBuilder.UpdateData(
                 table: "Students",
                 keyColumn: "StudentId",
                 keyValue: 1003,
                 columns: new[] { "Email", "FirstName", "LastName", "RegistrationNum" },
-                values: new object[] { "Walter93@gmail.com", "Walter", "Ruecker", "EG/2021/2313" });
+                values: new object[] { "Keaton.Barton@gmail.com", "Keaton", "Barton", "EG/2021/5228" });
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Files");
+            migrationBuilder.DeleteData(
+                table: "LabEquipments",
+                keyColumn: "LabEquipmentID",
+                keyValue: 3001);
+
+            migrationBuilder.DeleteData(
+                table: "LabEquipments",
+                keyColumn: "LabEquipmentID",
+                keyValue: 3002);
+
+            migrationBuilder.DeleteData(
+                table: "LabEquipments",
+                keyColumn: "LabEquipmentID",
+                keyValue: 3003);
 
             migrationBuilder.UpdateData(
                 table: "Graduates",
                 keyColumn: "GraduateID",
                 keyValue: 1001,
                 columns: new[] { "GraduateCompany", "GraduateContactNo", "GraduateDescription", "GraduateName" },
-                values: new object[] { "5993 Hills Burg, East Josianefort, Argentina", "450-228-5802", "Internal", "Reymundo" });
+                values: new object[] { "966 Rosenbaum Via, West Waldo, Western Sahara", "831-733-6815", "Dynamic", "Herman" });
 
             migrationBuilder.UpdateData(
                 table: "Graduates",
                 keyColumn: "GraduateID",
                 keyValue: 1002,
                 columns: new[] { "GraduateCompany", "GraduateContactNo", "GraduateDescription", "GraduateName" },
-                values: new object[] { "971 Grady Springs, Veumfort, Grenada", "272-897-9194 x479", "Dynamic", "Baby" });
+                values: new object[] { "98030 Purdy Track, Karleechester, Bhutan", "436-960-9239 x618", "Forward", "Javon" });
 
             migrationBuilder.UpdateData(
                 table: "Graduates",
                 keyColumn: "GraduateID",
                 keyValue: 1003,
-                columns: new[] { "GraduateCompany", "GraduateContactNo", "GraduateDescription", "GraduateName" },
-                values: new object[] { "442 Arno Way, Coltonstad, Guyana", "(966) 220-2767", "Product", "Zula" });
+                columns: new[] { "GraduateCompany", "GraduateContactNo", "GraduateName" },
+                values: new object[] { "277 Dickens Hollow, Port Dejahview, Tajikistan", "(919) 441-8306 x2652", "Magdalena" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 101,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "Herman-Shields_Reichert80@hotmail.com", "Herman - Shields", "computer networks engineer", "https://deborah.net" });
+                values: new object[] { "Sanford-Sporer.Berge62@yahoo.com", "Sanford - Sporer", "quality assurance Enginner", "https://gussie.biz" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 102,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "CummingsWehnerandPfeffer.Parisian27@gmail.com", "Cummings, Wehner and Pfeffer", "computer networks engineer", "http://anne.net" });
+                values: new object[] { "Hansen-Gibson57@hotmail.com", "Hansen - Gibson", "data engineer", "https://shannon.info" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 103,
-                columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "GoldnerRogahnandWaters_Feil32@gmail.com", "Goldner, Rogahn and Waters", "quality assurance Enginner", "https://elias.net" });
+                columns: new[] { "CompanyEmail", "CompanyName", "JobDescriptionLink" },
+                values: new object[] { "RennerInc43@hotmail.com", "Renner Inc", "http://drake.org" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 104,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "Rogahn-Huels.Pollich18@hotmail.com", "Rogahn - Huels", "software engineer", "http://baby.net" });
+                values: new object[] { "BlockWaelchiandLangworth31@yahoo.com", "Block, Waelchi and Langworth", "data engineer", "http://isabel.org" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 105,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "McCulloughUllrichandFunk_Moen@hotmail.com", "McCullough, Ullrich and Funk", "data engineer", "http://robin.info" });
+                values: new object[] { "JohnstonBlockandPadberg_Beatty70@hotmail.com", "Johnston, Block and Padberg", "computer networks engineer", "http://gregory.net" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 106,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "RitchieBeckerandWehner_Bins@gmail.com", "Ritchie, Becker and Wehner", "cyber security engineer", "https://kamryn.biz" });
+                values: new object[] { "GulgowskiWillmsandJenkins_Pouros37@yahoo.com", "Gulgowski, Willms and Jenkins", "software engineer", "https://tressie.net" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 107,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "DAmoreGroup.Bednar33@yahoo.com", "D'Amore Group", "data engineer", "https://amber.name" });
+                values: new object[] { "MurrayInc72@hotmail.com", "Murray Inc", "software engineer", "https://juliana.net" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 108,
-                columns: new[] { "CompanyEmail", "CompanyName", "JobDescriptionLink" },
-                values: new object[] { "GutmannThielandWelch82@hotmail.com", "Gutmann, Thiel and Welch", "http://vivian.org" });
+                columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
+                values: new object[] { "Ebert-Wisoky_Gleason71@gmail.com", "Ebert - Wisoky", "computer networks engineer", "http://hermann.name" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 109,
-                columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "WisokyGroup76@yahoo.com", "Wisoky Group", "computer networks engineer", "http://libbie.net" });
+                columns: new[] { "CompanyEmail", "CompanyName", "JobDescriptionLink" },
+                values: new object[] { "ProhaskaInc27@gmail.com", "Prohaska Inc", "https://alivia.com" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 110,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "Langworth-Johnston.Weimann33@gmail.com", "Langworth - Johnston", "cyber security engineer", "https://hermann.org" });
+                values: new object[] { "ChristiansenandSons_Hansen85@hotmail.com", "Christiansen and Sons", "cyber security engineer", "http://alexandro.net" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 111,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "AufderharandSons_Windler@yahoo.com", "Aufderhar and Sons", "quality assurance Enginner", "http://jessie.info" });
+                values: new object[] { "EmardHilpertandMorissette42@yahoo.com", "Emard, Hilpert and Morissette", "quality assurance Enginner", "https://mckenna.info" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 112,
                 columns: new[] { "CompanyEmail", "CompanyName", "JobDescriptionLink" },
-                values: new object[] { "Shields-Trantow_Lesch@hotmail.com", "Shields - Trantow", "http://floyd.com" });
+                values: new object[] { "Osinski-Deckow.Haag46@yahoo.com", "Osinski - Deckow", "https://jaqueline.name" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 113,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "KossLLC_Thompson@hotmail.com", "Koss LLC", "quality assurance Enginner", "http://ismael.net" });
+                values: new object[] { "Mante-Durgan.Johnson58@yahoo.com", "Mante - Durgan", "quality assurance Enginner", "https://gideon.info" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 114,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "Koss-Ondricka.Prosacco@hotmail.com", "Koss - Ondricka", "computer networks engineer", "https://allen.name" });
+                values: new object[] { "WeberSpencerandReynolds.Ondricka84@gmail.com", "Weber, Spencer and Reynolds", "data engineer", "https://jocelyn.biz" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 115,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "WhiteHagenesandSpinka74@hotmail.com", "White, Hagenes and Spinka", "computer networks engineer", "https://vidal.name" });
+                values: new object[] { "HowellOrnandGreenholt95@yahoo.com", "Howell, Orn and Greenholt", "cyber security engineer", "https://rosie.org" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 116,
                 columns: new[] { "CompanyEmail", "CompanyName", "JobDescriptionLink" },
-                values: new object[] { "GreenholtHowellandHomenick77@hotmail.com", "Greenholt, Howell and Homenick", "https://ozella.net" });
+                values: new object[] { "VeumLLC39@yahoo.com", "Veum LLC", "http://junius.biz" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 117,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "WolffWelchandKulas_Zboncak71@gmail.com", "Wolff, Welch and Kulas", "computer networks engineer", "https://chandler.name" });
+                values: new object[] { "KiehnPagacandMills38@hotmail.com", "Kiehn, Pagac and Mills", "computer networks engineer", "http://gail.name" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 118,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "SchmidtKingandWuckert.Parisian80@hotmail.com", "Schmidt, King and Wuckert", "software engineer", "https://leonel.biz" });
+                values: new object[] { "Weimann-Okuneva.Pollich@hotmail.com", "Weimann - Okuneva", "computer networks engineer", "https://juana.net" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 119,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "Tremblay-Kautzer86@hotmail.com", "Tremblay - Kautzer", "quality assurance Enginner", "https://tremayne.com" });
+                values: new object[] { "GrimesKulasandHoppe61@gmail.com", "Grimes, Kulas and Hoppe", "computer networks engineer", "https://alfonso.name" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 120,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "Keeling-Hackett_Terry18@hotmail.com", "Keeling - Hackett", "computer networks engineer", "http://cruz.biz" });
+                values: new object[] { "Pollich-Jacobs47@hotmail.com", "Pollich - Jacobs", "data engineer", "https://tad.org" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 121,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "Wiegand-Barton.Kulas@gmail.com", "Wiegand - Barton", "software engineer", "http://brennon.biz" });
+                values: new object[] { "Murray-Smith8@yahoo.com", "Murray - Smith", "cyber security engineer", "https://lois.info" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 122,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "KrajcikandSons.Zboncak@gmail.com", "Krajcik and Sons", "quality assurance Enginner", "https://andy.net" });
+                values: new object[] { "GreenLLC.Frami35@gmail.com", "Green LLC", "quality assurance Enginner", "http://jayda.info" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 123,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "Braun-Prosacco.Murazik12@gmail.com", "Braun - Prosacco", "quality assurance Enginner", "http://gregorio.info" });
+                values: new object[] { "KohlerGroup_Haley@yahoo.com", "Kohler Group", "computer networks engineer", "http://kennith.name" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 124,
-                columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "KlockoBlockandOKon.Kassulke@yahoo.com", "Klocko, Block and O'Kon", "data engineer", "http://jules.info" });
+                columns: new[] { "CompanyEmail", "CompanyName", "JobDescriptionLink" },
+                values: new object[] { "StrosinWunschandLabadie77@yahoo.com", "Strosin, Wunsch and Labadie", "http://doug.com" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 125,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "Stracke-Adams_Herzog24@yahoo.com", "Stracke - Adams", "data engineer", "http://lucas.name" });
+                values: new object[] { "Jaskolski-Wiza54@hotmail.com", "Jaskolski - Wiza", "quality assurance Enginner", "http://mariela.net" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 126,
-                columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "HaleyLefflerandCole.Wolff@gmail.com", "Haley, Leffler and Cole", "computer networks engineer", "https://darius.net" });
+                columns: new[] { "CompanyEmail", "CompanyName", "JobDescriptionLink" },
+                values: new object[] { "AbernathyLLC.Rice@gmail.com", "Abernathy LLC", "https://domenica.net" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 127,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "MullerJonesandGoldner.Veum42@gmail.com", "Muller, Jones and Goldner", "cyber security engineer", "http://drew.biz" });
+                values: new object[] { "Kovacek-Kohler_Dickinson@hotmail.com", "Kovacek - Kohler", "software engineer", "https://amanda.biz" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 128,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "BashirianRempelandBarrows.King@gmail.com", "Bashirian, Rempel and Barrows", "data engineer", "http://hulda.org" });
+                values: new object[] { "Bernhard-Jaskolski20@gmail.com", "Bernhard - Jaskolski", "cyber security engineer", "https://hosea.org" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 129,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "RiceHarberandSchuppe80@gmail.com", "Rice, Harber and Schuppe", "quality assurance Enginner", "https://darrick.name" });
+                values: new object[] { "PourosandSons_Mante@hotmail.com", "Pouros and Sons", "quality assurance Enginner", "http://deshawn.net" });
 
             migrationBuilder.UpdateData(
                 table: "JobPosts",
                 keyColumn: "Id",
                 keyValue: 130,
                 columns: new[] { "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
-                values: new object[] { "BergeConnandPadberg_Jast74@gmail.com", "Berge, Conn and Padberg", "cyber security engineer", "https://brandyn.info" });
+                values: new object[] { "BechtelarCarrollandStanton.Lowe@hotmail.com", "Bechtelar, Carroll and Stanton", "quality assurance Enginner", "https://kyleigh.name" });
 
             migrationBuilder.UpdateData(
-                table: "LabEquipments",
-                keyColumn: "LabEquipmentID",
-                keyValue: 3001,
-                column: "LabEquipmentName",
-                value: "Jovan");
+                table: "LabSpaces",
+                keyColumn: "LabSpaceId",
+                keyValue: 21,
+                column: "LabSpaceName",
+                value: "Adriana");
 
             migrationBuilder.UpdateData(
-                table: "LabEquipments",
-                keyColumn: "LabEquipmentID",
-                keyValue: 3002,
-                columns: new[] { "LabEquipmentName", "condition" },
-                values: new object[] { "Kiana", "medium" });
+                table: "LabSpaces",
+                keyColumn: "LabSpaceId",
+                keyValue: 22,
+                column: "LabSpaceName",
+                value: "Jensen");
 
             migrationBuilder.UpdateData(
-                table: "LabEquipments",
-                keyColumn: "LabEquipmentID",
-                keyValue: 3003,
-                columns: new[] { "LabEquipmentName", "condition" },
-                values: new object[] { "Vivien", "medium" });
+                table: "LabSpaces",
+                keyColumn: "LabSpaceId",
+                keyValue: 23,
+                column: "LabSpaceName",
+                value: "Brook");
 
             migrationBuilder.UpdateData(
                 table: "Students",
                 keyColumn: "StudentId",
                 keyValue: 1001,
                 columns: new[] { "Email", "FirstName", "LastName", "RegistrationNum" },
-                values: new object[] { "Eryn97@gmail.com", "Eryn", "Dicki", "EG/2022/6407" });
+                values: new object[] { "Joel_Fisher@yahoo.com", "Joel", "Fisher", "EG/2020/7468" });
 
             migrationBuilder.UpdateData(
                 table: "Students",
                 keyColumn: "StudentId",
                 keyValue: 1002,
                 columns: new[] { "Email", "FirstName", "LastName", "RegistrationNum" },
-                values: new object[] { "Dawson_Hudson70@hotmail.com", "Dawson", "Hudson", "EG/2023/2426" });
+                values: new object[] { "Louie_Bruen65@hotmail.com", "Louie", "Bruen", "EG/2022/3748" });
 
             migrationBuilder.UpdateData(
                 table: "Students",
                 keyColumn: "StudentId",
                 keyValue: 1003,
                 columns: new[] { "Email", "FirstName", "LastName", "RegistrationNum" },
-                values: new object[] { "Brielle.Labadie@hotmail.com", "Brielle", "Labadie", "EG/2020/3144" });
+                values: new object[] { "Fletcher38@hotmail.com", "Fletcher", "Harvey", "EG/2020/2036" });
         }
     }
 }
