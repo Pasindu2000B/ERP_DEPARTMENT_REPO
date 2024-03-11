@@ -17,6 +17,7 @@ namespace ERP.Repository.PgSql.Department.Lab
         public LabRepositoryPgSql(IDbContextFactory<PgSqlDbContext> factory)
         {
             _factory = factory;
+           
         }
         //comment
         public Task AddLabEquipmentAsync(LabEquipment labEquipment)
@@ -50,12 +51,17 @@ namespace ERP.Repository.PgSql.Department.Lab
 
         public Task EditLabEquipmentAsync(LabEquipment labEquipment)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task EditLabEquipmentAsync(int id)
-        {
-            throw new NotImplementedException();
+            using var _context = _factory.CreateDbContext();
+            var elabequipment = _context.LabEquipments.FirstOrDefault(x=>x.LabEquipmentID == labEquipment.LabEquipmentID);
+            if(elabequipment != null)
+            {
+                elabequipment.LabEquipmentName = labEquipment.LabEquipmentName;
+                elabequipment.LabSpaceId = labEquipment.LabSpaceId;
+                elabequipment.Avaialability = labEquipment.Avaialability;
+                elabequipment.condition = labEquipment.condition;
+                _context.SaveChanges();
+            }
+            return Task.CompletedTask;
         }
 
         public async Task<IEnumerable<LabEquipment>> GetAllLabEquipmentAsync(string name)

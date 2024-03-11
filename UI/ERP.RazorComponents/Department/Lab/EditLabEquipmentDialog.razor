@@ -1,0 +1,73 @@
+﻿@using ERP.Application.DepartmentApp.Labs.Interfaces
+@using ERP.Application.DepartmentApp.Labs.UseCases.Inventor_Lab
+@using ERP.Domain.Core.Entity.DepartmentEntity.LabEntity
+@using ERP.Application.DepartmentApp.Labs
+@using ERP.Application.DepartmentApp.Labs.Interfaces.Inventory_Lab
+@using ERP.Application.DepartmentApp.Labs.UseCases
+@using FluentValidation
+
+@inject ISnackbar Snackbar
+@inject IEditLabEquimentUsecase EditLabEquipmentUseCase
+@inject IDialogService DialogService
+
+<MudDialog>
+    <TitleContent>
+        <div class="d-flex align-items-center">
+            <MudIcon Icon="@Icons.Material.Filled.ModeEdit"
+                     Class="mr-3 mb-n1 " />
+            <MudText Typo="Typo.h6" Class="mb-0">Edit Lab Equipment </MudText>
+        </div>
+    </TitleContent>
+    <DialogContent>
+        <div class="d-flex flex-column">
+            <MudTextField @bind-Value="labEquipment.LabEquipmentID" Label="Lab Equipment ID" ReadOnly="true" />
+            <MudTextField @bind-Value="labEquipment.LabEquipmentName" Label="Lab Equipment Name" />
+            <MudSelect Label="Select the Condition of the Equipment" @bind-Value="labEquipment.condition">
+                @foreach (var option in options)
+                {
+                    <MudSelectItem Value="option">@option</MudSelectItem>
+                }
+            </MudSelect>
+            <MudTextField @bind-Value="labEquipment.LabSpaceId" Label="Lab Space Id" />
+            <MudCheckBox @bind-Checked="labEquipment.Avaialability" Label="Lab Equipment is Available" />
+        </div>
+    </DialogContent>
+
+    <DialogActions>
+        <div class="d-flex justify-content-end">
+            <MudButton OnClick="Cancel" Variant="Variant.Filled">Cancel</MudButton>
+            <div class="mr-2"></div>
+            <MudButton Color="Color.Primary" OnClick="SaveLabEquipment" Variant="Variant.Filled">Save</MudButton>
+        </div>
+    </DialogActions>
+</MudDialog>
+
+
+
+
+@code 
+{
+    [CascadingParameter]
+    MudDialogInstance MudDialog { get; set; }
+
+    [Parameter]
+    public LabEquipment labEquipment { get; set; } = new();
+    public EventCallback onAdded { get; set; }
+
+    private void Cancel()
+    {
+        MudDialog.Cancel();
+    }
+
+    private async void SaveLabEquipment()
+    {
+
+        await EditLabEquipmentUseCase.ExcuteAsync(labEquipment);
+        await onAdded.InvokeAsync();
+        Snackbar.Add("Equipment Edited Successfully", MudBlazor.Severity.Success);
+        MudDialog.Close(DialogResult.Ok(labEquipment.LabEquipmentID));
+
+    }
+    private List<string> options = new List<string> { "Excellent", "Good", "Medium", "Bad", "Worst" };
+
+}

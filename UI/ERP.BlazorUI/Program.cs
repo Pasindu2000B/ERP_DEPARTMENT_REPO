@@ -85,7 +85,10 @@ builder.Services.AddScoped<IDeleteGraduateUseCase, DeleteGraduateUseCase>();
 builder.Services.AddScoped<IGetGraduateListByCompanyUseCase, GetGraduateListByCompanyUseCase>();
 builder.Services.AddScoped<IGetAllCompanyNamesUseCase, GetAllCompanyNamesUseCase>();   
 builder.Services.AddScoped<IGetTrainingRequests,GetTrainingRequests>();
-
+builder.Services.AddScoped<IEditLabEquimentUsecase, EditLabEquipmentUseCase>();
+builder.Services.AddScoped<IGetLabEquipmentByIdUseCase, GetLabEquipmentByIdUseCase>();
+builder.Services.AddScoped<IGetLabEquipmentListUseCase, GetLabEquipmentlistUseCase>();
+builder.Services.AddScoped<IDeleteLabEquipmentUseCase, DeleteLabEquipmentUseCase>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
