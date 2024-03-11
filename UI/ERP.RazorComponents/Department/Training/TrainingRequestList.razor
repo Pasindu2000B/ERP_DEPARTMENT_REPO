@@ -9,6 +9,7 @@
 
 @inject IGetTrainingRequests GetTrainingRequests
 @inject IViewStudentById ViewStudentById
+@inject IDialogService DialogService
 
 @if (_combinedList.Count > 0)
 {
@@ -57,7 +58,7 @@ else
             _studentsNames.Add((await ViewStudentById.ExecuteAsync(student.StudentId)).FirstName);
         }
 
-      
+
         for (int i = 0; i < _studentRequests.Count; i++)
         {
             _combinedList.Add(new CombinedStudentInfo
@@ -72,5 +73,12 @@ else
     {
         public StudentRequest Request { get; set; }
         public string StudentName { get; set; }
+    }
+
+    async Task OfferLetter(CombinedStudentInfo combinedStudentInfo)
+    {
+        var parameters = new DialogParameters();
+        
+
     }
 }
