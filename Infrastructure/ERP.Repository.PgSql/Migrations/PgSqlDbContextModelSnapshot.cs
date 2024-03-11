@@ -128,7 +128,7 @@ namespace ERP.Repository.PgSql.Migrations
                             LabEquipmentName = "Kiana",
 
 
-                            LabEquipmentName = "Else",
+                           
 
                  
 
