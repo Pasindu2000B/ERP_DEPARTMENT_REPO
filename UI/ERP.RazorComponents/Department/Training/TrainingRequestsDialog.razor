@@ -1,0 +1,113 @@
+﻿@page "/SpecificRequest"
+@using ERP.BlazorUI.Components.Layout
+
+@inject ISnackbar Snackbar
+
+<MudCard>
+
+    <MudTextField @bind-Value="ReadOnly" Label="Name" ReadOnly="true" Variant="Variant.Filled" />
+    <MudTextField @bind-Value="ReadOnly" Label="Company Name" ReadOnly="true" Variant="Variant.Filled" />
+    <MudTextField @bind-Value="ReadOnly" Label="Company Location" ReadOnly="true" Variant="Variant.Outlined" />
+    <MudTextField @bind-Value="ReadOnly" Label="Reciever's Name" ReadOnly="true" Variant="Variant.Outlined" />
+    <MudTextField @bind-Value="ReadOnly" Label="Reciever Designation" ReadOnly="true" Variant="Variant.Outlined" />
+
+
+
+    <MudStack Style="width: 100%">
+        <MudFileUpload T="IReadOnlyList<IBrowserFile>"
+                          AppendMultipleFiles
+                        OnFilesChanged="OnInputFileChanged"
+                        Hidden="@false"
+                        InputClass="absolute mud-width-full mud-height-full overflow-hidden z-20"
+                        InputStyle="opacity:0"
+                        @ondragenter="@SetDragClass"
+                        @ondragleave="@ClearDragClass"
+                        @ondragend="@ClearDragClass">
+             <ButtonTemplate>
+                 <MudPaper Height="300px"
+                           Outlined="true"
+                           Class="@_dragClass">
+                     <MudText Typo="Typo.h6">
+                         Drag and drop files here or click
+                     </MudText>
+                     @foreach (var file in _fileNames)
+                    {
+                        <MudChip Color="Color.Dark" Text="@file" />
+                    }
+                </MudPaper>
+                <MudToolBar DisableGutters="true"
+                            Class="relative d-flex justify-end gap-4 z-30">
+                    <MudButton HtmlTag="label"
+                               Color="Color.Primary"
+                               for="@context.Id"
+                               Variant="Variant.Filled">
+                        Open file picker
+                    </MudButton>
+                    <MudButton OnClick="@Upload"
+                               Color="Color.Primary"
+                               Disabled="@(!_fileNames.Any())"
+                               Variant="Variant.Filled">
+                        Upload
+                    </MudButton>
+                    <MudButton OnClick="@Clear"
+                               Color="Color.Error"
+                               Disabled="@(!_fileNames.Any())"
+                               Variant="Variant.Filled">
+                        Clear
+                    </MudButton>
+                </MudToolBar>
+            </ButtonTemplate>
+        </MudFileUpload>
+    </MudStack>
+    <MudButton Variant="Variant.Filled" EndIcon="@Icons.Material.Filled.ArrowDownward" Style="background-color: yellowgreen; color: white; width: 200px; height: 60px;">
+        Add To Employment List
+    </MudButton>
+
+</MudCard>
+
+<style>
+    .flex-item {
+        display: flex;
+        align-items: center; /* Align vertically */
+        justify-content: space-between; /* Space out label and value */
+        margin-bottom: 10px; /* Space between each item */
+    }
+</style>
+
+@code {
+#nullable enable
+    public string ReadOnly { get; set; } = "Can't change me";
+    private const string DefaultDragClass = "relative rounded-lg border-2 border-dashed pa-4 mt-4 mud-width-full mud-height-full z-10";
+    private string _dragClass = DefaultDragClass;
+    private readonly List<string> _fileNames = new();
+
+    private async Task Clear()
+    {
+        _fileNames.Clear();
+        ClearDragClass();
+        await Task.Delay(100);
+    }
+
+    private void OnInputFileChanged(InputFileChangeEventArgs e)
+    {
+        ClearDragClass();
+        var files = e.GetMultipleFiles();
+        foreach (var file in files)
+        {
+            _fileNames.Add(file.Name);
+        }
+    }
+
+    private void Upload()
+    {
+        // Upload the files here
+        Snackbar.Configuration.PositionClass = Defaults.Classes.Position.TopCenter;
+        Snackbar.Add("TODO: Upload your files!");
+    }
+
+    private void SetDragClass()
+        => _dragClass = $"{DefaultDragClass} mud-border-primary";
+
+    private void ClearDragClass()
+        => _dragClass = DefaultDragClass;
+}

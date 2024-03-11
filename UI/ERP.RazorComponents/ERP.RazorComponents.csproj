@@ -6,6 +6,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Remove="Department\Training\TrainingRequestsDialog.razor" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <SupportedPlatform Include="browser" />
@@ -26,6 +30,18 @@
     <Folder Include="Administration\" />
     <Folder Include="Academic\" />
     <Folder Include="SiteAdmin\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Department\Training\TrainingRequestsDialog.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Department\Training\TrainingRequestsDialog.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Department\Training\TrainingRequestsDialog.razor" />
   </ItemGroup>
 
 </Project>
