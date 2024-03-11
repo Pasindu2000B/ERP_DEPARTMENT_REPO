@@ -3,6 +3,7 @@ using System;
 using ERP.Repository.PgSql;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ERP.Repository.PgSql.Migrations
 {
     [DbContext(typeof(PgSqlDbContext))]
-    partial class PgSqlDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240311123834_day5")]
+    partial class day5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -101,8 +104,6 @@ namespace ERP.Repository.PgSql.Migrations
 
                     b.HasKey("LabEquipmentID");
 
-                    b.HasIndex("LabSpaceId");
-
                     b.ToTable("LabEquipments");
 
                     b.HasData(
@@ -147,58 +148,6 @@ namespace ERP.Repository.PgSql.Migrations
                     b.HasKey("LabSpaceId");
 
                     b.ToTable("LabSpaces");
-
-                    b.HasData(
-                        new
-                        {
-                            LabSpaceId = 21,
-                            LabSpaceName = "Belle"
-                        },
-                        new
-                        {
-                            LabSpaceId = 22,
-                            LabSpaceName = "Kamille"
-                        },
-                        new
-                        {
-                            LabSpaceId = 23,
-                            LabSpaceName = "Cordie"
-                        });
-                });
-
-            modelBuilder.Entity("ERP.Domain.Core.Entity.DepartmentEntity.LabEntity.Scedulling.Booking_Lab", b =>
-                {
-                    b.Property<int>("BookingID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("BookingID"));
-
-                    b.Property<DateOnly>("Date_Of_Booking")
-                        .HasColumnType("date");
-
-                    b.Property<DateTime>("End_Time")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<int>("LabSpaceId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("Module_CoordinatorTeacherId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("Module_Coordinator_Id")
-                        .HasColumnType("integer");
-
-                    b.Property<DateTime>("Start_Time")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.HasKey("BookingID");
-
-                    b.HasIndex("LabSpaceId");
-
-                    b.HasIndex("Module_CoordinatorTeacherId");
-
-                    b.ToTable("Booking_Labs");
                 });
 
             modelBuilder.Entity("ERP.Domain.Core.Entity.DepartmentEntity.RecruimentEntity.Notification", b =>
@@ -1225,36 +1174,6 @@ namespace ERP.Repository.PgSql.Migrations
                     b.ToTable("Teachers");
                 });
 
-            modelBuilder.Entity("ERP.Domain.Core.Entity.DepartmentEntity.LabEntity.LabEquipment", b =>
-                {
-                    b.HasOne("ERP.Domain.Core.Entity.DepartmentEntity.LabEntity.LabSpace", "LabSpace")
-                        .WithMany("labEquipments")
-                        .HasForeignKey("LabSpaceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("LabSpace");
-                });
-
-            modelBuilder.Entity("ERP.Domain.Core.Entity.DepartmentEntity.LabEntity.Scedulling.Booking_Lab", b =>
-                {
-                    b.HasOne("ERP.Domain.Core.Entity.DepartmentEntity.LabEntity.LabSpace", "Space")
-                        .WithMany()
-                        .HasForeignKey("LabSpaceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ERP.Domain.Core.Entity.StudentEntity.Teacher", "Module_Coordinator")
-                        .WithMany()
-                        .HasForeignKey("Module_CoordinatorTeacherId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Module_Coordinator");
-
-                    b.Navigation("Space");
-                });
-
             modelBuilder.Entity("ERP.Domain.Core.Entity.DepartmentEntity.RecruimentEntity.Notification", b =>
                 {
                     b.HasOne("ERP.Domain.Core.Entity.StudentEntity.Person", "Person")
@@ -1503,11 +1422,6 @@ namespace ERP.Repository.PgSql.Migrations
                         .IsRequired();
 
                     b.Navigation("Student");
-                });
-
-            modelBuilder.Entity("ERP.Domain.Core.Entity.DepartmentEntity.LabEntity.LabSpace", b =>
-                {
-                    b.Navigation("labEquipments");
                 });
 
             modelBuilder.Entity("ERP.Domain.Core.Entity.DepartmentEntity.RecruimentEntity.RecruimentJobPost", b =>
