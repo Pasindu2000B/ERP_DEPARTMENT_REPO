@@ -74,9 +74,6 @@ builder.Services.AddMudServices();
 builder.Services.AddScoped<IStudentRepository, StudentRepositoryPgSql>();
 builder.Services.AddScoped<ILabRepository,LabRepositoryPgSql>();
 builder.Services.AddScoped<IGraduateRepository, GraduateRepositoryPgSql>();
-
-builder.Services.AddScoped<TrainingRepository, TraininiRepositoryPgSQL>();
-
 builder.Services.AddScoped<ITrainingRepository, TraininiRepositoryPgSQL>();
 builder.Services.AddScoped<IRecrumentRepository,RecruimentRepositoryPgSQL>();
 
