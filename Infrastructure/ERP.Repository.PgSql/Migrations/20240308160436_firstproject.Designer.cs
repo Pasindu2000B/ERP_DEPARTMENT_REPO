@@ -254,7 +254,7 @@ namespace ERP.Repository.PgSql.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Category")
+                    b.Property<string>("LabEquipmentName")
                         .IsRequired()
                         .HasColumnType("text");
 

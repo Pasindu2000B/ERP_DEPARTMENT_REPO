@@ -35,7 +35,7 @@ namespace ERP.Repository.PgSql.Migrations
 
             migrationBuilder.InsertData(
                 table: "JobPosts",
-                columns: new[] { "Id", "Category", "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
+                columns: new[] { "Id", "LabEquipmentName", "CompanyEmail", "CompanyName", "InternPosition", "JobDescriptionLink" },
                 values: new object[,]
                 {
                     { 101, "computer Engineering", "GreenholtRohanandStoltenberg.Rempel@gmail.com", "Greenholt, Rohan and Stoltenberg", "data engineer", "http://iliana.com" },

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ERP.Domain.Core.Entity.DepartmentEntity.LabEntity.Scedulling;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -13,6 +14,8 @@ namespace ERP.Domain.Core.Entity.DepartmentEntity.LabEntity
     {
         [Key]
         public int LabEquipmentID { get; set; }
+        
+        public LabSpace LabSpace { get; set; }
 
         public string LabEquipmentName { get; set; }
 
@@ -20,7 +23,9 @@ namespace ERP.Domain.Core.Entity.DepartmentEntity.LabEntity
 
         public bool Avaialability { get; set; }
 
-        public int LabSpaceId { get; set; }
+        public int LabSpaceId { get; set; } 
+
+
 
       
     

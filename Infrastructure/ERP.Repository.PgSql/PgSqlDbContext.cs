@@ -1,5 +1,6 @@
 ﻿using ERP.Domain.Core.Entity.DepartmentEntity.GraduatesEntity;
 using ERP.Domain.Core.Entity.DepartmentEntity.LabEntity;
+using ERP.Domain.Core.Entity.DepartmentEntity.LabEntity.Scedulling;
 using ERP.Domain.Core.Entity.DepartmentEntity.RecruimentEntity;
 using ERP.Domain.Core.Entity.DepartmentEntity.TrainingEntity;
 using ERP.Domain.Core.Entity.DepartmentEntity.TrainingEntity.InternShips;
@@ -26,7 +27,9 @@ namespace ERP.Repository.PgSql
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new StudentConfigurations());
+            modelBuilder.ApplyConfiguration(new LabSpaceConfiguration());
             modelBuilder.ApplyConfiguration(new LabEquipmentConfiguration());
+            
             modelBuilder.ApplyConfiguration(new GraduateConfiguration());
             modelBuilder.ApplyConfiguration(new Configurations.DepartmentPortalConfigurations.TrainingConfigurations.TrainingConfigurations());
 
@@ -114,7 +117,10 @@ namespace ERP.Repository.PgSql
                 .WithMany(mt => mt.recruimentApplications)
                 .HasForeignKey(ms => ms.RecruimentJobPostId);
 
-
+            modelBuilder.Entity<LabEquipment>()
+                .HasOne(mt => mt.LabSpace)
+                .WithMany(mt => mt.labEquipments)
+                .HasForeignKey(mt => mt.LabSpaceId);
 
 
 
@@ -124,7 +130,7 @@ namespace ERP.Repository.PgSql
 
         public DbSet<LabEquipment> LabEquipments { get; set; }
 
-       
+       public DbSet<Booking_Lab> Booking_Labs { get; set; }
         public DbSet<LabSpace> LabSpaces { get; set; }
         
         public DbSet<Student> Students { get; set; }

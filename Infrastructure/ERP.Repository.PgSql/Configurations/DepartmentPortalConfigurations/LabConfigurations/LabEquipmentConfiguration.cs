@@ -25,7 +25,8 @@ namespace ERP.Repository.PgSql.Configurations.DepartmentPortalConfigurations.Lab
                Enumerable.Range(1, 3).Select(
                    index => new Faker<LabEquipment>()
                          .RuleFor(s => s.LabEquipmentID, index + 3000)
-                         .RuleFor(s => s.LabEquipmentName, f => f.Name.FirstName())
+                         .RuleFor(s=>s.LabEquipmentName, f=>f.Name.FirstName())
+                         .RuleFor(s => s.LabSpaceId, f => 21)
                          .RuleFor(s => s.condition, conditions[rnd.Next(1,3)])
                          .Generate()
 
