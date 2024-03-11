@@ -16,8 +16,9 @@
         <MudTh>Company Name</MudTh>
         <MudTh>Contact Email</MudTh>
         <MudTh>Position</MudTh>
-        <MudTh>Link</MudTh>
         <MudTh>Category</MudTh>
+        <MudTh>Link</MudTh>
+       
 
     </HeaderContent>
             <RowTemplate>
@@ -26,8 +27,8 @@
             <MudTd DataLabel="Company Email">@context.CompanyEmail</MudTd>
             <MudTd DataLabel="Position">@context.InternPosition</MudTd>
             <MudTd DataLabel="Category">@context.Category</MudTd>
-            <MudLink DataLabel="Link">@context.JobDescriptionLink></MudLink>
-      
+            <MudTd DataLabel="Link">@context.JobDescriptionLink</MudTd>
+           
             <MudTd DataLabel="">
                 <MudFab OnClick="@(()=> EditGraduate(@context))" Color="Color.Primary"
                         StartIcon="@Icons.Material.Filled.Edit" Size="Size.Small" />
