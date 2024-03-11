@@ -28,6 +28,8 @@ using ERP.Application.DepartmentApp.Recruiments.UseCases;
 using ERP.Application.DepartmentApp.Recruiments;
 using ERP.Repository.PgSql.Department.Recruiment;
 using Syncfusion.Blazor;
+using ERP.Application.DepartmentApp.Labs.Interfaces.Scheduling_Lab;
+using ERP.Application.DepartmentApp.Labs.UseCases.Scheduling_Lab;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -110,6 +112,7 @@ builder.Services.AddScoped<IEditLabEquimentUsecase, EditLabEquipmentUseCase>();
 builder.Services.AddScoped<IGetLabEquipmentByIdUseCase, GetLabEquipmentByIdUseCase>();
 builder.Services.AddScoped<IGetLabEquipmentListUseCase, GetLabEquipmentlistUseCase>();
 builder.Services.AddScoped<IDeleteLabEquipmentUseCase, DeleteLabEquipmentUseCase>();
+builder.Services.AddScoped<IGetScheduleLabUseCase, GetScheduledLab>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

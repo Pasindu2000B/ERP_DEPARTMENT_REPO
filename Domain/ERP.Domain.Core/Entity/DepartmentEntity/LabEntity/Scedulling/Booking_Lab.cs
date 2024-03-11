@@ -1,6 +1,7 @@
 ﻿using ERP.Domain.Core.Entity.StudentEntity;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ namespace ERP.Domain.Core.Entity.DepartmentEntity.LabEntity.Scedulling
 {
     public class Booking_Lab
     {
+        [Key]
         public int BookingID { get; set; }
         public LabSpace Space { get; set; }
 
@@ -21,10 +23,6 @@ namespace ERP.Domain.Core.Entity.DepartmentEntity.LabEntity.Scedulling
         public DateTime Start_Time { get; set; }
 
         public DateTime End_Time { get; set;}
-
-       public ICollection<LabEquipment> Needed_Lab_Equipments { get; set; }
-
-       
 
        public DateOnly Date_Of_Booking { get; set; }
 

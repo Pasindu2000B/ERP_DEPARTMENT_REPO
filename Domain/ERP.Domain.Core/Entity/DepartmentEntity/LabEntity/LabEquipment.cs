@@ -23,9 +23,9 @@ namespace ERP.Domain.Core.Entity.DepartmentEntity.LabEntity
 
         public bool Avaialability { get; set; }
 
-
-
         public int LabSpaceId { get; set; } 
+
+
 
       
     
