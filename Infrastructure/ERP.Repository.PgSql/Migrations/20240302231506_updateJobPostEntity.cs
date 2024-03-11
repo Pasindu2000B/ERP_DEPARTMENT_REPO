@@ -11,7 +11,7 @@ namespace ERP.Repository.PgSql.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<string>(
-                name: "Category",
+                name: "LabEquipmentName",
                 table: "JobPosts",
                 type: "text",
                 nullable: false,
@@ -85,7 +85,7 @@ namespace ERP.Repository.PgSql.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "Category",
+                name: "LabEquipmentName",
                 table: "JobPosts");
 
             migrationBuilder.UpdateData(

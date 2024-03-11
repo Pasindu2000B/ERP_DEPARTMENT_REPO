@@ -3,6 +3,7 @@ using System;
 using ERP.Repository.PgSql;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ERP.Repository.PgSql.Migrations
 {
     [DbContext(typeof(PgSqlDbContext))]
-    partial class PgSqlDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240311061452_updatee")]
+    partial class updatee
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,26 +57,26 @@ namespace ERP.Repository.PgSql.Migrations
                         new
                         {
                             GraduateID = 1001,
-                            GraduateCompany = "737 Schinner Islands, Angelport, Thailand",
-                            GraduateContactNo = "301-365-7145 x974",
-                            GraduateDescription = "Direct",
-                            GraduateName = "Dustin"
+                            GraduateCompany = "966 Rosenbaum Via, West Waldo, Western Sahara",
+                            GraduateContactNo = "831-733-6815",
+                            GraduateDescription = "Dynamic",
+                            GraduateName = "Herman"
                         },
                         new
                         {
                             GraduateID = 1002,
-                            GraduateCompany = "10893 Osborne Fort, Tremblaymouth, Lao People's Democratic Republic",
-                            GraduateContactNo = "(475) 210-2510",
-                            GraduateDescription = "Principal",
-                            GraduateName = "Pearl"
+                            GraduateCompany = "98030 Purdy Track, Karleechester, Bhutan",
+                            GraduateContactNo = "436-960-9239 x618",
+                            GraduateDescription = "Forward",
+                            GraduateName = "Javon"
                         },
                         new
                         {
                             GraduateID = 1003,
-                            GraduateCompany = "81390 Kailey Ports, Port Joshuahmouth, Tunisia",
-                            GraduateContactNo = "1-229-693-9221",
+                            GraduateCompany = "277 Dickens Hollow, Port Dejahview, Tajikistan",
+                            GraduateContactNo = "(919) 441-8306 x2652",
                             GraduateDescription = "International",
-                            GraduateName = "Buster"
+                            GraduateName = "Magdalena"
                         });
                 });
 
@@ -104,32 +107,6 @@ namespace ERP.Repository.PgSql.Migrations
                     b.HasIndex("LabSpaceId");
 
                     b.ToTable("LabEquipments");
-
-                    b.HasData(
-                        new
-                        {
-                            LabEquipmentID = 3001,
-                            Avaialability = false,
-                            LabEquipmentName = "Xander",
-                            LabSpaceId = 21,
-                            condition = "bad"
-                        },
-                        new
-                        {
-                            LabEquipmentID = 3002,
-                            Avaialability = false,
-                            LabEquipmentName = "Guido",
-                            LabSpaceId = 21,
-                            condition = "medium"
-                        },
-                        new
-                        {
-                            LabEquipmentID = 3003,
-                            Avaialability = false,
-                            LabEquipmentName = "Carole",
-                            LabSpaceId = 21,
-                            condition = "medium"
-                        });
                 });
 
             modelBuilder.Entity("ERP.Domain.Core.Entity.DepartmentEntity.LabEntity.LabSpace", b =>
@@ -152,17 +129,17 @@ namespace ERP.Repository.PgSql.Migrations
                         new
                         {
                             LabSpaceId = 21,
-                            LabSpaceName = "Douglas"
+                            LabSpaceName = "Adriana"
                         },
                         new
                         {
                             LabSpaceId = 22,
-                            LabSpaceName = "Gage"
+                            LabSpaceName = "Jensen"
                         },
                         new
                         {
                             LabSpaceId = 23,
-                            LabSpaceName = "Rodolfo"
+                            LabSpaceName = "Brook"
                         });
                 });
 
@@ -320,271 +297,271 @@ namespace ERP.Repository.PgSql.Migrations
                         {
                             Id = 101,
                             Category = "computer Engineering",
-                            CompanyEmail = "FritschandSons.Kilback@yahoo.com",
-                            CompanyName = "Fritsch and Sons",
-                            InternPosition = "software engineer",
-                            JobDescriptionLink = "http://eldridge.name"
+                            CompanyEmail = "Sanford-Sporer.Berge62@yahoo.com",
+                            CompanyName = "Sanford - Sporer",
+                            InternPosition = "quality assurance Enginner",
+                            JobDescriptionLink = "https://gussie.biz"
                         },
                         new
                         {
                             Id = 102,
                             Category = "computer Engineering",
-                            CompanyEmail = "LabadieWeissnatandPadberg71@yahoo.com",
-                            CompanyName = "Labadie, Weissnat and Padberg",
-                            InternPosition = "quality assurance Enginner",
-                            JobDescriptionLink = "https://brendan.org"
+                            CompanyEmail = "Hansen-Gibson57@hotmail.com",
+                            CompanyName = "Hansen - Gibson",
+                            InternPosition = "data engineer",
+                            JobDescriptionLink = "https://shannon.info"
                         },
                         new
                         {
                             Id = 103,
                             Category = "computer Engineering",
-                            CompanyEmail = "AnkundingWardandBuckridge.Cummerata@yahoo.com",
-                            CompanyName = "Ankunding, Ward and Buckridge",
+                            CompanyEmail = "RennerInc43@hotmail.com",
+                            CompanyName = "Renner Inc",
                             InternPosition = "data engineer",
-                            JobDescriptionLink = "https://ole.name"
+                            JobDescriptionLink = "http://drake.org"
                         },
                         new
                         {
                             Id = 104,
                             Category = "computer Engineering",
-                            CompanyEmail = "SmithamVeumandHoeger90@yahoo.com",
-                            CompanyName = "Smitham, Veum and Hoeger",
-                            InternPosition = "computer networks engineer",
-                            JobDescriptionLink = "http://virgie.info"
+                            CompanyEmail = "BlockWaelchiandLangworth31@yahoo.com",
+                            CompanyName = "Block, Waelchi and Langworth",
+                            InternPosition = "data engineer",
+                            JobDescriptionLink = "http://isabel.org"
                         },
                         new
                         {
                             Id = 105,
                             Category = "computer Engineering",
-                            CompanyEmail = "ConnellyParkerandFay.Thompson22@gmail.com",
-                            CompanyName = "Connelly, Parker and Fay",
-                            InternPosition = "software engineer",
-                            JobDescriptionLink = "https://erling.biz"
+                            CompanyEmail = "JohnstonBlockandPadberg_Beatty70@hotmail.com",
+                            CompanyName = "Johnston, Block and Padberg",
+                            InternPosition = "computer networks engineer",
+                            JobDescriptionLink = "http://gregory.net"
                         },
                         new
                         {
                             Id = 106,
                             Category = "computer Engineering",
-                            CompanyEmail = "LynchGroup_Kiehn37@yahoo.com",
-                            CompanyName = "Lynch Group",
-                            InternPosition = "cyber security engineer",
-                            JobDescriptionLink = "https://tony.biz"
+                            CompanyEmail = "GulgowskiWillmsandJenkins_Pouros37@yahoo.com",
+                            CompanyName = "Gulgowski, Willms and Jenkins",
+                            InternPosition = "software engineer",
+                            JobDescriptionLink = "https://tressie.net"
                         },
                         new
                         {
                             Id = 107,
                             Category = "computer Engineering",
-                            CompanyEmail = "LangGroup_Altenwerth@yahoo.com",
-                            CompanyName = "Lang Group",
-                            InternPosition = "cyber security engineer",
-                            JobDescriptionLink = "http://khalid.name"
+                            CompanyEmail = "MurrayInc72@hotmail.com",
+                            CompanyName = "Murray Inc",
+                            InternPosition = "software engineer",
+                            JobDescriptionLink = "https://juliana.net"
                         },
                         new
                         {
                             Id = 108,
                             Category = "computer Engineering",
-                            CompanyEmail = "Howe-Rempel95@gmail.com",
-                            CompanyName = "Howe - Rempel",
-                            InternPosition = "quality assurance Enginner",
-                            JobDescriptionLink = "https://nicklaus.com"
+                            CompanyEmail = "Ebert-Wisoky_Gleason71@gmail.com",
+                            CompanyName = "Ebert - Wisoky",
+                            InternPosition = "computer networks engineer",
+                            JobDescriptionLink = "http://hermann.name"
                         },
                         new
                         {
                             Id = 109,
                             Category = "computer Engineering",
-                            CompanyEmail = "Herzog-Keeling.Collins@yahoo.com",
-                            CompanyName = "Herzog - Keeling",
+                            CompanyEmail = "ProhaskaInc27@gmail.com",
+                            CompanyName = "Prohaska Inc",
                             InternPosition = "data engineer",
-                            JobDescriptionLink = "https://victor.info"
+                            JobDescriptionLink = "https://alivia.com"
                         },
                         new
                         {
                             Id = 110,
                             Category = "computer Engineering",
-                            CompanyEmail = "SpencerGreenholtandTurcotte14@yahoo.com",
-                            CompanyName = "Spencer, Greenholt and Turcotte",
-                            InternPosition = "computer networks engineer",
-                            JobDescriptionLink = "http://pearlie.org"
+                            CompanyEmail = "ChristiansenandSons_Hansen85@hotmail.com",
+                            CompanyName = "Christiansen and Sons",
+                            InternPosition = "cyber security engineer",
+                            JobDescriptionLink = "http://alexandro.net"
                         },
                         new
                         {
                             Id = 111,
                             Category = "computer Engineering",
-                            CompanyEmail = "BlickHaleyandBeer_Upton3@gmail.com",
-                            CompanyName = "Blick, Haley and Beer",
-                            InternPosition = "software engineer",
-                            JobDescriptionLink = "http://jazmyne.info"
+                            CompanyEmail = "EmardHilpertandMorissette42@yahoo.com",
+                            CompanyName = "Emard, Hilpert and Morissette",
+                            InternPosition = "quality assurance Enginner",
+                            JobDescriptionLink = "https://mckenna.info"
                         },
                         new
                         {
                             Id = 112,
                             Category = "computer Engineering",
-                            CompanyEmail = "Schamberger-Collins75@yahoo.com",
-                            CompanyName = "Schamberger - Collins",
+                            CompanyEmail = "Osinski-Deckow.Haag46@yahoo.com",
+                            CompanyName = "Osinski - Deckow",
                             InternPosition = "software engineer",
-                            JobDescriptionLink = "https://akeem.org"
+                            JobDescriptionLink = "https://jaqueline.name"
                         },
                         new
                         {
                             Id = 113,
                             Category = "computer Engineering",
-                            CompanyEmail = "Bode-Prosacco_Rempel@gmail.com",
-                            CompanyName = "Bode - Prosacco",
-                            InternPosition = "data engineer",
-                            JobDescriptionLink = "https://freeman.org"
+                            CompanyEmail = "Mante-Durgan.Johnson58@yahoo.com",
+                            CompanyName = "Mante - Durgan",
+                            InternPosition = "quality assurance Enginner",
+                            JobDescriptionLink = "https://gideon.info"
                         },
                         new
                         {
                             Id = 114,
                             Category = "computer Engineering",
-                            CompanyEmail = "Runte-Schultz94@yahoo.com",
-                            CompanyName = "Runte - Schultz",
-                            InternPosition = "computer networks engineer",
-                            JobDescriptionLink = "https://luis.net"
+                            CompanyEmail = "WeberSpencerandReynolds.Ondricka84@gmail.com",
+                            CompanyName = "Weber, Spencer and Reynolds",
+                            InternPosition = "data engineer",
+                            JobDescriptionLink = "https://jocelyn.biz"
                         },
                         new
                         {
                             Id = 115,
                             Category = "computer Engineering",
-                            CompanyEmail = "Kilback-Parker4@yahoo.com",
-                            CompanyName = "Kilback - Parker",
-                            InternPosition = "computer networks engineer",
-                            JobDescriptionLink = "https://brielle.info"
+                            CompanyEmail = "HowellOrnandGreenholt95@yahoo.com",
+                            CompanyName = "Howell, Orn and Greenholt",
+                            InternPosition = "cyber security engineer",
+                            JobDescriptionLink = "https://rosie.org"
                         },
                         new
                         {
                             Id = 116,
                             Category = "computer Engineering",
-                            CompanyEmail = "HettingerCollinsandProsacco_Sauer8@gmail.com",
-                            CompanyName = "Hettinger, Collins and Prosacco",
+                            CompanyEmail = "VeumLLC39@yahoo.com",
+                            CompanyName = "Veum LLC",
                             InternPosition = "software engineer",
-                            JobDescriptionLink = "http://verlie.name"
+                            JobDescriptionLink = "http://junius.biz"
                         },
                         new
                         {
                             Id = 117,
                             Category = "computer Engineering",
-                            CompanyEmail = "Hammes-Cummings78@yahoo.com",
-                            CompanyName = "Hammes - Cummings",
-                            InternPosition = "data engineer",
-                            JobDescriptionLink = "https://noemie.name"
+                            CompanyEmail = "KiehnPagacandMills38@hotmail.com",
+                            CompanyName = "Kiehn, Pagac and Mills",
+                            InternPosition = "computer networks engineer",
+                            JobDescriptionLink = "http://gail.name"
                         },
                         new
                         {
                             Id = 118,
                             Category = "computer Engineering",
-                            CompanyEmail = "BoyleKautzerandDoyle_Lind@hotmail.com",
-                            CompanyName = "Boyle, Kautzer and Doyle",
-                            InternPosition = "data engineer",
-                            JobDescriptionLink = "https://malcolm.name"
+                            CompanyEmail = "Weimann-Okuneva.Pollich@hotmail.com",
+                            CompanyName = "Weimann - Okuneva",
+                            InternPosition = "computer networks engineer",
+                            JobDescriptionLink = "https://juana.net"
                         },
                         new
                         {
                             Id = 119,
                             Category = "computer Engineering",
-                            CompanyEmail = "BergstromDeckowandJaskolski94@gmail.com",
-                            CompanyName = "Bergstrom, Deckow and Jaskolski",
-                            InternPosition = "data engineer",
-                            JobDescriptionLink = "https://sibyl.biz"
+                            CompanyEmail = "GrimesKulasandHoppe61@gmail.com",
+                            CompanyName = "Grimes, Kulas and Hoppe",
+                            InternPosition = "computer networks engineer",
+                            JobDescriptionLink = "https://alfonso.name"
                         },
                         new
                         {
                             Id = 120,
                             Category = "computer Engineering",
-                            CompanyEmail = "ProhaskaSchusterandOrn_Tillman@hotmail.com",
-                            CompanyName = "Prohaska, Schuster and Orn",
-                            InternPosition = "quality assurance Enginner",
-                            JobDescriptionLink = "https://tremaine.net"
+                            CompanyEmail = "Pollich-Jacobs47@hotmail.com",
+                            CompanyName = "Pollich - Jacobs",
+                            InternPosition = "data engineer",
+                            JobDescriptionLink = "https://tad.org"
                         },
                         new
                         {
                             Id = 121,
                             Category = "computer Engineering",
-                            CompanyEmail = "Bernhard-Wunsch.Nolan@hotmail.com",
-                            CompanyName = "Bernhard - Wunsch",
-                            InternPosition = "software engineer",
-                            JobDescriptionLink = "https://camryn.name"
+                            CompanyEmail = "Murray-Smith8@yahoo.com",
+                            CompanyName = "Murray - Smith",
+                            InternPosition = "cyber security engineer",
+                            JobDescriptionLink = "https://lois.info"
                         },
                         new
                         {
                             Id = 122,
                             Category = "computer Engineering",
-                            CompanyEmail = "HoppeSchmidtandMurphy_Osinski@yahoo.com",
-                            CompanyName = "Hoppe, Schmidt and Murphy",
-                            InternPosition = "computer networks engineer",
-                            JobDescriptionLink = "http://jamie.info"
+                            CompanyEmail = "GreenLLC.Frami35@gmail.com",
+                            CompanyName = "Green LLC",
+                            InternPosition = "quality assurance Enginner",
+                            JobDescriptionLink = "http://jayda.info"
                         },
                         new
                         {
                             Id = 123,
                             Category = "computer Engineering",
-                            CompanyEmail = "Denesik-Kling11@yahoo.com",
-                            CompanyName = "Denesik - Kling",
-                            InternPosition = "software engineer",
-                            JobDescriptionLink = "http://mitchell.net"
+                            CompanyEmail = "KohlerGroup_Haley@yahoo.com",
+                            CompanyName = "Kohler Group",
+                            InternPosition = "computer networks engineer",
+                            JobDescriptionLink = "http://kennith.name"
                         },
                         new
                         {
                             Id = 124,
                             Category = "computer Engineering",
-                            CompanyEmail = "AbernathyGroup.Baumbach@gmail.com",
-                            CompanyName = "Abernathy Group",
+                            CompanyEmail = "StrosinWunschandLabadie77@yahoo.com",
+                            CompanyName = "Strosin, Wunsch and Labadie",
                             InternPosition = "software engineer",
-                            JobDescriptionLink = "http://estel.net"
+                            JobDescriptionLink = "http://doug.com"
                         },
                         new
                         {
                             Id = 125,
                             Category = "computer Engineering",
-                            CompanyEmail = "BartolettiInc.Champlin@gmail.com",
-                            CompanyName = "Bartoletti Inc",
-                            InternPosition = "software engineer",
-                            JobDescriptionLink = "http://jadon.org"
+                            CompanyEmail = "Jaskolski-Wiza54@hotmail.com",
+                            CompanyName = "Jaskolski - Wiza",
+                            InternPosition = "quality assurance Enginner",
+                            JobDescriptionLink = "http://mariela.net"
                         },
                         new
                         {
                             Id = 126,
                             Category = "computer Engineering",
-                            CompanyEmail = "BraunKautzerandMaggio_Gerhold@hotmail.com",
-                            CompanyName = "Braun, Kautzer and Maggio",
+                            CompanyEmail = "AbernathyLLC.Rice@gmail.com",
+                            CompanyName = "Abernathy LLC",
                             InternPosition = "data engineer",
-                            JobDescriptionLink = "http://rylee.biz"
+                            JobDescriptionLink = "https://domenica.net"
                         },
                         new
                         {
                             Id = 127,
                             Category = "computer Engineering",
-                            CompanyEmail = "RempelRippinandRosenbaum.Kuhic@yahoo.com",
-                            CompanyName = "Rempel, Rippin and Rosenbaum",
-                            InternPosition = "cyber security engineer",
-                            JobDescriptionLink = "http://torrance.net"
+                            CompanyEmail = "Kovacek-Kohler_Dickinson@hotmail.com",
+                            CompanyName = "Kovacek - Kohler",
+                            InternPosition = "software engineer",
+                            JobDescriptionLink = "https://amanda.biz"
                         },
                         new
                         {
                             Id = 128,
                             Category = "computer Engineering",
-                            CompanyEmail = "Bednar-Trantow_Quitzon@gmail.com",
-                            CompanyName = "Bednar - Trantow",
-                            InternPosition = "computer networks engineer",
-                            JobDescriptionLink = "http://janessa.com"
+                            CompanyEmail = "Bernhard-Jaskolski20@gmail.com",
+                            CompanyName = "Bernhard - Jaskolski",
+                            InternPosition = "cyber security engineer",
+                            JobDescriptionLink = "https://hosea.org"
                         },
                         new
                         {
                             Id = 129,
                             Category = "computer Engineering",
-                            CompanyEmail = "RauLLC.Swaniawski@yahoo.com",
-                            CompanyName = "Rau LLC",
-                            InternPosition = "software engineer",
-                            JobDescriptionLink = "https://bryce.net"
+                            CompanyEmail = "PourosandSons_Mante@hotmail.com",
+                            CompanyName = "Pouros and Sons",
+                            InternPosition = "quality assurance Enginner",
+                            JobDescriptionLink = "http://deshawn.net"
                         },
                         new
                         {
                             Id = 130,
                             Category = "computer Engineering",
-                            CompanyEmail = "WolffInc28@gmail.com",
-                            CompanyName = "Wolff Inc",
-                            InternPosition = "cyber security engineer",
-                            JobDescriptionLink = "https://verner.info"
+                            CompanyEmail = "BechtelarCarrollandStanton.Lowe@hotmail.com",
+                            CompanyName = "Bechtelar, Carroll and Stanton",
+                            InternPosition = "quality assurance Enginner",
+                            JobDescriptionLink = "https://kyleigh.name"
                         });
                 });
 
@@ -1063,14 +1040,14 @@ namespace ERP.Repository.PgSql.Migrations
                             City = "",
                             District = "",
                             DoB = new DateOnly(1, 1, 1),
-                            Email = "Isabella_Hammes@hotmail.com",
-                            FirstName = "Isabella",
+                            Email = "Joel_Fisher@yahoo.com",
+                            FirstName = "Joel",
                             GPA = 0.0,
-                            LastName = "Hammes",
+                            LastName = "Fisher",
                             NationalID = "",
                             Phone = "",
                             PhoneNumber = "",
-                            RegistrationNum = "EG/2023/7779"
+                            RegistrationNum = "EG/2020/7468"
                         },
                         new
                         {
@@ -1080,14 +1057,14 @@ namespace ERP.Repository.PgSql.Migrations
                             City = "",
                             District = "",
                             DoB = new DateOnly(1, 1, 1),
-                            Email = "Janiya98@gmail.com",
-                            FirstName = "Janiya",
+                            Email = "Louie_Bruen65@hotmail.com",
+                            FirstName = "Louie",
                             GPA = 0.0,
-                            LastName = "Auer",
+                            LastName = "Bruen",
                             NationalID = "",
                             Phone = "",
                             PhoneNumber = "",
-                            RegistrationNum = "EG/2021/4303"
+                            RegistrationNum = "EG/2022/3748"
                         },
                         new
                         {
@@ -1097,14 +1074,14 @@ namespace ERP.Repository.PgSql.Migrations
                             City = "",
                             District = "",
                             DoB = new DateOnly(1, 1, 1),
-                            Email = "Keaton.Barton@gmail.com",
-                            FirstName = "Keaton",
+                            Email = "Fletcher38@hotmail.com",
+                            FirstName = "Fletcher",
                             GPA = 0.0,
-                            LastName = "Barton",
+                            LastName = "Harvey",
                             NationalID = "",
                             Phone = "",
                             PhoneNumber = "",
-                            RegistrationNum = "EG/2021/5228"
+                            RegistrationNum = "EG/2020/2036"
                         });
                 });
 

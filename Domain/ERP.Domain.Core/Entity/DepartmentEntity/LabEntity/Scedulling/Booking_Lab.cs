@@ -24,7 +24,7 @@ namespace ERP.Domain.Core.Entity.DepartmentEntity.LabEntity.Scedulling
 
        public ICollection<LabEquipment> Needed_Lab_Equipments { get; set; }
 
-       public ICollection<LabInstructor> LabInstructors { get; set; }
+       
 
        public DateOnly Date_Of_Booking { get; set; }
 
