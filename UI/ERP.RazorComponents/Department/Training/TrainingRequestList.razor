@@ -5,9 +5,11 @@
 @using ERP.Domain.Core.Entity.StudentEntity
 @using MudBlazor
 @using System.Collections.Generic
+@using Microsoft.AspNetCore.Components
 
 @inject IGetTrainingRequests GetTrainingRequests
 @inject IViewStudentById ViewStudentById
+@inject IDialogService DialogService
 
 @if (_combinedList.Count > 0)
 {
@@ -16,7 +18,22 @@
             <PropertyColumn Property="x => x.StudentName" Title="Student Name" />
             <PropertyColumn Property="x => x.Request.CompanyName" Title="Company Name" />
             <PropertyColumn Property="x => x.Request.IsResponsed" Title="Responsed" />
+
+            <TemplateColumn StickyRight="true" Filterable="false" Sortable="false">
+                <CellTemplate>
+                    @if (context.Item.Request.IsResponsed == true)
+                    {
+                        <MudIconButton Icon="@Icons.Material.Filled.CheckCircleOutline" Color="Color.Success" Size="@Size.Medium" />
+                    }
+                    else
+                    {
+                        <MudIconButton Icon="@Icons.Material.Filled.CheckCircleOutline" Color="Color.Warning" Size="@Size.Medium" />
+                    }
+                </CellTemplate>
+            </TemplateColumn>
+           
         </Columns>
+   
         <PagerContent>
             <MudDataGridPager />
         </PagerContent>
@@ -41,7 +58,7 @@ else
             _studentsNames.Add((await ViewStudentById.ExecuteAsync(student.StudentId)).FirstName);
         }
 
-      
+
         for (int i = 0; i < _studentRequests.Count; i++)
         {
             _combinedList.Add(new CombinedStudentInfo
@@ -56,5 +73,12 @@ else
     {
         public StudentRequest Request { get; set; }
         public string StudentName { get; set; }
+    }
+
+    async Task OfferLetter(CombinedStudentInfo combinedStudentInfo)
+    {
+        var parameters = new DialogParameters();
+        
+
     }
 }
