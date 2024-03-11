@@ -152,5 +152,9 @@ namespace ERP.Repository.PgSql
         public DbSet <WorkingTask> WorkingTasks { get; set; }
 
 
+
+        public DbSet<FileUpload> Files { get; set; }
+
+
     }
 }
