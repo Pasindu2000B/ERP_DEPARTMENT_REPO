@@ -5,6 +5,7 @@
 @using ERP.Domain.Core.Entity.StudentEntity
 @using MudBlazor
 @using System.Collections.Generic
+@using Microsoft.AspNetCore.Components
 
 @inject IGetTrainingRequests GetTrainingRequests
 @inject IViewStudentById ViewStudentById
@@ -16,7 +17,22 @@
             <PropertyColumn Property="x => x.StudentName" Title="Student Name" />
             <PropertyColumn Property="x => x.Request.CompanyName" Title="Company Name" />
             <PropertyColumn Property="x => x.Request.IsResponsed" Title="Responsed" />
+
+            <TemplateColumn StickyRight="true" Filterable="false" Sortable="false">
+                <CellTemplate>
+                    @if (context.Item.Request.IsResponsed == true)
+                    {
+                        <MudIconButton Icon="@Icons.Material.Filled.CheckCircleOutline" Color="Color.Success" Size="@Size.Medium" />
+                    }
+                    else
+                    {
+                        <MudIconButton Icon="@Icons.Material.Filled.CheckCircleOutline" Color="Color.Warning" Size="@Size.Medium" />
+                    }
+                </CellTemplate>
+            </TemplateColumn>
+           
         </Columns>
+   
         <PagerContent>
             <MudDataGridPager />
         </PagerContent>

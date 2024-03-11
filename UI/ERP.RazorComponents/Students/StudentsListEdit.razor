@@ -55,6 +55,7 @@
 
         var dialog = await DialogService.ShowAsync<EditStudentDialog>("Save",parameters);
         var result = await dialog.Result;
+        
 
         if (!result.Canceled)
         {
