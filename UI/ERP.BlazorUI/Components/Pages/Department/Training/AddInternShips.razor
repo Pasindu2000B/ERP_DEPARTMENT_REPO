@@ -1,3 +1,117 @@
 ﻿@page "/addInternships"
 @using ERP.Application.DepartmentApp.Training.Interfaces;
 
+
+
+@using ERP.Application.DepartmentApp.Graduates.Interfaces
+@using ERP.Domain.Core.Entity.DepartmentEntity.GraduatesEntity
+@using FluentValidation
+@inject IAddGraduateUseCase AddNewGraduateUseCase
+@inject NavigationManager NavigationManager
+@inject ISnackbar Snackbar
+
+<MudContainer>
+    <h3 class="text-center mb-4">Graduate Add Page</h3>
+
+    <MudCard>
+        <MudCardContent>
+            <MudForm Model="@graduateModel" @ref="@form" Validation="@(graduateValidator.ValidateValue)" ValidationDelay="0">
+                <MudGrid>
+                    <MudItem xs="12">
+                        <MudTextField @bind-Value="graduateModel.GraduateName"
+                                      Label="Graduate Name"
+                                      Required="true"
+                                      For="@(()=>graduateModel.GraduateName)" />
+                    </MudItem>
+
+                    <MudItem xs="12">
+                        <MudTextField @bind-Value="graduateModel.GraduateDescription"
+                                      Label="Graduate Description" />
+                    </MudItem>
+
+                    <MudItem xs="12">
+                        <MudTextField @bind-Value="graduateModel.GraduateCompany"
+                                      Label="Working Company" />
+                    </MudItem>
+
+                    <MudItem xs="12">
+                        <MudTextField @bind-Value="graduateModel.GraduateContactNo"
+                                      Label="Contact Number"
+                                      For="@(()=>graduateModel.GraduateContactNo)"
+                                      Required="true" />
+                    </MudItem>
+                </MudGrid>
+
+                <div class="text-center mt-4">
+                    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(async () => await Submit())">Add Graduate</MudButton>
+                </div>
+            </MudForm>
+
+
+        </MudCardContent>
+    </MudCard>
+</MudContainer>
+
+
+
+
+
+
+@code {
+    [Parameter]
+    public EventCallback onAdded { get; set; }
+
+    private bool isAddedSuccessfully = false;
+
+    private Graduate graduateModel = new Graduate();
+    MudForm form;
+    GraduateModelValidator graduateValidator = new GraduateModelValidator();
+
+
+    public class GraduateModelValidator : AbstractValidator<Graduate>
+    {
+        public GraduateModelValidator()
+        {
+            RuleFor(x => x.GraduateName).NotEmpty().MinimumLength(3);
+            RuleFor(x => x.GraduateContactNo)
+                .NotEmpty().WithMessage("Contact number is required.")
+                .Matches("^[0-9]*$").WithMessage("Contact number can only contain numbers.");
+        }
+
+        public Func<object, string, Task<IEnumerable<string>>> ValidateValue => async (model, propertyName) =>
+        {
+            var result = await ValidateAsync(ValidationContext<Graduate>.CreateWithOptions((Graduate)model, x => x.IncludeProperties(propertyName)));
+            if (result.IsValid)
+                return Array.Empty<string>();
+            return result.Errors.Select(e => e.ErrorMessage);
+        };
+    }
+
+
+    private async Task Submit()
+    {
+        await form.Validate();
+        try
+        {
+            if (form.IsValid)
+            {
+                await AddNewGraduateUseCase.ExecuteAsync(graduateModel);
+                await onAdded.InvokeAsync();
+                form.Reset();
+                Snackbar.Add("Graduate Added Successfully", MudBlazor.Severity.Success);
+            }
+            else
+            {
+                Snackbar.Add("Please Check Input Fields", MudBlazor.Severity.Error);
+            }
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Error: {ex.Message}", MudBlazor.Severity.Error);
+        }
+
+    }
+
+
+
+}

@@ -11,6 +11,12 @@
 @inject IInternPostUseCase InternPostUseCasecs
 
 
+<div class="d-flex justify-content-end mt-3 pr-3">
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(async () => await OpenAddInternDialog())">Add Intern</MudButton>
+</div>
+
+
+
 <MudTable Items="@_gradutes">
     <HeaderContent>
         <MudTh>Company Name</MudTh>
@@ -119,6 +125,25 @@
         {
             Snackbar.Add("Post is Not Deleted", Severity.Info);
         }
+
+    }
+
+    async Task OpenAddInternDialog()
+    {
+        var parameters = new DialogParameters();
+
+
+        var options = new DialogOptions
+            {
+                MaxWidth = MaxWidth.Medium,
+                FullWidth = true,
+                Position = DialogPosition.Center,
+                CloseOnEscapeKey = true,
+                CloseButton = true
+        };
+
+        var dialog = await DialogService.ShowAsync<AddInternDialog>("Save", parameters, options);
+        var result = await dialog.Result;
 
     }
 
