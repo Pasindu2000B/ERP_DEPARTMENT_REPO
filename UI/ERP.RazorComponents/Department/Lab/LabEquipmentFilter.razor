@@ -1,0 +1,46 @@
+﻿@using System.Globalization
+@using ERP.Application.DepartmentApp.Labs.Interfaces.Inventory_Lab
+@using ERP.Application.DepartmentApp.Labs.UseCases.Inventor_Lab
+@using MudBlazor
+@using System.Collections.Generic
+@using Microsoft.AspNetCore.Components
+@using ERP.Domain.Core.Entity.DepartmentEntity.LabEntity
+
+@inject IGetLabEquipmentListUseCase GetLabEquipmentListUseCase
+
+@if (_labEquipments.Count > 0)
+{
+    <MudDataGrid Items="_labEquipments" Filterable="true" Bordered="true" Dense="true">
+        <Columns>
+            <PropertyColumn Property="x => x.LabEquipmentID" Title="Lab Equipment Id" />
+            <PropertyColumn Property="x => x.LabEquipmentName" Title="Lab Equipment Name" />
+            <PropertyColumn Property="x => x.condition" Title="Condition of the Lab Equipment" />
+        </Columns>
+
+        <PagerContent>
+            <MudDataGridPager />
+        </PagerContent>
+    </MudDataGrid>
+
+    <div style="margin-top: 20px;">
+
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto">Generate Report</MudButton>
+    </div>
+}
+else
+{
+    <p>No Lab Equipment to Show</p>
+}
+
+@code {
+
+    private List<LabEquipment> _labEquipments = new List<LabEquipment>();
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        _labEquipments = (await GetLabEquipmentListUseCase.ExecuteAsync("")).ToList();
+       
+    }
+
+}
