@@ -19,9 +19,9 @@ namespace ERP.Application.DepartmentApp.Labs.UseCases.Inventor_Lab
 
         }
 
-        public Task ExcuteAsync(LabEquipment labEquipment)
+        public async Task ExcuteAsync(LabEquipment labEquipment)
         {
-            throw new NotImplementedException();
+            await _labRepository.EditLabEquipmentAsync(labEquipment);
         }
 
 

@@ -1,0 +1,73 @@
+﻿@using ERP.Application.DepartmentApp.Labs.Interfaces
+@using ERP.Application.DepartmentApp.Labs.Interfaces.Inventory_Lab
+@using ERP.Domain.Core.Entity.DepartmentEntity.LabEntity
+@using ERP.Application.DepartmentApp.Labs
+
+@inject ISnackbar Snackbar
+@inject IGetLabEquipmentListUseCase GetLabEquipmentListUseCase
+@inject IDialogService DialogService
+@inject NavigationManager NavigationManager
+
+<MudTable Items="@_labEquipments">
+    <HeaderContent>
+        <MudTh>Id</MudTh>
+        <MudTh>Name</MudTh>
+        <MudTh>Condition</MudTh>
+
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Nr">@context.LabEquipmentID</MudTd>
+            <MudTd DataLabel="Sign">@context.LabEquipmentName</MudTd>
+            <MudTd DataLabel="Name">@context.condition</MudTd>
+
+            <MudTd DataLabel="">
+                <MudFab OnClick="@(()=> EditLabEquipment(@context))" Color="Color.Primary"
+                        StartIcon="@Icons.Material.Filled.Edit" Size="Size.Small" />
+            </MudTd>
+        </RowTemplate>
+        <PagerContent>
+            <MudTablePager />
+        </PagerContent>
+    </MudTable>
+
+    @code {
+    private List<LabEquipment> _labEquipments = new List<LabEquipment>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        _labEquipments = (await GetLabEquipmentListUseCase.ExecuteAsync("")).ToList();
+
+    }
+
+
+    async Task EditLabEquipment(LabEquipment labEquipments)
+    {
+        var parameters = new DialogParameters();
+        parameters.Add(nameof(EditLabEquipmentDialog.labEquipment), labEquipments);
+
+
+        var options = new DialogOptions
+            {
+                MaxWidth = MaxWidth.Medium,
+                FullWidth = true,
+                Position = DialogPosition.Center,
+                CloseOnEscapeKey = true,
+                CloseButton = true
+            };
+
+
+        var dialog = await DialogService.ShowAsync<EditLabEquipmentDialog>("Save", parameters, options);
+        var result = await dialog.Result;
+
+
+        if (!result.Canceled)
+        {
+            // Handle when the dialog is not canceled
+        }
+    }
+
+  
+
+
+
+    }

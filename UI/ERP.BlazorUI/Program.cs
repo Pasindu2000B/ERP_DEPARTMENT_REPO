@@ -106,6 +106,10 @@ builder.Services.AddScoped<IInternPostViewUseCase, InternViewUseCase>();
 
 builder.Services.AddSyncfusionBlazor();
 builder.Services.AddScoped<IFileUploadUseCase, FileUploadUseCase>();
+builder.Services.AddScoped<IEditLabEquimentUsecase, EditLabEquipmentUseCase>();
+builder.Services.AddScoped<IGetLabEquipmentByIdUseCase, GetLabEquipmentByIdUseCase>();
+builder.Services.AddScoped<IGetLabEquipmentListUseCase, GetLabEquipmentlistUseCase>();
+builder.Services.AddScoped<IDeleteLabEquipmentUseCase, DeleteLabEquipmentUseCase>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
