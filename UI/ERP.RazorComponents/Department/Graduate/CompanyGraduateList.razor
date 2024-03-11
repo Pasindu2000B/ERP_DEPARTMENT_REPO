@@ -2,16 +2,7 @@
 @using ERP.Domain.Core.Entity;
 @using ERP.Domain.Core.Entity.DepartmentEntity.GraduatesEntity
 @typeparam T
-
-
-
 @inject IGetGraduateListByCompanyUseCase GetGraduateListByCompanyUseCase
-
-
-
-
-
-
 
 <p>Selected Company : @SelectedCompany</p>
 <MudTable Items="@_gradutes">
@@ -27,12 +18,6 @@
         <MudTablePager />
     </PagerContent>
 </MudTable>
-
- 
-
-
-
-
     @code {
     private List<Graduate> _gradutes = new List<Graduate>();
 

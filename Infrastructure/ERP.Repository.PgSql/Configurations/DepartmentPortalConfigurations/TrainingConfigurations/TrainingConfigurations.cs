@@ -19,7 +19,7 @@ namespace ERP.Repository.PgSql.Configurations.DepartmentPortalConfigurations.Tra
            
             builder.HasData(
 
-                Enumerable.Range(1, 3).Select(
+                Enumerable.Range(1, 30).Select(
                     index => new Faker<JobPost>()
                     .RuleFor(s=>s.Id,index+100)
                     .RuleFor(s=>s.CompanyName,f=>f.Company.CompanyName())

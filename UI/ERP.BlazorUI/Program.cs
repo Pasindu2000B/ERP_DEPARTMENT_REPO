@@ -27,6 +27,7 @@ using ERP.Application.DepartmentApp.Recruiments.Interfaces;
 using ERP.Application.DepartmentApp.Recruiments.UseCases;
 using ERP.Application.DepartmentApp.Recruiments;
 using ERP.Repository.PgSql.Department.Recruiment;
+using Syncfusion.Blazor;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -77,7 +78,7 @@ builder.Services.AddScoped<IGraduateRepository, GraduateRepositoryPgSql>();
 builder.Services.AddScoped<ITrainingRepository, TraininiRepositoryPgSQL>();
 builder.Services.AddScoped<IRecrumentRepository,RecruimentRepositoryPgSQL>();
 
-builder.Services.AddScoped<ITrainingRepository, TraininiRepositoryPgSQL>();
+
 
 builder.Services.AddScoped<IGetLabEquipmentListUseCase, GetLabEquipmentlistUseCase>();
 builder.Services.AddScoped<IViewStudentsByNameUseCase, ViewStudentsByNameUseCase>();
@@ -100,7 +101,11 @@ builder.Services.AddScoped<IGetGraduateListByCompanyUseCase, GetGraduateListByCo
 builder.Services.AddScoped<IGetAllCompanyNamesUseCase, GetAllCompanyNamesUseCase>();   
 builder.Services.AddScoped<IGetTrainingRequests,GetTrainingRequests>();
 
+builder.Services.AddScoped<IInternPostUseCase,InternPostUseCasecs>();
+builder.Services.AddScoped<IInternPostViewUseCase, InternViewUseCase>();
 
+builder.Services.AddSyncfusionBlazor();
+builder.Services.AddScoped<IFileUploadUseCase, FileUploadUseCase>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -121,3 +126,10 @@ app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
 
 app.Run();
+
+
+/*
+ * using Syncfusion.Blazor;
+....
+builder.Services.AddSyncfusionBlazor();
+ * */
