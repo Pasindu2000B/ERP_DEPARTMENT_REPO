@@ -74,13 +74,10 @@ builder.Services.AddMudServices();
 builder.Services.AddScoped<IStudentRepository, StudentRepositoryPgSql>();
 builder.Services.AddScoped<ILabRepository,LabRepositoryPgSql>();
 builder.Services.AddScoped<IGraduateRepository, GraduateRepositoryPgSql>();
-
-builder.Services.AddScoped<TrainingRepository, TraininiRepositoryPgSQL>();
-
 builder.Services.AddScoped<ITrainingRepository, TraininiRepositoryPgSQL>();
 builder.Services.AddScoped<IRecrumentRepository,RecruimentRepositoryPgSQL>();
 
-builder.Services.AddScoped<ITrainingRepository, TraininiRepositoryPgSQL>();
+
 
 builder.Services.AddScoped<IGetLabEquipmentListUseCase, GetLabEquipmentlistUseCase>();
 builder.Services.AddScoped<IViewStudentsByNameUseCase, ViewStudentsByNameUseCase>();
@@ -102,6 +99,9 @@ builder.Services.AddScoped<IRecruimentCrudUseCase,CRUDRecrumentUseCase>();
 builder.Services.AddScoped<IGetGraduateListByCompanyUseCase, GetGraduateListByCompanyUseCase>();
 builder.Services.AddScoped<IGetAllCompanyNamesUseCase, GetAllCompanyNamesUseCase>();   
 builder.Services.AddScoped<IGetTrainingRequests,GetTrainingRequests>();
+
+builder.Services.AddScoped<IInternPostUseCase,InternPostUseCasecs>();
+builder.Services.AddScoped<IInternPostViewUseCase, InternViewUseCase>();
 
 
 var app = builder.Build();
