@@ -3,6 +3,7 @@ using System;
 using ERP.Repository.PgSql;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ERP.Repository.PgSql.Migrations
 {
     [DbContext(typeof(PgSqlDbContext))]
-    partial class PgSqlDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240310094823_jobpostscofig")]
+    partial class jobpostscofig
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,12 +57,10 @@ namespace ERP.Repository.PgSql.Migrations
                         new
                         {
                             GraduateID = 1001,
-
                             GraduateCompany = "5993 Hills Burg, East Josianefort, Argentina",
                             GraduateContactNo = "450-228-5802",
                             GraduateDescription = "Internal",
                             GraduateName = "Reymundo"
-
                         },
                         new
                         {
@@ -67,20 +68,16 @@ namespace ERP.Repository.PgSql.Migrations
                             GraduateCompany = "971 Grady Springs, Veumfort, Grenada",
                             GraduateContactNo = "272-897-9194 x479",
                             GraduateDescription = "Dynamic",
-
                             GraduateName = "Baby"
-
                         },
                         new
                         {
                             GraduateID = 1003,
-
                             GraduateCompany = "442 Arno Way, Coltonstad, Guyana",
                             GraduateContactNo = "(966) 220-2767",
                             GraduateDescription = "Product",
                             GraduateName = "Zula"
                         });
-
                 });
 
             modelBuilder.Entity("ERP.Domain.Core.Entity.DepartmentEntity.LabEntity.LabEquipment", b =>
@@ -114,9 +111,7 @@ namespace ERP.Repository.PgSql.Migrations
                         {
                             LabEquipmentID = 3001,
                             Avaialability = false,
-
                             LabEquipmentName = "Jovan",
-
                             LabSpaceId = 0,
                             condition = "medium"
                         },
@@ -124,15 +119,7 @@ namespace ERP.Repository.PgSql.Migrations
                         {
                             LabEquipmentID = 3002,
                             Avaialability = false,
-
                             LabEquipmentName = "Kiana",
-
-
-                            LabEquipmentName = "Else",
-
-                 
-
-
                             LabSpaceId = 0,
                             condition = "medium"
                         },
@@ -140,9 +127,7 @@ namespace ERP.Repository.PgSql.Migrations
                         {
                             LabEquipmentID = 3003,
                             Avaialability = false,
-
                             LabEquipmentName = "Vivien",
-
                             LabSpaceId = 0,
                             condition = "medium"
                         });
@@ -1037,7 +1022,6 @@ namespace ERP.Repository.PgSql.Migrations
                             City = "",
                             District = "",
                             DoB = new DateOnly(1, 1, 1),
-
                             Email = "Eryn97@gmail.com",
                             FirstName = "Eryn",
                             GPA = 0.0,
@@ -1046,7 +1030,6 @@ namespace ERP.Repository.PgSql.Migrations
                             Phone = "",
                             PhoneNumber = "",
                             RegistrationNum = "EG/2022/6407"
-
                         },
                         new
                         {
@@ -1056,7 +1039,6 @@ namespace ERP.Repository.PgSql.Migrations
                             City = "",
                             District = "",
                             DoB = new DateOnly(1, 1, 1),
-
                             Email = "Dawson_Hudson70@hotmail.com",
                             FirstName = "Dawson",
                             GPA = 0.0,
@@ -1065,7 +1047,6 @@ namespace ERP.Repository.PgSql.Migrations
                             Phone = "",
                             PhoneNumber = "",
                             RegistrationNum = "EG/2023/2426"
-
                         },
                         new
                         {
@@ -1075,18 +1056,15 @@ namespace ERP.Repository.PgSql.Migrations
                             City = "",
                             District = "",
                             DoB = new DateOnly(1, 1, 1),
-
                             Email = "Brielle.Labadie@hotmail.com",
                             FirstName = "Brielle",
-
                             GPA = 0.0,
                             LastName = "Labadie",
                             NationalID = "",
                             Phone = "",
                             PhoneNumber = "",
-
                             RegistrationNum = "EG/2020/3144"
-         });
+                        });
                 });
 
             modelBuilder.Entity("ERP.Domain.Core.Entity.StudentEntity.StudentResult", b =>
