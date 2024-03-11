@@ -1,20 +1,17 @@
-
-﻿ @layout EEC_Main
  @page "/Internships"
 
 ﻿
-@page "/Internships"\
 
 
-﻿
-@page "/Internships"
+
+
 
 @using ERP.BlazorUI.Components.Layout
 @using ERP.Application.DepartmentApp.Training.Usecases
-@inject IInternPostViewUseCase InternViewUseCase
+@*@inject IInternPostViewUseCase InternViewUseCase
 
 
-<MudDataGrid T="Element" Items="@Elements" Filterable="true" FilterMode="@DataGridFilterMode.ColumnFilterRow">
+<!--<MudDataGrid T="Element" Items="@Elements" Filterable="true" FilterMode="@DataGridFilterMode.ColumnFilterRow">
     <Columns>
         <PropertyColumn Property="x => x.Number" Title="Nr" Filterable="false" />
         <PropertyColumn Property="x => x.Sign">
@@ -48,10 +45,10 @@
     <PagerContent>
         <MudDataGridPager T="Element" />
     </PagerContent>
-</MudDataGrid>
+</MudDataGrid> -->
 
 @code {
-    IEnumerable<> Elements = new List<Element>();
+    IEnumerable<Element> Elements = new List<Element>();
     HashSet<Element> _selectedItems = new();
     HashSet<Element> _filterItems = new();
     FilterDefinition<Element> _filterDefinition;
@@ -119,6 +116,6 @@
             _selectedItems.Clear();
         }
     }
-}
+}*@
 
 
