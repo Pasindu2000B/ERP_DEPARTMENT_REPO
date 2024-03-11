@@ -8,7 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using ERP.Domain.Core.Entity;
 using ERP.Domain.Core.Entity.DepartmentEntity.LabEntity;
 using ERP.Repository.PgSql.Migrations;
+<<<<<<< HEAD
 using ERP.Domain.Core.Entity.DepartmentEntity.LabEntity.Scedulling;
+=======
+using ERP.Domain.Core.Entity.DepartmentEntity.GraduatesEntity;
+>>>>>>> 2cfc0e6890bcd932da8c975c6680b17e4f7f4e34
 
 namespace ERP.Repository.PgSql.Department.Lab
 {
@@ -38,11 +42,15 @@ namespace ERP.Repository.PgSql.Department.Lab
 
         public Task DeleteLabEquipmentAsync(LabEquipment labEquipment)
         {
-            using var context = _factory.CreateDbContext(); 
-            context.LabEquipments.Remove(labEquipment);
-            context.SaveChanges();
+            using var _context = _factory.CreateDbContext();
+            var elabequipment = _context.LabEquipments.FirstOrDefault(x => x.LabEquipmentID == labEquipment.LabEquipmentID);
+            if (elabequipment != null)
+            {
+                _context.LabEquipments.Remove(elabequipment);
+                _context.SaveChanges();
+            }
             return Task.CompletedTask;
-          
+
         }
 
         public Task DeleteLabEquipmentAsync(int id)

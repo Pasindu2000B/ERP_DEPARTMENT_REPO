@@ -16,7 +16,7 @@ namespace ERP.Application.DepartmentApp.Labs.Repository
        
         Task AddLabEquipmentAsync(int id);
 
-        Task DeleteLabEquipmentAsync(int id);
+        Task DeleteLabEquipmentAsync(LabEquipment labEquipment);
 
        // Task EditLabEquipmentAsync(int id);
 

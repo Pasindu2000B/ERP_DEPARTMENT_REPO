@@ -2,16 +2,11 @@
 @using ERP.Domain.Core.Entity;
 @using ERP.Domain.Core.Entity.DepartmentEntity.GraduatesEntity
 
-
-
 @inject NavigationManager NavigationManager
 @inject IGetGraduateListUseCase GetGraduateList
 @inject IDeleteGraduateUseCase DeleteGraduateUseCase
 @inject IDialogService DialogService
 @inject ISnackbar Snackbar
-
-
-
 
 <MudTable Items="@_gradutes">
     <HeaderContent>
