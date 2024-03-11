@@ -101,6 +101,8 @@ namespace ERP.Repository.PgSql.Migrations
 
                     b.HasKey("LabEquipmentID");
 
+                    b.HasIndex("LabSpaceId");
+
                     b.ToTable("LabEquipments");
 
                     b.HasData(
@@ -145,6 +147,23 @@ namespace ERP.Repository.PgSql.Migrations
                     b.HasKey("LabSpaceId");
 
                     b.ToTable("LabSpaces");
+
+                    b.HasData(
+                        new
+                        {
+                            LabSpaceId = 21,
+                            LabSpaceName = "Douglas"
+                        },
+                        new
+                        {
+                            LabSpaceId = 22,
+                            LabSpaceName = "Gage"
+                        },
+                        new
+                        {
+                            LabSpaceId = 23,
+                            LabSpaceName = "Rodolfo"
+                        });
                 });
 
             modelBuilder.Entity("ERP.Domain.Core.Entity.DepartmentEntity.RecruimentEntity.Notification", b =>
@@ -1171,6 +1190,17 @@ namespace ERP.Repository.PgSql.Migrations
                     b.ToTable("Teachers");
                 });
 
+            modelBuilder.Entity("ERP.Domain.Core.Entity.DepartmentEntity.LabEntity.LabEquipment", b =>
+                {
+                    b.HasOne("ERP.Domain.Core.Entity.DepartmentEntity.LabEntity.LabSpace", "LabSpace")
+                        .WithMany("labEquipments")
+                        .HasForeignKey("LabSpaceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("LabSpace");
+                });
+
             modelBuilder.Entity("ERP.Domain.Core.Entity.DepartmentEntity.RecruimentEntity.Notification", b =>
                 {
                     b.HasOne("ERP.Domain.Core.Entity.StudentEntity.Person", "Person")
@@ -1419,6 +1449,11 @@ namespace ERP.Repository.PgSql.Migrations
                         .IsRequired();
 
                     b.Navigation("Student");
+                });
+
+            modelBuilder.Entity("ERP.Domain.Core.Entity.DepartmentEntity.LabEntity.LabSpace", b =>
+                {
+                    b.Navigation("labEquipments");
                 });
 
             modelBuilder.Entity("ERP.Domain.Core.Entity.DepartmentEntity.RecruimentEntity.RecruimentJobPost", b =>
