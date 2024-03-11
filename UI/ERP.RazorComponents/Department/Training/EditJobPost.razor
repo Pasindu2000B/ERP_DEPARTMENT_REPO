@@ -1,0 +1,75 @@
+﻿
+@using ERP.Application.DepartmentApp.Training.Interfaces
+@using ERP.Domain.Core.Entity.DepartmentEntity.TrainingEntity.InternShips
+@inject ISnackbar Snackbar
+@inject IInternPostUseCase InternPostUseCasecs
+@inject IDialogService DialogService
+
+<MudDialog>
+    <TitleContent>
+        <div class="d-flex align-items-center">
+            <MudIcon Icon="@Icons.Material.Filled.ModeEdit"
+                     Class="mr-3 mb-n1 " />
+            <MudText Typo="Typo.h6" Class="mb-0">Edit Graduate</MudText>
+        </div>
+    </TitleContent>
+    <DialogContent>
+        <div class="d-flex flex-column">
+            <MudTextField @bind-Value="graduate.Id" Label="ID" ReadOnly="true" />
+            <MudTextField @bind-Value="graduate.CompanyName" Label="Company" />
+            <MudTextField @bind-Value="graduate.CompanyEmail" Label="Email" />
+            <MudTextField @bind-Value="graduate.Category" Label="Category" />
+            <MudTextField @bind-Value="graduate.InternPosition" Label="Position" />
+            <MudTextField @bind-Value="graduate.JobDescriptionLink" Label="Description" />
+
+        </div>
+    </DialogContent>
+
+    <DialogActions>
+        <div class="d-flex justify-content-end">
+            <MudButton OnClick="Cancel" Variant="Variant.Filled">Cancel</MudButton>
+            <div class="mr-2"></div>
+            <MudButton Color="Color.Primary" OnClick="SaveGraduate" Variant="Variant.Filled">Save</MudButton>
+        </div>
+    </DialogActions>
+</MudDialog>
+
+
+
+
+@code {
+    [CascadingParameter]
+    MudDialogInstance MudDialog { get; set; }
+
+    [Parameter]
+    public JobPost graduate { get; set; } = new();
+    public EventCallback onAdded { get; set; }
+
+    private void Cancel()
+    {
+        MudDialog.Cancel();
+    }
+
+    private async void SaveGraduate()
+    {
+
+      
+        await InternPostUseCasecs.EditExecuteAsync(graduate);
+        await onAdded.InvokeAsync();
+        Snackbar.Add("Graduate Edited Successfully", Severity.Success);
+        MudDialog.Close(DialogResult.Ok(graduate.Id));
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+}

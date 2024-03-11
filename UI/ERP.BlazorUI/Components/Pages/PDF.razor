@@ -1,0 +1,35 @@
+﻿@page "/pdf"
+@using ERP.Application.DepartmentApp.Training.Interfaces
+@using Syncfusion.Blazor.Inputs
+@inject IFileUploadUseCase FileUploadUseCase
+<SfUploader AutoUpload="true">
+    <UploaderEvents ValueChange="@OnChange"></UploaderEvents>
+</SfUploader>
+
+@code {
+   
+    private async Task OnChange(UploadChangeEventArgs args)
+    {
+        try
+        {
+            foreach (var file in args.Files)
+            {
+                using (var memoryStream = new MemoryStream())
+                {
+                    await file.File.OpenReadStream(long.MaxValue).CopyToAsync(memoryStream);
+                    var fileRecord = new Domain.Core.Entity.DepartmentEntity.TrainingEntity.InternShips.FileUpload
+                        {
+                            FileName = file.FileInfo.Name,
+                            Data = memoryStream.ToArray(),
+                            ContentType = file.FileInfo.Type
+                        };
+                    await FileUploadUseCase.UploadFileAsync(fileRecord);
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+}

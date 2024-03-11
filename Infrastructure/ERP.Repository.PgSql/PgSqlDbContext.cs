@@ -9,6 +9,7 @@ using ERP.Repository.PgSql.Configurations;
 using ERP.Repository.PgSql.Configurations.DepartmentPortalConfigurations;
 using ERP.Repository.PgSql.Configurations.DepartmentPortalConfigurations.GraduateConfigurations;
 using ERP.Repository.PgSql.Configurations.DepartmentPortalConfigurations.LabConfigurations;
+using ERP.Repository.PgSql.Configurations.DepartmentPortalConfigurations.TrainingConfigurations;
 using ERP.Repository.PgSql.Migrations;
 using Microsoft.EntityFrameworkCore;
 
@@ -27,6 +28,7 @@ namespace ERP.Repository.PgSql
             modelBuilder.ApplyConfiguration(new StudentConfigurations());
             modelBuilder.ApplyConfiguration(new LabEquipmentConfiguration());
             modelBuilder.ApplyConfiguration(new GraduateConfiguration());
+            modelBuilder.ApplyConfiguration(new Configurations.DepartmentPortalConfigurations.TrainingConfigurations.TrainingConfigurations());
 
 
             modelBuilder.Entity<ModuleOfferingTeacher>()
@@ -148,6 +150,10 @@ namespace ERP.Repository.PgSql
         //working Task
 
         public DbSet <WorkingTask> WorkingTasks { get; set; }
+
+
+
+        public DbSet<FileUpload> Files { get; set; }
 
 
     }

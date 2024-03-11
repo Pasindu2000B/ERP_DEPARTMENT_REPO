@@ -65,7 +65,7 @@ namespace ERP.Repository.PgSql.Department.Training
             _context.Remove(job);
             _context.SaveChanges();
             return Task.CompletedTask;
-             
+
 
         }
 
@@ -84,5 +84,13 @@ namespace ERP.Repository.PgSql.Department.Training
             return await _context.StudentRequests.ToListAsync();
         }
 
+        public async Task SaveFileAsync(FileUpload fileupload)
+        {
+            using var _context = _factory.CreateDbContext();
+            await _context.Files.AddAsync(fileupload);
+            await _context.SaveChangesAsync();
+
+            throw new NotImplementedException();
+        }
     }
 }

@@ -1,63 +1,50 @@
-﻿@using System.Collections.Generic
-@using System.Threading.Tasks
+﻿@using System.Globalization
 @using ERP.Application.DepartmentApp.Graduates.Interfaces
+@using ERP.Application.DepartmentApp.Training.Interfaces
+@using ERP.Application.StudentApp.Students.Interfaces
+@using ERP.Domain.Core.Entity.DepartmentEntity.TrainingEntity
+@using ERP.Domain.Core.Entity.StudentEntity
+@using MudBlazor
+@using System.Collections.Generic
+@using Microsoft.AspNetCore.Components
 @using ERP.Domain.Core.Entity.DepartmentEntity.GraduatesEntity
 
-@inject IGetAllCompanyNamesUseCase GetAllCompanyNamesUseCase
-@inject IGetGraduateListByCompanyUseCase GetGraduateListByCompanyUseCase
 
-<MudSelect T="string" Label="Select a Company" AnchorOrigin="Origin.BottomCenter" @bind-Value="SelectedCompany" OnValueChanged="HandleCompanySelection">
-    
-    @foreach (var companyName in CompanyNames)
-    {
-        <MudSelectItem Value="@companyName">@companyName</MudSelectItem>
-    }
-</MudSelect>
 
-<MudCardActions>
-    <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto" OnClick="@(async ()=>await LoadGraduatesAsync(SelectedCompany))">Search Graduates</MudButton>
-</MudCardActions>
+@inject IGetGraduateListUseCase GetGraduateList
 
-@if (_graduates == null || _graduates.Count == 0)
+@if (_graduates.Count > 0)
 {
-    <p>No graduates to show.</p>
+    <MudDataGrid Items="_graduates" Filterable="true" Bordered="true" Dense="true">
+        <Columns>
+            <PropertyColumn Property="x => x.GraduateName" Title="Graduate Name" />
+            <PropertyColumn Property="x => x.GraduateCompany" Title="Company Working" />
+            <PropertyColumn Property="x => x.GraduateDescription" Title="Current Job Role" />
+        </Columns>
+
+        <PagerContent>
+            <MudDataGridPager />
+        </PagerContent>
+    </MudDataGrid>
+
+    <div style="margin-top: 20px;">
+        
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto">Generate Report</MudButton>
+    </div>
 }
 else
 {
-    <MudTable Items="@_graduates">
-        <HeaderContent>
-            <MudTh>Name</MudTh>
-            <MudTh>Contact Number</MudTh>
-        </HeaderContent>
-        <RowTemplate>
-            <MudTd DataLabel="Name">@context.GraduateName</MudTd>
-            <MudTd DataLabel="Contact Number">@context.GraduateContactNo</MudTd>
-        </RowTemplate>
-        <PagerContent>
-            <MudTablePager />
-        </PagerContent>
-    </MudTable>
+    <p>No Graduates to Show</p>
 }
 
+
 @code {
-    private List<string> CompanyNames { get; set; } = new List<string>();
-    private string SelectedCompany { get; set; }
+
     private List<Graduate> _graduates = new List<Graduate>();
 
     protected override async Task OnInitializedAsync()
     {
-        CompanyNames = await GetAllCompanyNamesUseCase.ExecuteAsync();
+        _graduates = (await GetGraduateList.ExecuteAsync("")).ToList();
     }
 
-    private async Task HandleCompanySelection(string selectedValue)
-    {
-        SelectedCompany = selectedValue;
-        await LoadGraduatesAsync(selectedValue);
-        StateHasChanged(); 
-    }
-
-    private async Task LoadGraduatesAsync(string company)
-    {
-        _graduates = (await GetGraduateListByCompanyUseCase.ExecuteAsync(company)).ToList();
-    }
 }

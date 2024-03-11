@@ -1,27 +1,130 @@
-﻿
 @page "/Internships"
-@using ERP.BlazorUI.Components.Layout
+@using ERP.Application.DepartmentApp.Training.Interfaces
+@using ERP.Domain.Core.Entity.DepartmentEntity.TrainingEntity.InternShips
 
-<MudCard>
-    
-    <MudCardContent>
-        <MudText Typo="Typo.h5">Electronic Engineer</MudText>
-        <MudText Typo="Typo.body2">Fonterra PVT Ltd</MudText>
-        <MudText Typo="Typo.body2">Biyagama</MudText>
-    </MudCardContent>
-    <MudCardActions>
-        <MudNavLink Href="/ViewInternship" MudButton Variant="Variant.Text" Color="Color.Primary">View</MudNavLink>
-        <MudButton Variant="Variant.Text" Color="Color.Primary">Delete</MudButton>
+@using ERP.RazorComponents.Department.Training
+@inject IDialogService DialogService
+@inject ISnackbar Snackbar
+
+@inject NavigationManager NavigationManager
+@inject IInternPostViewUseCase  InternViewUseCase
+@inject IInternPostUseCase InternPostUseCasecs
+
+
+<MudTable Items="@_gradutes">
+    <HeaderContent>
+        <MudTh>Company Name</MudTh>
+        <MudTh>Contact Email</MudTh>
+        <MudTh>Position</MudTh>
+        <MudTh>Category</MudTh>
+        <MudTh>Link</MudTh>
+       
+
+    </HeaderContent>
+            <RowTemplate>
         
-    </MudCardActions>
-</MudCard>
+            <MudTd DataLabel="Company Name">@context.CompanyName</MudTd>
+            <MudTd DataLabel="Company Email">@context.CompanyEmail</MudTd>
+            <MudTd DataLabel="Position">@context.InternPosition</MudTd>
+            <MudTd DataLabel="Category">@context.Category</MudTd>
+            <MudTd DataLabel="Link">@context.JobDescriptionLink</MudTd>
+           
+            <MudTd DataLabel="">
+                <MudFab OnClick="@(()=> EditGraduate(@context))" Color="Color.Primary"
+                        StartIcon="@Icons.Material.Filled.Edit" Size="Size.Small" />
+                <MudFab OnClick="@(()=> DeleteGraduate(@context))" Color="Color.Warning"
+                        StartIcon="@Icons.Material.Filled.Delete" Size="Size.Small" />
+                
+            </MudTd>
+        </RowTemplate>
+        <PagerContent>
+            <MudTablePager />
+        </PagerContent>
+    </MudTable>
 
-<MudPagination Color="Color.Primary" Count="4" @bind-Selected="@_selected" />
+    <MudMessageBox @ref="mbox" Title="Warning" CancelText="Cancel">
+        <MessageContent>
+            Are You Sure to Delete This Graduate!
+        </MessageContent>
+        <YesButton>
+            <MudButton Variant="Variant.Filled" Color="Color.Error" StartIcon="@Icons.Material.Filled.DeleteForever">Delete!</MudButton>
+        </YesButton>
+    </MudMessageBox>
 
-<MudText Align="Align.Center">Selected page: @_selected</MudText>
+
+
 
     @code {
-    private int _selected = 1;
-}
+    private List<JobPost> _gradutes = new List<JobPost>();
+
+    MudMessageBox mbox { get; set; }
+
+    public EventCallback onDelete { get; set; }
+
+    [Parameter]
+    public string SearchTerm { get; set; } = string.Empty;
 
 
+    private void NavigateToCounterComponent(string a)
+    {
+        NavigationManager.NavigateTo(a);
+    }
+    protected override async Task OnInitializedAsync()
+    {
+        _gradutes = (await InternViewUseCase.GetAllJobPostExecuteAsync()).ToList();
+
+    }
+
+
+
+    public async Task EditGraduate(JobPost graduate)
+    {
+        var parameters = new DialogParameters();
+        parameters.Add(nameof(EditJobPost.graduate), graduate);
+
+
+        var options = new DialogOptions
+            {
+                MaxWidth = MaxWidth.Medium,
+                FullWidth = true,
+                Position = DialogPosition.Center,
+                CloseOnEscapeKey = true,
+                CloseButton = true
+            };
+
+
+        var dialog = await DialogService.ShowAsync<EditJobPost>("Save", parameters, options);
+        var result = await dialog.Result;
+
+
+        if (!result.Canceled)
+        {
+            // Handle when the dialog is not canceled
+        }
+    }
+
+
+    async Task DeleteGraduate(JobPost jobpost)
+    {
+        bool? result = await mbox.Show();
+        if (result == true)
+        {
+            _gradutes.Remove(jobpost);
+            StateHasChanged();
+            await InternPostUseCasecs.DeleteExecuteAsync(jobpost);
+            await onDelete.InvokeAsync();
+            Snackbar.Add("Post Deleted Successfully", Severity.Success);
+        }
+        else
+        {
+            Snackbar.Add("Post is Not Deleted", Severity.Info);
+        }
+
+    }
+
+
+
+
+
+    }
+ 
