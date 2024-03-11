@@ -1,121 +1,130 @@
- @page "/Internships"
+@page "/Internships"
+@using ERP.Application.DepartmentApp.Training.Interfaces
+@using ERP.Domain.Core.Entity.DepartmentEntity.TrainingEntity.InternShips
 
-﻿
+@using ERP.RazorComponents.Department.Training
+@inject IDialogService DialogService
+@inject ISnackbar Snackbar
+
+@inject NavigationManager NavigationManager
+@inject IInternPostViewUseCase  InternViewUseCase
+@inject IInternPostUseCase InternPostUseCasecs
+
+
+<MudTable Items="@_gradutes">
+    <HeaderContent>
+        <MudTh>Company Name</MudTh>
+        <MudTh>Contact Email</MudTh>
+        <MudTh>Position</MudTh>
+        <MudTh>Category</MudTh>
+        <MudTh>Link</MudTh>
+       
+
+    </HeaderContent>
+            <RowTemplate>
+        
+            <MudTd DataLabel="Company Name">@context.CompanyName</MudTd>
+            <MudTd DataLabel="Company Email">@context.CompanyEmail</MudTd>
+            <MudTd DataLabel="Position">@context.InternPosition</MudTd>
+            <MudTd DataLabel="Category">@context.Category</MudTd>
+            <MudTd DataLabel="Link">@context.JobDescriptionLink</MudTd>
+           
+            <MudTd DataLabel="">
+                <MudFab OnClick="@(()=> EditGraduate(@context))" Color="Color.Primary"
+                        StartIcon="@Icons.Material.Filled.Edit" Size="Size.Small" />
+                <MudFab OnClick="@(()=> DeleteGraduate(@context))" Color="Color.Warning"
+                        StartIcon="@Icons.Material.Filled.Delete" Size="Size.Small" />
+                
+            </MudTd>
+        </RowTemplate>
+        <PagerContent>
+            <MudTablePager />
+        </PagerContent>
+    </MudTable>
+
+    <MudMessageBox @ref="mbox" Title="Warning" CancelText="Cancel">
+        <MessageContent>
+            Are You Sure to Delete This Graduate!
+        </MessageContent>
+        <YesButton>
+            <MudButton Variant="Variant.Filled" Color="Color.Error" StartIcon="@Icons.Material.Filled.DeleteForever">Delete!</MudButton>
+        </YesButton>
+    </MudMessageBox>
 
 
 
 
+    @code {
+    private List<JobPost> _gradutes = new List<JobPost>();
 
-@using ERP.BlazorUI.Components.Layout
-@using ERP.Application.DepartmentApp.Training.Usecases
-@*@inject IInternPostViewUseCase InternViewUseCase
+    MudMessageBox mbox { get; set; }
+
+    public EventCallback onDelete { get; set; }
+
+    [Parameter]
+    public string SearchTerm { get; set; } = string.Empty;
 
 
-<!--<MudDataGrid T="Element" Items="@Elements" Filterable="true" FilterMode="@DataGridFilterMode.ColumnFilterRow">
-    <Columns>
-        <PropertyColumn Property="x => x.Number" Title="Nr" Filterable="false" />
-        <PropertyColumn Property="x => x.Sign">
-            <FilterTemplate>
-                <MudIconButton OnClick="@OpenFilter" Icon="@_icon" Size="@Size.Small" />
-                <MudOverlay Visible="@_filterOpen" OnClick="@(() => _filterOpen = false)" />
-                <MudPopover Open="@_filterOpen" AnchorOrigin="Origin.BottomCenter" TransformOrigin="Origin.TopCenter"
-                    Style="width:150px">
-		           <MudStack Spacing="0">
-                       <MudCheckBox T="bool" Label="Select All" Size="@Size.Small" Checked="@_selectAll" CheckedChanged="@SelectAll" />
-                       <MudStack Spacing="0" Style="overflow-y:auto;max-height:250px">
-                           @foreach (var item in context.Items)
-                           {
-                               <MudCheckBox T="bool" Label="@($"{item.Sign}")" Size="@Size.Small" Checked="@(_selectedItems.Contains(item))"
-                                   CheckedChanged="@((value) => SelectedChanged(value, item))" />
-                           }
-                       </MudStack>
-                       <MudStack Row="true">
-                            <MudButton OnClick="@(() => ClearFilterAsync(context))">Clear</MudButton>
-                            <MudButton Color="@Color.Primary" OnClick="@(() => ApplyFilterAsync(context))">Filter</MudButton>
-                       </MudStack>
-                   </MudStack>
-	            </MudPopover>
-            </FilterTemplate>
-        </PropertyColumn>
-        <PropertyColumn Property="x => x.Name" />
-        <PropertyColumn Property="x => x.Position" />
-        <PropertyColumn Property="x => x.Molar" Title="Molar mass" />
-        <PropertyColumn Property="x => x.Group" Title="Category" />
-    </Columns>
-    <PagerContent>
-        <MudDataGridPager T="Element" />
-    </PagerContent>
-</MudDataGrid> -->
-
-@code {
-    IEnumerable<Element> Elements = new List<Element>();
-    HashSet<Element> _selectedItems = new();
-    HashSet<Element> _filterItems = new();
-    FilterDefinition<Element> _filterDefinition;
-    bool _selectAll = true;
-    string _icon = Icons.Material.Outlined.FilterAlt;
-
-    bool _filterOpen = false;
-
+    private void NavigateToCounterComponent(string a)
+    {
+        NavigationManager.NavigateTo(a);
+    }
     protected override async Task OnInitializedAsync()
     {
-        Elements = await InternViewUseCase.GetAllJobPostExecuteAsync().ToList();
-        _selectedItems = Elements.ToHashSet();
-        _filterItems = Elements.ToHashSet();
-        _filterDefinition = new FilterDefinition<Element>
+        _gradutes = (await InternViewUseCase.GetAllJobPostExecuteAsync()).ToList();
+
+    }
+
+
+
+    public async Task EditGraduate(JobPost graduate)
+    {
+        var parameters = new DialogParameters();
+        parameters.Add(nameof(EditJobPost.graduate), graduate);
+
+
+        var options = new DialogOptions
+            {
+                MaxWidth = MaxWidth.Medium,
+                FullWidth = true,
+                Position = DialogPosition.Center,
+                CloseOnEscapeKey = true,
+                CloseButton = true
+            };
+
+
+        var dialog = await DialogService.ShowAsync<EditJobPost>("Save", parameters, options);
+        var result = await dialog.Result;
+
+
+        if (!result.Canceled)
         {
-            FilterFunction = x => _filterItems.Contains(x)
-        };
+            // Handle when the dialog is not canceled
+        }
     }
 
-    void OpenFilter()
+
+    async Task DeleteGraduate(JobPost jobpost)
     {
-        _filterOpen = true;
-    }
-
-    private void SelectedChanged(bool value, Element item)
-    {
-        if (value)
-            _selectedItems.Add(item);
-        else
-            _selectedItems.Remove(item);
-
-        if (_selectedItems.Count == Elements.Count())
-            _selectAll = true;
-        else
-            _selectAll = false;
-    }
-
-    private async Task ClearFilterAsync(FilterContext<Element> context)
-    {
-        _selectedItems = Elements.ToHashSet();
-        _filterItems = Elements.ToHashSet();
-        _icon = Icons.Material.Outlined.FilterAlt;
-        await context.Actions.ClearFilterAsync(_filterDefinition);
-        _filterOpen = false;
-    }
-
-    private async Task ApplyFilterAsync(FilterContext<Element> context)
-    {
-        _filterItems = _selectedItems.ToHashSet();
-        _icon = _filterItems.Count == Elements.Count() ? Icons.Material.Outlined.FilterAlt : Icons.Material.Filled.FilterAlt;
-        await context.Actions.ApplyFilterAsync(_filterDefinition);
-        _filterOpen = false;
-    }
-
-    private void SelectAll(bool value)
-    {
-        _selectAll = value;
-
-        if (value)
+        bool? result = await mbox.Show();
+        if (result == true)
         {
-            _selectedItems = Elements.ToHashSet();
+            _gradutes.Remove(jobpost);
+            StateHasChanged();
+            await InternPostUseCasecs.DeleteExecuteAsync(jobpost);
+            await onDelete.InvokeAsync();
+            Snackbar.Add("Post Deleted Successfully", Severity.Success);
         }
         else
         {
-            _selectedItems.Clear();
+            Snackbar.Add("Post is Not Deleted", Severity.Info);
         }
+
     }
-}*@
 
 
+
+
+
+    }
+ 
