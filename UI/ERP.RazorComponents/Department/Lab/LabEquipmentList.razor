@@ -8,20 +8,9 @@
 @inject NavigationManager NavigationManager
 @inject IDialogService DialogService
 @inject IGetLabEquipmentListUseCase GetLabEquipmentListUseCase
-@inject NavigationManager NavigationManager
+@inject IDeleteLabEquipmentUseCase DeleteLabEquipmentUseCase
+@inject ISnackbar Snackbar
 
-
-@*<MudSelect T="string" Label="Select a Lab Equipment" AnchorOrigin="Origin.BottomCenter" @bind-Value="SelectedLabEquipment" OnValueChanged="HandleLabEquipmentSelection">
-
-    @foreach (var LabEquipmentName in LabEquipmentName)
-    {
-        <MudSelectItem Value="@LabEquipmentName">@LabEquipmentName</MudSelectItem>
-    }
-</MudSelect>
-
-<MudCardActions>
-    <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto" OnClick="@(async ()=>await LoadLabEquipmentAsync(SelectedLabEquipment))">Search Lab Equipment</MudButton>
-</MudCardActions>*@
 
 @if (_labEquipments == null || _labEquipments.Count == 0)
 {
@@ -45,6 +34,8 @@ else
                 <MudTd DataLabel="">
                     <MudFab OnClick="@(()=> EditLabEquipment(@context))" Color="Color.Primary"
                             StartIcon="@Icons.Material.Filled.Edit" Size="Size.Small" />
+                    <MudFab OnClick="@(()=> DeleteLabEquipment(@context))" Color="Color.Warning"
+                            StartIcon="@Icons.Material.Filled.Delete" Size="Size.Small" />
                 </MudTd>
 
         </RowTemplate>
@@ -52,14 +43,23 @@ else
             <MudTablePager />
         </PagerContent>
     </MudTable>
-    
+
+    <MudMessageBox @ref="mbox" Title="Warning" CancelText="Cancel">
+        <MessageContent>
+            Are You Sure to Delete This Graduate!
+        </MessageContent>
+        <YesButton>
+            <MudButton Variant="Variant.Filled" Color="Color.Error" StartIcon="@Icons.Material.Filled.DeleteForever">Delete!</MudButton>
+        </YesButton>
+    </MudMessageBox>
 }
 
 @code {
 
-    @*private List<string> LabEquipmentName { get; set; } = new List<string>();*@
     private List<LabEquipment> _labEquipments = new List<LabEquipment>();
-    @*private string SelectedLabEquipment { get; set; }*@
+    MudMessageBox mbox { get; set; }
+    public EventCallback onDelete { get; set; }
+  
 
     protected override async Task OnInitializedAsync()
     {
@@ -94,33 +94,26 @@ else
         }
     }
 
-
-
-   @* private async Task HandleLabEquipmentSelection(string selectedValue)
+    async Task DeleteLabEquipment(LabEquipment labEquipments)
     {
-        SelectedLabEquipment = selectedValue;
-        await LoadLabEquipmentAsync(selectedValue);
-        StateHasChanged();
+        bool? result = await mbox.Show();
+        if (result == true)
+        {
+            _labEquipments.Remove(labEquipments);
+            StateHasChanged();
+            await DeleteLabEquipmentUseCase.ExcuteAsync(labEquipments);
+            await onDelete.InvokeAsync();
+            Snackbar.Add("Graduate Deleted Successfully", Severity.Success);
+        }
+        else
+        {
+            Snackbar.Add("Graduate is Not Deleted", Severity.Info);
+        }
+
     }
 
-private async Task LoadLabEquipmentAsync(string labEquipment)
-    {
-        try
-        {
-            var labEquipmentList = await GetLabEquipmentListUseCase.ExecuteAsync(labEquipment);
-            if (labEquipmentList != null)
-            {
-                _labEquipments = labEquipmentList.ToList();
-            }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error loading lab equipment: {ex.Message}");
-            // Handle error appropriately, show error message to the user, etc.
-        }
-    }
 
-*@
+   
 
 
 
