@@ -58,17 +58,9 @@ namespace ERP.Repository.PgSql.Migrations
                             GraduateCompany = "0643 Gleichner Light, Cynthialand, Singapore",
                             GraduateContactNo = "1-495-221-0874 x03075",
                             GraduateDescription = "Customer",
-                            GraduateName = "Georgiana"
+                            GraduateName = "Georgiana",
 
-                            GraduateCompany = "4344 Louie Village, New Destiney, Iran",
-                            GraduateContactNo = "753-953-5383",
-                            GraduateDescription = "Chief",
-                            GraduateName = "Verla"
-
-                            GraduateCompany = "293 Kathleen Neck, Idaburgh, Uruguay",
-                            GraduateContactNo = "1-971-889-4340 x8969",
-                            GraduateDescription = "Dynamic",
-                            GraduateName = "Audreanne"
+                         
 
                         },
                         new
@@ -80,15 +72,7 @@ namespace ERP.Repository.PgSql.Migrations
                             GraduateDescription = "Dynamic",
                             GraduateName = "Shanelle"
 
-                            GraduateCompany = "317 Colton Lake, Lake Isom, Zimbabwe",
-                            GraduateContactNo = "722-519-0542",
-                            GraduateDescription = "Legacy",
-                            GraduateName = "Timmy"
 
-                            GraduateCompany = "2117 Minerva Flat, New Jarrettside, Finland",
-                            GraduateContactNo = "(610) 337-4600",
-                            GraduateDescription = "District",
-                            GraduateName = "Dayne"
 
                         },
                         new
@@ -100,17 +84,8 @@ namespace ERP.Repository.PgSql.Migrations
                             GraduateDescription = "Corporate",
                             GraduateName = "Imani"
 
-                            GraduateCompany = "2513 Marilie Wells, West Brandt, Philippines",
-                            GraduateContactNo = "1-617-276-6267 x31854",
-                            GraduateDescription = "Direct",
-                            GraduateName = "German"
 
-                            GraduateCompany = "07474 Jace Pass, Port Ludwigstad, Thailand",
-                            GraduateContactNo = "263-437-1617 x2206",
-                            GraduateDescription = "Forward",
-                            GraduateName = "Brent"
-
-                        });
+                        }) ;
                 });
 
             modelBuilder.Entity("ERP.Domain.Core.Entity.DepartmentEntity.LabEntity.LabEquipment", b =>
@@ -147,9 +122,7 @@ namespace ERP.Repository.PgSql.Migrations
 
                             LabEquipmentName = "Nikolas",
 
-                            LabEquipmentName = "Bernice",
-
-                            LabEquipmentName = "Ralph",
+                         
 
                             LabSpaceId = 0,
                             condition = "bad"
@@ -161,9 +134,7 @@ namespace ERP.Repository.PgSql.Migrations
 
                             LabEquipmentName = "Else",
 
-                            LabEquipmentName = "Joannie",
-
-                            LabEquipmentName = "Carlos",
+                 
 
                             LabSpaceId = 0,
                             condition = "medium"
@@ -174,10 +145,6 @@ namespace ERP.Repository.PgSql.Migrations
                             Avaialability = false,
 
                             LabEquipmentName = "Curt",
-
-                            LabEquipmentName = "Hudson",
-
-                            LabEquipmentName = "Ursula",
 
                             LabSpaceId = 0,
                             condition = "bad"
@@ -834,9 +801,7 @@ namespace ERP.Repository.PgSql.Migrations
                             Email = "Amy.Cole8@hotmail.com",
                             FirstName = "Amy",
 
-                            Email = "Yoshiko.Weimann@gmail.com",
-                            FirstName = "Yoshiko",
-
+                   
                             GPA = 0.0,
                             LastName = "Weimann",
                             NationalID = "",
@@ -845,16 +810,7 @@ namespace ERP.Repository.PgSql.Migrations
 
                             RegistrationNum = "EG/2020/7328"
 
-                            Email = "Jordy72@gmail.com",
-                            FirstName = "Jordy",
-                            GPA = 0.0,
-                            LastName = "Lesch",
-                            NationalID = "",
-                            Phone = "",
-                            PhoneNumber = "",
-                            RegistrationNum = "EG/2023/1990"
-
-                            RegistrationNum = "EG/2022/4649"
+                    
 
                         },
                         new
@@ -869,8 +825,7 @@ namespace ERP.Repository.PgSql.Migrations
                             Email = "Preston_Gaylord@yahoo.com",
                             FirstName = "Preston",
 
-                            Email = "Ezekiel_Littel@gmail.com",
-                            FirstName = "Ezekiel",
+                  
 
                             GPA = 0.0,
                             LastName = "Littel",
@@ -880,16 +835,7 @@ namespace ERP.Repository.PgSql.Migrations
 
                             RegistrationNum = "EG/2020/1508"
 
-                            Email = "Idella.Runolfsson42@hotmail.com",
-                            FirstName = "Idella",
-                            GPA = 0.0,
-                            LastName = "Runolfsson",
-                            NationalID = "",
-                            Phone = "",
-                            PhoneNumber = "",
-                            RegistrationNum = "EG/2020/7605"
-
-                            RegistrationNum = "EG/2023/1836"
+                    
 
                         },
                         new
@@ -904,8 +850,7 @@ namespace ERP.Repository.PgSql.Migrations
                             Email = "Julia_Robel@yahoo.com",
                             FirstName = "Julia",
 
-                            Email = "Aimee_Stark41@gmail.com",
-                            FirstName = "Aimee",
+                       
 
                             GPA = 0.0,
                             LastName = "Stark",
@@ -915,16 +860,7 @@ namespace ERP.Repository.PgSql.Migrations
 
                             RegistrationNum = "EG/2021/3654"
 
-                            Email = "Ivah.Schinner62@gmail.com",
-                            FirstName = "Ivah",
-                            GPA = 0.0,
-                            LastName = "Schinner",
-                            NationalID = "",
-                            Phone = "",
-                            PhoneNumber = "",
-                            RegistrationNum = "EG/2022/6853"
 
-                            RegistrationNum = "EG/2020/1651"
 
                         });
                 });
