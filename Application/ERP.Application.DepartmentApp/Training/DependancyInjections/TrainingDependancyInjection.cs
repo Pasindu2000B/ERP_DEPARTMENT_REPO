@@ -24,6 +24,7 @@ namespace ERP.Application.DepartmentApp.Training.DependancyInjections
             services.AddScoped<IInternPostViewUseCase, InternViewUseCase>();
             services.AddScoped<IGetTrainingRequests, GetTrainingRequests>();
             services.AddScoped<IFileUploadUseCase, FileUploadUseCase>();
+            services.AddScoped<IGetFileListUseCase, GetFileListUseCase>();
         
             return services;
         }

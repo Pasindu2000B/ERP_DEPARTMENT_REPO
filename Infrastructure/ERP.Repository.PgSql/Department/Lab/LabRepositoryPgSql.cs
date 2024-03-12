@@ -8,11 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using ERP.Domain.Core.Entity;
 using ERP.Domain.Core.Entity.DepartmentEntity.LabEntity;
 using ERP.Repository.PgSql.Migrations;
-<<<<<<< HEAD
+
 using ERP.Domain.Core.Entity.DepartmentEntity.LabEntity.Scedulling;
-=======
+
 using ERP.Domain.Core.Entity.DepartmentEntity.GraduatesEntity;
->>>>>>> 2cfc0e6890bcd932da8c975c6680b17e4f7f4e34
+
 
 namespace ERP.Repository.PgSql.Department.Lab
 {

@@ -107,7 +107,12 @@ builder.Services.AddScoped<IInternPostUseCase,InternPostUseCasecs>();
 builder.Services.AddScoped<IInternPostViewUseCase, InternViewUseCase>();
 
 builder.Services.AddSyncfusionBlazor();
+
 builder.Services.AddScoped<IFileUploadUseCase, FileUploadUseCase>();
+builder.Services.AddScoped<IGetFileListUseCase, GetFileListUseCase>();
+
+
+
 builder.Services.AddScoped<IEditLabEquimentUsecase, EditLabEquipmentUseCase>();
 builder.Services.AddScoped<IGetLabEquipmentByIdUseCase, GetLabEquipmentByIdUseCase>();
 builder.Services.AddScoped<IGetLabEquipmentListUseCase, GetLabEquipmentlistUseCase>();

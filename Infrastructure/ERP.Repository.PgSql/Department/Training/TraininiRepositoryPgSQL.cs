@@ -58,6 +58,8 @@ namespace ERP.Repository.PgSql.Department.Training
 
         }
 
+
+
         public Task RemoveJobPostAsync(JobPost jobPost)
         {
             using var _context = _factory.CreateDbContext();
@@ -90,7 +92,14 @@ namespace ERP.Repository.PgSql.Department.Training
             await _context.Files.AddAsync(fileupload);
             await _context.SaveChangesAsync();
 
-            throw new NotImplementedException();
+            
+        }
+
+        public async Task<IEnumerable<FileUpload>> GetAllFilesAsync()
+        {
+            using var _context = _factory.CreateDbContext();
+            return await _context.Files.ToListAsync();
+
         }
     }
 }

@@ -1,0 +1,35 @@
+﻿@page "/Lab_Schedule"
+@using ERP.Domain.Core.Entity.DepartmentEntity.LabEntity.Scedulling
+@using ERP.Application.DepartmentApp.Labs.Interfaces.Scheduling_Lab
+@using ERP.Application.DepartmentApp.Labs.UseCases.Scheduling_Lab
+@using Syncfusion.Blazor.Core
+@inject IGetScheduleLabUseCase GetScheduledLab;
+
+
+<SfSchedule TValue=AppointmentData>
+    <ScheduleViews>
+        <ScheduleView Option="View.Day"></ScheduleView>
+        <ScheduleView Option="View.Week"></ScheduleView>
+        <ScheduleView Option="View.WorkWeek"></ScheduleView>
+        <ScheduleView Option="View.Month"></ScheduleView>
+        <ScheduleView Option="View.Agenda"></ScheduleView>
+    </ScheduleViews>
+</SfSchedule>
+@code {
+    public class AppointmentData
+    {
+        public int Id { get; set; }
+        public string Subject { get; set; }
+        public string Location { get; set; }
+        public DateTime StartTime { get; set; }
+        public DateTime EndTime { get; set; }
+        public string Description { get; set; }
+        public bool IsAllDay { get; set; }
+        public string RecurrenceRule { get; set; }
+        public string RecurrenceException { get; set; }
+        public Nullable<int> RecurrenceID { get; set; }
+    }
+}
+
+
+

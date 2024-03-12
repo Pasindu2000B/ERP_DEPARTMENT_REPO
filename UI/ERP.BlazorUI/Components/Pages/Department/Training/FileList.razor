@@ -1,0 +1,28 @@
+﻿@page "/fileList"
+@using ERP.Application.DepartmentApp.Training.Interfaces
+@using ERP.Domain.Core.Entity.DepartmentEntity.TrainingEntity.InternShips
+@using Syncfusion.Blazor.Grids
+@inject IGetFileListUseCase GetFileListUseCase
+
+<SfGrid DataSource="@files">
+    <GridColumns>
+        <GridColumn Field=@nameof(FileUpload.Id) HeaderText="File Id"></GridColumn>
+        <GridColumn Field=@nameof(FileUpload.FileName) HeaderText="File Name"></GridColumn>
+        <GridColumn Field=@nameof(FileUpload.ContentType) HeaderText="File Type"></GridColumn>
+        // Other columns...
+    </GridColumns>
+</SfGrid>
+
+
+
+@code {
+    private List<FileUpload> files = new List<FileUpload>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        
+        files = (await GetFileListUseCase.ExecuteAsync()).ToList();
+
+    }
+
+}

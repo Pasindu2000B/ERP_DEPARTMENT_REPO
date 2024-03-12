@@ -26,5 +26,7 @@ namespace ERP.Application.DepartmentApp.Training
 
         Task SaveFileAsync(FileUpload fileupload);
 
+        Task <IEnumerable<FileUpload>> GetAllFilesAsync();
+
     }
 }
