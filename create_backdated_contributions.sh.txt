@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# Function to create backdated dummy commits for a contributor
+create_backdated_contributions() {
+  local contributor_name=$1
+  local contributor_email=$2
+  local num_commits=$3
+  local repo_dir=$4
+  local start_date=$5
+
+  # Navigate to the repository directory
+  cd "$repo_dir" || exit
+
+  # Configure Git for the contributor
+  git config user.name "$contributor_name"
+  git config user.email "$contributor_email"
+
+  # Create the specified number of commits
+  for i in $(seq 1 "$num_commits"); do
+    # Calculate the commit date
+    commit_date=$(date -d "$start_date +$i days" +"%Y-%m-%dT%H:%M:%S")
+
+    # Make a dummy change
+    echo "$RANDOM" > dummy_file_$i.txt
+    git add dummy_file_$i.txt
+
+    # Commit the change with backdated author and committer dates
+    GIT_AUTHOR_DATE="$commit_date" GIT_COMMITTER_DATE="$commit_date" git commit -m "Backdated dummy commit $i by $contributor_name"
+  done
+}
+
+# Main script
+# Arguments: contributor_name, contributor_email, num_commits, repo_dir, start_date
+create_backdated_contributions "Contributor Name" "contributor@example.com" 10 "/path/to/repo" "2023-01-01"
